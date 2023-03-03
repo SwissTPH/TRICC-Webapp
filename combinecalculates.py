@@ -17,7 +17,7 @@ def calcombo (df, df_raw):
         newcalc = ' or '.join(expressions)
         newcalc = 'number(' + newcalc + ')'
         df.loc[m & (df['label::en']==calcname), 'calculation'] = newcalc
-        print('For', calcname, 'the new calculation expression is:\n', newcalc)
+        # print('For', calcname, 'the new calculation expression is:\n', newcalc)
 
         newname_id = df.loc[m & (df['label::en']==calcname)].index[0]
         newname = df_raw[df_raw['id']==newname_id]['name'].iloc[0]
@@ -25,6 +25,6 @@ def calcombo (df, df_raw):
         for s in df.loc[m & (df['label::en']==calcname)]['name']:
             # print('^'+s+'&', newname)
             df.replace(s, newname, regex=True, inplace = True)
-        print('The name of the combined calculate field is:', newname)
+        # print('The name of the combined calculate field is:', newname)
         df.drop(drops, inplace = True)
     return df

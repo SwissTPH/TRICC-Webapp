@@ -36,7 +36,7 @@ def split_mh(df):
                 if k == 0: #make incoming edges point to the first created node
                     df['target'] = df['target'].replace(row0['id'],newrow['id'])
                 else:
-                    d = {'id':row0['id']+'-{:03d}'.format(k), 'style':'jettySize', 'source':oldnewrow['id'],\
+                    d = {'id':row0['id']+'-{:03d}'.format(k), 'edge':'1', 'source':oldnewrow['id'],\
                      'target':newrow['id']}
                     df = pd.concat([df, pd.DataFrame(d, index = [str(newrow.name)+str(k)])])
                     if k == len(row['value'])-1: # make out-edges leave the last created node

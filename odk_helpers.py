@@ -38,6 +38,34 @@ def make_edgeframe(df_raw):
 
 def make_choicesframe(df_raw):
     df = df_raw.loc[df_raw['odk_type']=='select_option']
+    df = df[['value', 'parent', 'name', 'y', 'id']]
+    # KEEP  odk_type  ONLY IN THE MEANTIME TO MAINTAIN COMPATIBILITY WITH OLD SCRIPT, REMOVE LATER
+    df = df.merge(df_raw[['id', 'name', 'odk_type']], how = 'left', left_on = 'parent', right_on = 'id', suffixes = ('_opt', '_parent'))
+    df = df[['id_opt', 'name_parent', 'name_opt', 'value', 'odk_type', 'y']]
+
+    # include images
+    df_image = make_imageframe(df_raw)
+    df = df.merge(df_image[['imagename', 'target']], how = 'left', left_on = 'id_opt', right_on = 'target')
+    
+    
+    # sort the options as in the drawing
+    df['y'] = df['y'].astype(int)
+    df.sort_values(by = ['name_parent', 'y'], ascending = [True, True], inplace = True)
+    # KEEP  id and odk_type  ONLY IN THE MEANTIME TO MAINTAIN COMPATIBILITY WITH OLD SCRIPT, REMOVE LATER
+    df = df[['id_opt', 'name_parent', 'name_opt', 'value', 'odk_type', 'imagename']]
+    df.fillna('', inplace = True)
+    df.columns=['id', 'list_name', 'name', 'label', 'odk_type', 'image']
+    
+    # add yesno rows
+    d = {'id': ['yes', 'no'], 'list_name': ['yesno', 'yesno'], 'name': ['Yes', 'No'], 'label': ['Yes', 'No']}
+    df_yesno = pd.DataFrame(d, columns = df.columns)
+    df = pd.concat([df, df_yesno])
+    df.set_index('id', inplace = True)
+    
+    return df
+
+def make_choicesframe_jupyter(df_raw):
+    df = df_raw.loc[df_raw['odk_type']=='select_option']
     df = df[['value', 'xml-parent', 'name', 'y', 'id']]
     # KEEP  odk_type  ONLY IN THE MEANTIME TO MAINTAIN COMPATIBILITY WITH OLD SCRIPT, REMOVE LATER
     df = df.merge(df_raw[['id', 'name', 'odk_type']], how = 'left', left_on = 'xml-parent', right_on = 'id', suffixes = ('_opt', '_parent'))
@@ -153,7 +181,7 @@ def frame_to_odk(df, drugsfile, form_id):
     '''Adapt the survey dataframe so that it fits to ODK requirements. This is necessary for
     ODK/Enketo based solutions, such as CHT, Commcare, ODK Collect'''
     newcols = ['repeat_count', 'appearance', 'required', 'required message::en', 'calculation', \
-               'constraint', 'constraint_message', 'image::en']
+               'constraint', 'constraint message::en', 'image::en']
     df[newcols]=''
 
     # short term workaround for select_xxx + NAME to add the same name as list_name

@@ -1,2 +1,2 @@
-# TRICC-Webapp
-Making TRICC run on a website
+# tricc-graph
+Tricc based on DAG

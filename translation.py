@@ -7,6 +7,7 @@ To extract and inject English strings from the excel and to update the translati
 
 import pandas as pd
 from cleanhtml import html2plain
+import re
 
 def make_transtable(df_survey, df_choices):
     # Extracting strings from survey tab:
@@ -65,7 +66,7 @@ def update_trans(dfl, dft):
     
     # update the EN text columns of the translation table by those from the xls form
     for col in encols:
-        # rows where en exists, but en_t column is empty (new strings)
+        # rows where EN exists, but en_t column is empty (new strings)
         newrows = dft_updated.loc[(dft_updated[col]!='') & (dft_updated[col + '_t']=='')].index+2
         if len(list(newrows))>0:
             print('The following rows contain new English ', col, 'fields: ', list(newrows))
@@ -83,26 +84,55 @@ def update_trans(dfl, dft):
 
 
 # update translations in the xls-form by the translation file
-def import_trans(df, df_trans):
-    imcols = df.filter(like = 'image').columns
-    # the df has only EN columns at this stage
+def import_trans(df, dft):
+    '''Function to write the translated fields from the translation file into the dataframe. It works for the survey and for the choices tab'''
+    # need a full copy of dft, to avoid that it gets manipulated when updating successive xls-form sheets(survey + choices)
+    dft1 = dft.copy()
+    # add missing columns to df
+    
+    #check which cols actually exist in the file that gets the updates inserted
+    textcols = df.filter(like = '::').columns # get the names of textcolumns from the translation file
+    textcols = [re.search('.+(?=::)', s).group(0) for s in textcols] # strip of ::language code for the column names
+    textcols = list(set(textcols)) # remove duplicates
+    textcols = [s for s in textcols if s != 'image'] # drop the image column, it needs no translation, it contains the image filename
+    
+    # see which of those textcols have translated columns in dft1
+    textcols_dft = dft1.columns[dft1.columns.str.contains('|'.join(textcols))]
+    
+    # from those drop the original ENGLISH ones, to avoid dft1 updating the English strings
+    textcols_dft = [s for s in textcols_dft if '::en' not in s]
+    
+    # add new translation columns into df
+    df = pd.concat([df,pd.DataFrame(columns=textcols_dft)], axis=1)
+    
+    # get NON_text columns from dft1
+    nontext_cols_dft = list(filter(lambda x: '::' not in x, dft1.columns))
+    
+    # extract from dft1 the index columns AND the translated columns
+    dft1 = dft1[nontext_cols_dft + textcols_dft]
+    
+    # nan values are not correctly updated, so reset them to an empty string ''
+    df.fillna('', inplace=True)
+    dft1.fillna('', inplace=True)
+    # df_original_english = df['label::en'] # keep the original English, so that the translation file does not overwrite it. 
+    
     if 'list_name' not in df.columns:
-        df_updated = df.merge(df_trans, on = ['type', 'name'], how = 'left', suffixes= ('', '_t'))
-        # df_updated.drop(columns = ['list_name'], inplace = True)
+        df.set_index(['type', 'name'], inplace = True) # set ['type', 'name'] as multiindex for updating
+        dft1.drop_duplicates(subset=(['type', 'name']), inplace=True) # drop duplicates in the ['type', 'name'] combo (exist for choices tab elements, that have an empty 'name')
+        dft1.set_index(['type', 'name'], inplace = True) # set the same index as in df in order to be able to update
+        df.update(dft1)
     else:         
-        df_updated = df.merge(df_trans, on = ['list_name', 'name'], how = 'left', suffixes= ('', '_t'))
-        # df_updated.drop(columns = ['type'], inplace = True)        
-        
-
-    textcols = df_trans.filter(like = '::').columns # get the names of textcolumns from the translation file (the xls file has only 'EN' at this stage)
-    headcols = df.filter(regex = '^(?!.*(::)).*$').columns # get the non-text columns from the xls file
-    cols = headcols.append(textcols) 
-    cols = cols.append(imcols) # columns of the output xls table
+        df.set_index(['name', 'list_name'], inplace = True) # set ['type', 'name'] as multiindex for updating
+        dft1.drop_duplicates(subset=(['name', 'list_name']), inplace=True) # drop duplicates in the ['name', 'list-name'] combo (exist for survey tab elements, that have an empty 'list-name')
+        dft1.set_index(['name', 'list_name'], inplace = True) # set the same index as in df in order to be able to update
+        df.update(dft1)    
     
-    df_updated = df_updated[cols]
-    df_updated['image::fr'] = df_updated['image::en'] # make a French column with the same images as in En
-    df_updated.fillna('', inplace = True)
+    df.reset_index(inplace=True) # setting index back to the way it was
+    #df = df[cols] # reduce to those columns (if not, then the survey tab would also have columns from the choices tab and vice versa)
     
-    return df_updated
+    df['image::fr'] = df['image::en'] # make a French column with the same images as in En
+    #df['label::en'] = df_original_english # bring back English from the original file
+    
+    return df
 
 

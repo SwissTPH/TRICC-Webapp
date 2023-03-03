@@ -21,21 +21,27 @@ from utf8encoder import encodeUTF8 as utf8
 from formconverters import df2xlsform # makes xlsforms out of dataframes
 from formconverters import xls2xform # makes xlsforms out of dataframes
 import xml_tools as xt
+from CDSS_list_merge import merge_list
+
 
 #%% Parameters - > choose your form (ped, yi, almsom) here
-#import params as p # for almanach Somalia
-import params_ped as p # for msfecare Ped
-
-#%% Parse diagram
-objects = inputs.parse_drawio(p.inputfile_tt) # parse drawing
+#import params_almsom_tt as p # for almanach Somalia TT
+#import params_test as p # for playing around
+import params_ped_tt as p # for msfecare Ped
+#import params_libya as p # for Almanach Lybia treatment
+#import params_libya_dx as p # for Almanach Lybia diagnostic
+##%% Parse diagram
+objects = inputs.parse_drawio(p.inputfile) # parse drawing
 
 # Put diagram elements in df_raw
 df_raw = inputs.treetodataframe(objects) # import drawing elements into a df
 df_raw.fillna('', inplace = True) 
 df_raw.loc[df_raw['label']!='','value'] = df_raw['label'] # all content into the same column
 
-#%% Focus on treatment only and strip off the follow up (FOR NOW)
+
+#%% Focus on treatment only and strip off the follow up (FOR NOW, in Almsom TT)
 df_raw = df_raw.loc[df_raw['activity']!='Follow up advise']
+
 
 #%% Quality checks
 qcpd.check_node_type(df_raw) # check if all objects have an odk_type
@@ -44,12 +50,15 @@ qcpd.check_edge_connection(df_raw) # check if all edges are well connected
 types = ['rhombus', 'select_one yesno']
 qcpd.check_edge_yesno(df_raw, types) # check if all edges leaving rhombus and select_one yesno have Yes/No
 
+
 #%% assign diagnosis names to rows in df_raw
 df_raw = oh.assign_diagnosisname(p.diagnosis_order, df_raw)
 
-#%% Split multiple header lines into singleton objects (for Alm Som)
-if p.form_id=='almsom':
+
+#%% Split multiple header lines into singleton objects
+if p.mhsplit:
     df_raw = mhs.split_mh(df_raw)
+
     
 #%% Build the choices tab
 df_choices=df_raw.loc[df_raw['odk_type']=='select_option']
@@ -63,11 +72,12 @@ yes=pd.DataFrame({'list_name':'yesno','name':'Yes','label::en':'Yes'}, index=['z
 no=pd.DataFrame({'list_name':'yesno','name':'No','label::en':'No'}, index=['zzz_no'])
 df_choices = pd.concat([df_choices, yes, no])
 
+
 #%% DAG 
 # build a CDSS graph without images, WITH dataloader
 dag = gt.build_graph_cdss(df_raw)
 
-# make edge parents -> children (for select_xxx and pages and container-hint-media this does not exist per default)
+# make edge parents -> children (for select_xxx and pages)
 dag = gt.connect_to_parents(dag, df_raw)
 
 # connect shortcuts
@@ -87,19 +97,30 @@ else:
 # assign content of edges as their 'logic' attribute -> there are edges in the form that contain 'Yes' or 'No'
 dag = gt.add_edgeattrib(dag, df_raw, 'logic')
 
+
+#%% Making duplicate calculates unique and adding a 'calculate sink'
+# make also a diagnosis sink and convert duplicate diagnosis to calculates
+# there are duplicate diagnosis in the dx diagrams
+dag = gt.number_calculate_duplicates(dag, df_raw)
+
+
 #%% Add diagnosis selector and dataloader to DAG
-diagnosis_id_hierarchy = gt.get_diagnosis_sorting_id(df_raw, p.diagnosis_order) # make diagnosis id hierarchy list
 
-n = 'select_diagnosis'
-n_attrib = {'name':'select_diagnosis', 'type':'select_multiple', 'content':'Select diagnosis', 'group' : 1}
-dag = gt.add_calculate_selector(dag, n, n_attrib, diagnosis_id_hierarchy)
-# add the content from the calculates as content to their predecessor select_options
-dag = gt.add_text_calculate_options(dag, 'select_diagnosis')
-
-# connect the dataloader with the 'select_multiple diagnosis' node
-# this insures that the dataloader elements show up on top of the form and not at the bottom
+diagnosis_id_hierarchy = gt.get_diagnosis_sorting_id_from_graph(dag, p.diagnosis_order) # make diagnosis id hierarchy list
+#diagnosis_id_hierarchy = gt.get_diagnosis_sorting_id(df_raw, p.diagnosis_order) # make diagnosis id hierarchy list
 id_dataloader = df_raw.loc[df_raw['value']=='Load Data', 'id'].iloc[0] # get ID of the dataloader
-dag.add_edge(id_dataloader, 'select_diagnosis') # connect dataloader to select_diagnosis
+
+if p.activity=='treatment':
+    n = 'select_diagnosis'
+    n_attrib = {'name':'select_diagnosis', 'type':'select_multiple', 'content':'Select diagnosis', 'group' : 1}
+    dag = gt.add_calculate_selector(dag, n, n_attrib, diagnosis_id_hierarchy)
+    # add the content from the calculates as content to their predecessor select_options
+    dag = gt.add_text_calculate_options(dag, 'select_diagnosis')
+
+    # connect the dataloader with the 'select_multiple diagnosis' node
+    # this insures that the dataloader elements show up on top of the form and not at the bottom
+    
+    dag.add_edge(id_dataloader, 'select_diagnosis') # connect dataloader to select_diagnosis
 
 # add a 'data_load' multiple choice that points to the calculates of the dataloader
 # this will allow to set them on startup
@@ -111,8 +132,6 @@ dag = gt.add_calculate_selector(dag, n, n_attrib, dataloader_calculates)
 # add the content from the calculates as content to their predecessor select_options
 dag = gt.add_text_calculate_options(dag, 'data_load')
 
-#%% Making duplicate calculates unique and adding a 'calculate sink'
-dag = gt.number_calculate_duplicates(dag, df_raw)
 
 #%% Write 'expression' into NON rhombus edges
 
@@ -144,6 +163,7 @@ logic, logicmap, negated_logicmap = el.edge_select_options(dag, logic, logicmap,
 # update edge logic
 nx.set_edge_attributes(dag, logic, name = 'logic')
 
+
 #%% Write expression into rhombus edges
 
 # types a rhombus can potentially refer to
@@ -165,12 +185,14 @@ for value in ['Yes', 'No']:
     dag = el.assign_refername_and_edgevalue_to_edges(dag, refer_types, refers_to, value)
     
 # build expression for rhombus referring to nodes of types integer and decimal
-refers_to = ['integer', 'decimal']
+refers_to = ['integer', 'decimal', 'count']
 for value in ['Yes', 'No']:
     dag, logicmap, negated_logicmap = el.assign_refername_and_content_equation(dag, logicmap, negated_logicmap, refer_types, refers_to, value)
+
     
 #%% Build relevance for all nodes and assign as attribute
 dag = gt.write_node_relevance(dag) # make and write relevance to nodes
+
 
 #%% Calculate longest path and select_option hierarchy
 
@@ -188,13 +210,15 @@ As indicated in the conceptual document, this step must be done before contracti
 in orrder to avaid that diagnosis branches are mixed up after the contraction. 
 In the contracted node, the "longest path from root" will the maximum of the longest paths of the contracted
 nodes.'''
-
-# make a hierarchy for the select_diagnosis options
-d = gt.hierarchy_diagnosis(dag, diagnosis_id_hierarchy)
-
 opt_prio = gt.hierarchy_select_options(df_raw) # hierarchy of select_options in the form
-# combine diagnosis_sorting with select_option sorting
-opt_prio = d | opt_prio
+
+if p.activity == 'treatment':
+    # make a hierarchy for the select_diagnosis options
+    d = gt.hierarchy_diagnosis(dag, diagnosis_id_hierarchy)
+    # combine diagnosis_sorting with select_option sorting
+    opt_prio = d | opt_prio
+    
+    
 # get a graph entry point (typically a node pointing to the dataloader)
 rootnode = gt.get_graph_entry_point(dag)
 # calculate the distance of the longest path between the rootnode and each node
@@ -203,56 +227,57 @@ dist = gt.get_longest_path_lengths(dag, rootnode, opt_prio)
 nx.set_node_attributes(dag, dist, name = 'distance_from_root')
 
 
-#%% Get a CDSS topological sort for each disease. 
-# as described in the concept doc, we need to use the stackoverflow approach to sorting, 
-# in first step we build a list of lists, but in a dictionary type
-# here we get the topological sort for each diagnosis
-
-# this is the right approach, but currently it will be overwritten in chapter 'contract nodes' because it is not finalised
-
-#d = gt.make_sorted_nodes_list(dag, diagnosis_id_hierarchy, opt_prio) # list of lists with proper sorting for each diagnosis
-
-# make a graph with root nodes being the diagnosis and have as successors the line of topologically sorted nodes ("linear DAG")
-#linear_graph = gt.make_linear_diagnosis_graph(d) 
-
-#counter = [str(i) for i in list(range(len(d)+1))]  
-#counter.sort() # lexicographically sorted list for the lexicographical topological sort
-
-#def sort_function(item):
-#    for i in range(len(diagnosis_id_hierarchy)):
-#        if item in d[i]:
-#            return counter[i]
-#            break
-#    else:
-#        print('Error, node', item, 'not found for any diagnosis')
-
-# topo order with duplicates, they will be deleted during node contraction
-#topo_order = list(nx.lexicographical_topological_sort(linear_graph, sort_function))
-
 #%% CDSS adapted topological sort
-# this approach is good, but not for Treatment
+# take this out because you have to recompile shitty ped and you have lost the old version for I don't know which fucking reasons
 topo_order = gt.topo_sort_cdss_attrib(dag, 'distance_from_root') # the complete sorting of the graph
+'''
+# this approach is good, but not for Treatment or any other activity where diagnosis graphs are parallel
+if p.activity!='treatment':
+    topo_order = gt.topo_sort_cdss_attrib(dag, 'distance_from_root') # the complete sorting of the graph
+else:
+    # the sorting for treatment (and for its groups) is based on merging lists. We build first a `list of lists` of nodes for each diagnosis
+
+    d = gt.make_sorted_nodes_list(dag, diagnosis_id_hierarchy, opt_prio)
+
+    # we have to remove 'rhombus' nodes from the list of lists, to avoid that they get merged into one    
+    d_new = [gt.pop_rhombus(n, dag) for n in d]
+    d=d_new
+    
+    topo_order = d[0] # variable for the globally sorted nodes, we start with the diagnosis_sort of the most severe diagnosis
+    for diagnosis_sort in d[1:]:
+        topo_order = merge_list(diagnosis_sort, topo_order)
+        print(topo_order)
+
+
+# before this, for the TT, we need to contract nodes, and update the list_of_lists with the new IDs, then only can we merge the lists
+'''
 
 #%% Contract nodes
-''' Questions that repeat in the drawing should be contracted into one instance of that question in order to 
+'''
+Questions that repeat in the drawing should be contracted into one instance of that question in order to 
 avoid repetition if more than 1 diagnosis is triggered. All elements except rhombus, diagnosis and calculate
 can be contracted. After contraction the graph must still be a DAG, meaning it must not have cycles. 
-Further on,  the relevance of the contracted nodes must be combined. For more info see the conceptual doc'''
+Further on, the relevance of the contracted nodes must be combined. For more info see the conceptual doc
+'''
 
-# types of nodes that can potentially be contracted. rhombus and calculates cannot be contracted 
-# (calculates have sinks and rhombus are not real nodes)
-contract_types = ['decimal', 'integer', 'note', 'select_one yesno', 'help-message', 'hint-message']
-
-'''before contraction, write the relevance of the to be contracted node into the 
-selected successors of that node add the relevance expression of the contracted node into the one that has been created
-''' 
-dag = gt.contract_duplicates(dag, contract_types)
-
-# flatten relevance by combining it with 'contracted' relevances in each node
-[gt.make_node_relevance(dag, n) for n in dag.nodes if 'contraction' in dag.nodes[n]]
-
-# flatten also the distance-from-root. It 
-[gt.make_node_distance_from_root(dag, n) for n in dag.nodes if 'contraction' in dag.nodes[n]]
+# this makes only sense for the treatment
+if p.activity=='treatment':
+    
+    # types of nodes that can potentially be contracted. rhombus and calculates cannot be contracted 
+    # (calculates have sinks and rhombus are not real nodes)
+    contract_types = ['decimal', 'integer', 'note', 'select_one yesno', 'help-message', 'hint-message']
+    
+    '''before contraction, write the relevance of the to be contracted node into the 
+    selected successors of that node add the relevance expression of the contracted node into the one that has been created
+    ''' 
+    dag = gt.contract_duplicates(dag, contract_types)
+    
+    # flatten relevance by combining it with 'contracted' relevances in each node
+    [gt.make_node_relevance(dag, n) for n in dag.nodes if 'contraction' in dag.nodes[n]]
+    
+    # flatten also the distance-from-root. It 
+    [gt.make_node_distance_from_root(dag, n) for n in dag.nodes if 'contraction' in dag.nodes[n]]
+    
 #%% Reset group relevance in group children
 # set group relevance to true for all nodes inside that group (exemple caretaker advice in Ped TT)
 
@@ -260,13 +285,16 @@ dag = gt.contract_duplicates(dag, contract_types)
 group_ids = [n for n in dag.nodes if dag.nodes[n]['type']=='container_page']
 
 # get ids of all nodes that are in groups 
-nodes_in_groups = [n for n in dag.nodes if dag.nodes[n]['group'] in group_ids]
+nodes_in_groups = [n for n in dag.nodes if 'group' in dag.nodes[n].keys() and dag.nodes[n]['group'] in group_ids]
 
-# substitute in relevance the group relevance by S.true
-[gt.substitute_group_relevance(n, dag) for n in nodes_in_groups]
+# substitute in relevance the group relevance by S.true (only if `full relevance` is used)
+# [gt.substitute_group_relevance(n, dag) for n in nodes_in_groups]
 
 #%% Write help and hint fields as node attributes
 dag = gt.make_help_attributes(dag)
+
+#%% Extract images
+dag = gt.extract_images(dag, df_raw, p.media_folder)
 
 #%% Handle duplicate names
 ''' Not contracted nodes still have duplicate names, that needs to be dealt with. This solution is not
@@ -360,11 +388,13 @@ def diagnosis_to_dfchoices(dag, df_choices, listname):
     df_choices = pd.concat([df_select_diagnosis, df_choices])
     
     return df_choices
+if p.activity == 'treatment':
+    df_choices = diagnosis_to_dfchoices(dag, df_choices, 'select_diagnosis')  # a diagnosis selector is only for treatment (will take this out there, too)
 
-df_choices = diagnosis_to_dfchoices(dag, df_choices, 'select_diagnosis')
+
 df_choices = diagnosis_to_dfchoices(dag, df_choices, 'data_load')
 
-#%% Make a summary  -> this has moved to the DX jupyter script, because there you get the real relevance for diagnosis
+#%% Make a summary  -> for treatment, this has moved to the DX jupyter script, because there you get the real relevance for diagnosis
 
 '''The summary is built based on the triggered diagnosis. It is built here and saved to disk. 
 It is then re-used by the merge script'''
@@ -380,6 +410,7 @@ with open(p.folder+'df_summary.pickle', 'wb') as handle:
 '''
 #%% Write xls form to file
 df2xlsform(df, df_choices, df_settings, p.output_xls)
+
 if p.platform == 'cht':
     df2xlsform(df, df_choices, df_settings, '/home/rafael/cht-local-setup/upgrade/cht-core/config/raf/forms/app/ped.xlsx')
 
@@ -391,10 +422,10 @@ if p.platform == 'commcare':
 if p.platform == 'commcare':
     xt.xform2commcare(p.output_xml, p.output_commcare)
 
-
-
 #%% Compile and upload into local CHT instance
+'''
 if p.platform == 'cht':
     import os
     os.system('cd /home/rafael/cht-local-setup/upgrade/cht-core/config/ecare/ | cht --url=https://medic:password@localhost --accept-self-signed-certs convert-app-forms upload-app-forms -- almsom')
 
+'''

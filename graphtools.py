@@ -10,6 +10,8 @@ import pandas as pd
 import cleanhtml as ch
 from sympy import And, Or, S, simplify
 from itertools import combinations
+import re
+import base64, os
 
 def longest_path_lengths(dag, rootelement, df_raw):
     dist = dict.fromkeys(dag.nodes, -float('inf')) # keys are nodes, values their longest path length from source   
@@ -263,6 +265,7 @@ def make_node_distance(dag, n):
     
     return n
 
+
 def get_diagnosis_sorting_id(df_raw, diagnosis_order):
     diagnosis_hierarchy = pd.read_csv(diagnosis_order)
     
@@ -271,11 +274,30 @@ def get_diagnosis_sorting_id(df_raw, diagnosis_order):
     df_raw['map'] = df_raw['map'].apply(ch.clean_name)
     
     m = df_raw['map'].isin(diagnosis_hierarchy['map']) & (df_raw['odk_type']=='diagnosis')
-    dfa = df_raw.loc[m,['id','name']].set_index('name') # slice of df containing the diagnosis (unsorted)
+    #dfa = df_raw.loc[m,['id','name']] # slice of df containing the diagnosis (unsorted) 
+    
+    dfa = df_raw.loc[m,['id','name']].set_index('name') # slice of df containing the diagnosis (unsorted) 
     dfa = dfa.reindex(list(diagnosis_hierarchy['id']))['id'] # that slice, but sorted and 'nan' dropped 
     # (these are diagnosis that exist in dx but not in tt, mostly non-severe ones that have no TT)
     diagnosis_id_hierarchy = list(dfa.dropna())
     return diagnosis_id_hierarchy
+
+
+def get_diagnosis_sorting_id_from_graph(dag, diagnosis_order):
+    diagnosis_hierarchy = pd.read_csv(diagnosis_order)
+    
+    diagnosis_hierarchy['map']= diagnosis_hierarchy['Name'].apply(ch.clean_name) 
+    
+    # make dict of style {diagnosis_name:node_id} with information from graph
+    # name is already 'cleaned'
+    d_from_graph = {ch.clean_name(dag.nodes[n]['content']):n for n in dag.nodes if 'type' in dag.nodes[n].keys() and dag.nodes[n]['type']=='diagnosis'}
+    
+    # this works also if there is a diagnosis in the hierarchy that does not exist in the diagram -> might be useful if we get a global hierarchy list
+    diagnosis_id_hierarchy = [d_from_graph[i] for i in diagnosis_hierarchy['map'] if i in d_from_graph.keys()]
+
+    return diagnosis_id_hierarchy
+
+
 
 def get_diagnosis_sorting_id_jupyter(df_raw, diagnosis_order):
     diagnosis_hierarchy = pd.read_csv(diagnosis_order)
@@ -346,16 +368,37 @@ def number_calculate_duplicates(dag, df_raw):
     @param1: dag the graph
     @param2: df_raw the RAW dataframe, with elements from the diagram
     @result: updated graph'''
-    for c in df_raw.loc[df_raw['odk_type']=='calculate','name'].unique():
-        if len(df_raw.loc[(df_raw['odk_type']=='calculate') & (df_raw['name']==c)])>1: # if there are duplicate calculates
-            dfa = df_raw.loc[(df_raw['odk_type']=='calculate') & (df_raw['name']==c)] # sub-dataframe with calculate duplicates of name 'c'
+    for c in df_raw.loc[df_raw['odk_type'].isin(['calculate', 'diagnosis']),'name'].unique():
+        if len(df_raw.loc[df_raw['odk_type'].isin(['calculate', 'diagnosis']) & (df_raw['name']==c)])>1: # if there are duplicate calculates
+            dfa = df_raw.loc[df_raw['odk_type'].isin(['calculate', 'diagnosis']) & (df_raw['name']==c)] # sub-dataframe with calculate duplicates of name 'c'
             d = dict(zip(dfa['id'], dfa['name'] + '_' + dfa['id']))
-            content = dict(zip(dfa['id'], dfa['label']))
+            cs = ['calculate' for i in dfa['id']]
+            d_type = dict(zip(dfa['id'], cs))
+            # need to rename the content as well, because it is used for making the diagnosis_id_hierarchy
+            content = dict(zip(dfa['id'], list(dfa['label']+'_'+dfa['id'])))
             nx.set_node_attributes(dag, d, name='name') # d contains attribute that will be named 'name'
-            nx.set_node_attributes(dag, content, name='content') # d contains attribute that will be named 'name'
-            dag.add_node(c, name = c, type='calculate', content=c) # adds the 'calculate-sink' for those duplicates (each of them will be pointing to here in addition to the existant edges)
+            nx.set_node_attributes(dag, content, name='content') # content of the nodes will be the same as before
+            nx.set_node_attributes(dag, d_type, name='type') # the nodes of type 'diagnosis' get changed into calculates, the reals diagnosis becomes the 'sink'
+            
+            nodetype = df_raw.loc[df_raw['name']==c, 'odk_type'].unique()[0] # get odk_type, see if it is 'diagnosis' or 'calculate'
+            # adds the 'calculate/diagnosis-sink' for those duplicates (each of them will be pointing to here in addition to the existant edges)
+            dag.add_node(c, name = c, type=nodetype, content = list(dfa['label'])[0])  
+            
+            # add edges
             newedges = [(i,c) for i in d.keys()] # edges between the duplicates and the freshly created calculate sink
             dag.add_edges_from(newedges)
+    
+    # for calculates only
+    #for c in df_raw.loc[df_raw['odk_type']=='calculate','name'].unique():
+    #    if len(df_raw.loc[(df_raw['odk_type']=='calculate') & (df_raw['name']==c)])>1: # if there are duplicate calculates
+    #        dfa = df_raw.loc[(df_raw['odk_type']=='calculate') & (df_raw['name']==c)] # sub-dataframe with calculate duplicates of name 'c'
+    #        d = dict(zip(dfa['id'], dfa['name'] + '_' + dfa['id']))
+    #        content = dict(zip(dfa['id'], dfa['label']))
+    #        nx.set_node_attributes(dag, d, name='name') # d contains attribute that will be named 'name'
+    #        nx.set_node_attributes(dag, content, name='content') # d contains attribute that will be named 'name'
+    #        dag.add_node(c, name = c, type='calculate', content=c) # adds the 'calculate-sink' for those duplicates (each of them will be pointing to here in addition to the existant edges)
+    #        newedges = [(i,c) for i in d.keys()] # edges between the duplicates and the freshly created calculate sink
+    #        dag.add_edges_from(newedges)
     return dag
 
 
@@ -382,14 +425,16 @@ def switch_nodeattrib(dag, from_attribname, to_attribname, types):
 
 # Add attributes to edges
 def add_edgeattrib(dag, df_raw, attribname):
-    df_edges = df_raw.loc[df_raw['style'].str.contains('jettySize')]  # get all arrows from df_raw
+    df_edges = df_raw.loc[df_raw['edge']=='1']  # get all arrows from df_raw
+    df_edges = df_edges[(df_edges['source']!='') & (df_edges['target']!='')] # remove some artefact objects
+    
     attrib = dict(zip(zip(df_edges['source'],df_edges['target']),df_edges['value'].apply(ch.html2plain)))
     nx.set_edge_attributes(dag, attrib, attribname)
     return dag
 
 def build_graph_cdss(df_raw):
     # build a graph
-    df_edges = df_raw.loc[df_raw['style'].str.contains('jettySize')]  # get all arrows from df_raw
+    df_edges = df_raw.loc[df_raw['edge']=='1']  # get all arrows from df_raw
     df_edges = df_edges[(df_edges['source']!='') & (df_edges['target']!='')] # remove some artefact objects
     dag = nx.from_pandas_edgelist(df_edges, source='source', target='target', create_using=nx.DiGraph) # build a graph 
     
@@ -397,8 +442,8 @@ def build_graph_cdss(df_raw):
     if list(nx.simple_cycles(dag)):
         print('There are loops in the graph!')
     
-    # drop image nodes from dag
-    dag.remove_nodes_from(df_raw[df_raw['style'].str.contains('image',na=False)]['id'])
+    # drop image nodes from dag --> why?
+    # dag.remove_nodes_from(df_raw[df_raw['style'].str.contains('image',na=False)]['id'])
     
     return dag
 
@@ -411,7 +456,8 @@ def connect_to_parents(dag, df_raw):
     # drop diagrams.net-page-objects (they do not belong to the drawing); recognised by an empty 'style' column
     df = df_raw.drop(df_raw.loc[df_raw['style']==''].index)
     # drop arrows (which are also children of pages)
-    df.drop(df[df['style'].str.contains('jettySize')].index, inplace=True)
+    df.drop(df[df['edge']=='1'].index, inplace=True)
+    
     n = [i for i in df['id'] if i in list(df['parent'])] # objects in df that appear also in the 'parent' column
     # children that point to their parent and that have NO in_edges (for a page this is the root element only)
     d = {child:parent for (child,parent) in zip(df['id'],df['parent']) if parent in n and len(dag.in_edges(child))==0}
@@ -431,7 +477,27 @@ def connect_to_parents_old(dag, df_raw):
     # drop diagrams.net-page-objects (they do not belong to the drawing); recognised by an empty 'style' column
     df = df_raw.drop(df_raw.loc[df_raw['style']==''].index)
     # drop arrows (which are also children of pages)
-    df.drop(df[df['style'].str.contains('jettySize')].index, inplace=True)
+    #df.drop(df[df['style'].str.contains('jettySize')].index, inplace=True)
+    df.drop(df[df['edge']=='1'].index, inplace=True)
+    n = [i for i in df['id'] if i in list(df['parent'])] # objects in df that appear also in the 'parent' column
+    # children that point to their parent and that have NO in_edges (for a page this is the root element only)
+    d = {child:parent for (child,parent) in zip(df['id'],df['parent']) if parent in n and len(dag.in_edges(child))==0}
+    d = list(zip(d.values(),d.keys())) # convert d to a list of tuples and flip keys <-> values
+    dag.add_edges_from(d) # add parent -> child edges to dag
+    
+    return dag
+
+
+def connect_to_parents_old_jupyter(dag, df_raw):
+    '''Old solution, to be run with the DX jupyter-notebook, it uses different column names. 
+    This function not only adds edges between existing nodes, it also adds parent nodes. 
+    Some parent nodes have not been created yet because the DAG is built based on edges, but there are 
+    nodes that have no edges at all. For instance a page that is only pointed to by shortcuts'''
+    # drop diagrams.net-page-objects (they do not belong to the drawing); recognised by an empty 'style' column
+    df = df_raw.drop(df_raw.loc[df_raw['style']==''].index)
+    # drop arrows (which are also children of pages)
+    #df.drop(df[df['style'].str.contains('jettySize')].index, inplace=True)
+    df.drop(df[df['edge']=='1'].index, inplace=True)
     n = [i for i in df['id'] if i in list(df['xml-parent'])] # objects in df that appear also in the 'parent' column
     # children that point to their parent and that have NO in_edges (for a page this is the root element only)
     d = {child:parent for (child,parent) in zip(df['id'],df['xml-parent']) if parent in n and len(dag.in_edges(child))==0}
@@ -439,6 +505,7 @@ def connect_to_parents_old(dag, df_raw):
     dag.add_edges_from(d) # add parent -> child edges to dag
     
     return dag
+
 
 
     
@@ -486,7 +553,7 @@ def connect_drop_shortcuts(dag, df_raw):
     dag.add_edges_from(shortcut_edges)
     return dag
 
-def make_relevance_expression(dag, n):
+def make_relevance_expression(dag, n, s=True):
     '''Constructs the relevance expression for a node 'n' from the logic expressions of all incoming edges. 
     In case of non-decisive expressions, like notes, the full relevance expressions is built: all
     predecessor nodes, except if they are of types 'select_one yesno', 'select_option' and 'calculate' and 'diagnosis'. 
@@ -496,7 +563,7 @@ def make_relevance_expression(dag, n):
     topologically sorted
     :param dag: dag is the graph
     :param n: n is the node for which the relevance will be constructed'''
-    node_edge_logic = [] # a list to store the combo 'predecessor relevance' AND 'in_edge-expression', each list element is for predecessor 
+    node_edge_logic = [] # a list to store the combo 'predecessor relevance' AND 'in_edge-expression', each list element is for one predecessor 
     # iterate of predecessors (nodes that have a direct edge to node -> n)
     for pn in dag.predecessors(n):
         #(ignore help and hint fields , later also images)
@@ -511,16 +578,17 @@ def make_relevance_expression(dag, n):
                 pne_logic = in_edge_expression
             node_edge_logic.append(pne_logic) #append node-edge-logic combo for pn->n to a list
   
-    relevance = Or(*node_edge_logic) # combine node-edge-logic combos of all pn->n with OR
-    if relevance:
+    relevance = build_node_relevance(dag, n, node_edge_logic, s)
+    
+    if relevance!=False:
         dag.nodes[n]['relevance']=relevance # write relevance to node 'n' as attribute
     else: 
-        dag.nodes[n]['relevance']=S.true
+        dag.nodes[n]['relevance']=S.true # that means that there are no incoming edges, so `relevance = []`, so the relevance must be True
 
     return dag
 
 
-def make_full_relevance_expression(dag, n):
+def make_full_relevance_expression(dag, n, s=True):
     '''Constructs the FULL relevance expression for a node 'n' from the logic expressions of all incoming edges AND the relevance expressions of all
     predecessor nodes, except if they are of types 'select_one yesno', 'select_option' and 'calculate' and 'diagnosis'. 
     'help-message', 'hint-message' type predecessors are ignored.  
@@ -543,14 +611,37 @@ def make_full_relevance_expression(dag, n):
             else: 
                 pne_logic = in_edge_expression
             node_edge_logic.append(pne_logic) #append node-edge-logic combo for pn->n to a list
-    # print('Simplifying relevance expression of node', n, 'Name:', dag.nodes[n]['name'])
-    relevance = simplify(Or(*node_edge_logic)) # combine node-edge-logic combos of all pn->n with OR
-    if relevance:
+    
+    relevance = build_node_relevance(dag, n, node_edge_logic, s)
+
+    # relevance might not exist, for initial nodes for instance
+    if relevance!=False:
         dag.nodes[n]['relevance']=relevance # write relevance to node 'n' as attribute
     else: 
         dag.nodes[n]['relevance']=S.true
 
     return dag
+    
+
+def build_node_relevance(dag, n, node_edge_logic, s=True):
+    '''Writes the logical expression for the relevance of a node. For counters the global expression is not made, because here the items from node_edge_logic 
+    must be converted from booleans to integers and then summed up. This is dealth with when moving to ODK. 
+    @ dag: the graph we work on
+    @ n: the node for which we write the logical expression
+    @ node_edge_logic: the list of singular expressions for each incoming edge into n
+    @ s: boolean, wheather the expression should be simplified to be shorter and quicker to execute (if True, TRICC is slowed down)
+    @ return: the logical expression for n'''
+    if dag.nodes[n]['type']!='count':
+        if s:
+            # print('Simplifying relevance expression of node', n, 'Name:', dag.nodes[n]['name'])
+            relevance = simplify(Or(*node_edge_logic)) # combine node-edge-logic combos of all pn->n with OR
+        else: 
+            relevance = Or(*node_edge_logic)
+    else: # for counters, just keep the list. When converting sympy into odk, it will become number(...)+number(...), not implemented yet
+        print('count node', n)
+        relevance = node_edge_logic 
+    
+    return relevance
 
 
 def write_node_relevance(dag):
@@ -653,11 +744,41 @@ def make_help_attributes(dag):
     :param dag: the graph
     '''
     for t in ['help-message', 'hint-message']:
-        d = {list(dag.successors(n))[0]:dag.nodes[n]['content'] for n in dag.nodes if dag.nodes[n]['type'] in [t]}
+        # works only if a help message is pointing to 1 node only
+        d = {list(dag.successors(n))[0]:dag.nodes[n]['content'] for n in dag.nodes if dag.nodes[n]['type'] in [t]} 
         nx.set_node_attributes(dag, d, name=t)
         
     return  dag
 
+
+def extract_images(dag, df_raw, mediafolder):
+    '''This function extracts the images, stores them in the correct folder and writes the image name as an attribute to the node the image points to. 
+    :param dag: the graph
+    '''
+    # get all images from df_raw (image content is not in the graph, to keep it light)
+    imagenodes = df_raw.loc[df_raw['style'].str.contains('image=data:image/',na=False), 'id'].to_list()
+    
+    os.makedirs(mediafolder, exist_ok=True)  # recursively create mediafolder, do nothing if it exists
+    
+    for i in imagenodes:
+        for j in dag.successors(i):
+            # image metadata + data
+            image = df_raw.loc[df_raw['id']==i, 'style'].to_list()[0]
+            
+            # extract type of image (jpeg, png,...)
+            img_type = re.search('image=data:image/(.+?),',image).group(1) # extract image data from 'style' column using regex
+            # extract image itself
+            img_data=re.search('image=data:image/.+,(.+?);',image).group(1) # extract image data from 'style' column using regex
+            
+            # write imagename to node attribute `image::en`
+            dag.nodes[j]['image::en']=i + '.' + img_type
+            
+            # store file to disk
+            with open(mediafolder+i+'.'+img_type, "wb") as fh:
+                fh.write(base64.decodebytes(img_data.encode('ascii'))) # encode image into ascii (binary) and save
+        
+    return  dag
+    
 
 def rename_duplicates(dag,types):
     '''Grabs all (type,name) combos where the type is in 'types' and where duplicates occur. 
@@ -713,3 +834,14 @@ def make_linear_diagnosis_graph(d):
     graph = nx.from_edgelist(edges, nx.DiGraph)
     
     return graph
+
+def pop_rhombus(l, dag):
+    '''in  a list `l` of nodes for a diagnosis, remove those of type `rhombus` '''
+    
+    new_l = []
+    for n in l:
+        if dag.nodes[n]['type']!='rhombus':
+            new_l.append(n)
+    
+    return new_l
+
