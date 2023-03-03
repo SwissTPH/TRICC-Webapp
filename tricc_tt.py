@@ -228,7 +228,6 @@ nx.set_node_attributes(dag, dist, name = 'distance_from_root')
 
 
 #%% CDSS adapted topological sort
-# take this out because you have to recompile shitty ped and you have lost the old version for I don't know which fucking reasons
 topo_order = gt.topo_sort_cdss_attrib(dag, 'distance_from_root') # the complete sorting of the graph
 '''
 # this approach is good, but not for Treatment or any other activity where diagnosis graphs are parallel
@@ -410,9 +409,6 @@ with open(p.folder+'df_summary.pickle', 'wb') as handle:
 '''
 #%% Write xls form to file
 df2xlsform(df, df_choices, df_settings, p.output_xls)
-
-if p.platform == 'cht':
-    df2xlsform(df, df_choices, df_settings, '/home/rafael/cht-local-setup/upgrade/cht-core/config/raf/forms/app/ped.xlsx')
 
 #%% Convert xlsform to xform
 if p.platform == 'commcare':

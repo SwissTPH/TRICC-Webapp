@@ -35,7 +35,7 @@ elif form_id == 'almlyb':
 # In[6]:
 
 
-diagnose_order=p.folder+'diagnosis_order.csv'
+diagnose_order=p.diagnosis_order
 cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker advice elements
 
 
