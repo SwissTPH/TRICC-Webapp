@@ -41,10 +41,10 @@ cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker ad
 
 
 #%% Run old legacy diagnostic jupyter notebook, that has been exported to a python file
-os.system("python3 tricc_dx.py")
+os.system(f'python3 {p.repo_folder}tricc_dx.py')
 
 #%% Run new tricc_tt script
-os.system("python3 tricc_tt.py")
+os.system(f'python3 {p.repo_folder}tricc_tt.py')
 
 # In[10]:
 df_survey_dx = pd.read_excel(p.folder+p.form_id+'_dx.xlsx',sheet_name='survey')
@@ -328,7 +328,7 @@ if p.interrupt_flow:
     df_survey_a = df_survey.drop(df_survey.iloc[:endrow].index)
     df_inputgroup_a.drop(0, inplace = True) # drop the begin inputs group row, because it is created by the make_breakpoints function
 
-    df_pause = pd.read_csv('breakpoints.csv')
+    df_pause = pd.read_csv(p.breakpoints)
     breaks = df_survey.loc[df_survey['name'].isin(df_pause['name'])].index
     breaknames = df_survey[df_survey['name'].isin(df_pause['name'])]['name']
     d={}
