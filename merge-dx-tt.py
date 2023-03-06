@@ -17,6 +17,7 @@ from formconverters import df2xlsform # makes xlsforms out of dataframes
 import translation
 from datetime import datetime
 import os
+import shutil
 
 # In[2]:
 
@@ -26,7 +27,7 @@ form_id = 'ped' # for MSFeCARE PED
 #%% Parameters
 # import params as p # for almanach Somalia
 if form_id == 'ped':
-    import params_ped_tt as p # for msfecare Ped
+    import params_ped as p # for msfecare Ped
 elif form_id == 'almlyb':
     import params_libya as p
 
@@ -369,7 +370,7 @@ if p.interrupt_flow:
         # df2xlsform(df_survey, df_choices, df_settings, './'+xlsname)
         print('Form to continue the algorithm after', breakname, 'created as file', xlsname)
 
-        with open(p.folder+str(i)+'tasksjs.txt', 'w') as f:
+        with open(p.output_folder+str(i)+'tasksjs.txt', 'w') as f:
             for i in tasks_strings:
                 f.write(i+'\n')
         f.close()
@@ -402,3 +403,10 @@ df_survey.loc[df_survey['name']=='text_missing_diagnose_add', 'required']='true(
 
 #%% make the global flow
 df2xlsform(df_survey, df_choices, df_settings, p.output)
+
+
+#%% Zip the output
+
+os.makedirs(p.folder + 'output/',  exist_ok=True)  # recursively create mediafolder, do nothing if it exists
+
+shutil.make_archive(p.zipfile, 'zip', p.output_folder)

@@ -18,12 +18,10 @@ def df2xlsform(df_survey, df_choices, df_settings, xlsfile):
     df_choices.to_excel(writer, sheet_name='choices',index=False)
     df_settings.to_excel(writer, sheet_name='settings',index=False)
     
-    #close the Pandas Excel writer and output the Excel file
-    writer.save()
-    
-    # run this on a windows python instance because if not then the generated xlsx file remains open
-    # writer.close()
-    # writer.handles = None
+    writer.close()
+
     
 def xls2xform(xlsfile, xmlfile):
     os.system('xls2xform ' + xlsfile + ' ' + xmlfile)
+
+

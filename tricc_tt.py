@@ -26,8 +26,7 @@ from CDSS_list_merge import merge_list
 
 #%% Parameters - > choose your form (ped, yi, almsom) here
 #import params_almsom_tt as p # for almanach Somalia TT
-#import params_test as p # for playing around
-import params_ped_tt as p # for msfecare Ped
+import params_ped as p # for msfecare Ped
 #import params_libya as p # for Almanach Lybia treatment
 #import params_libya_dx as p # for Almanach Lybia diagnostic
 ##%% Parse diagram

@@ -20,7 +20,7 @@ import inputs
 
 
 #%% Parameters
-import params_ped_tt as p # for msfecare Ped
+import params_ped as p # for msfecare Ped
 
 
 
@@ -170,11 +170,7 @@ df.drop(df.loc[df['odk_type']=='goto'].index,inplace=True) # drop shortcuts from
 
 #%% Make media folder
 
-# creating a folder for images and other media
-
-if not(os.path.isdir('media')): # check if it exists, because if it does, error will be raised 
-    # (later change to make folder complaint to CHT)
-    os.mkdir('media')
+os.makedirs(p.media_folder, exist_ok=True)  # recursively create mediafolder, do nothing if it exists
 
 
 #%% Extract images png
@@ -1194,10 +1190,7 @@ with open(p.folder+'df_summary.pickle', 'wb') as handle:
     pickle.dump(df_summary, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 
-# In[259]:
-
-
-# make the xlsx file! 
+#%% Make the xlsx file! 
  
 #create a Pandas Excel writer using XlsxWriter as the engine
 writer = pd.ExcelWriter(p.folder+p.form_id+'_dx.xlsx', engine='xlsxwriter')
@@ -1207,9 +1200,4 @@ df.to_excel(writer, sheet_name='survey',index=False)
 df_choices.to_excel(writer, sheet_name='choices',index=False)
 df_settings.to_excel(writer, sheet_name='settings',index=False)
 
-#close the Pandas Excel writer and output the Excel file
-writer.save()
-
-# run this on a windows python instance because if not then the generated xlsx file remains open
-# writer.close()
-writer.handles = None
+writer.close()
