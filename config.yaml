@@ -1,0 +1,21 @@
+cookie:
+  expiry_days: 30
+  key: tricc_webapp_2023
+  name: tricc_webapp
+credentials:
+  usernames:
+    MSF:
+      email: msf_user@tricc.ch
+      name: MSF
+      password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
+    piische:
+      email: patrick.meier@swisstph.ch
+      name: Patrick Meier
+      password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
+    rafaelk:
+      email: rafael.kluender@swisstph.ch
+      name: "Rafael Kluender"
+      password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
+preauthorized:
+  emails:
+  - piische314@gmail.com
