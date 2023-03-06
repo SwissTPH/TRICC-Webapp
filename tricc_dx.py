@@ -196,7 +196,7 @@ df_pngAll=df.loc[df['odk_type'].str.contains('png-image',na=False),['xml-parent'
 for index, row in df_pngAll.iterrows():
     string = row['style'] 
     img_data=re.search('image/png,(.+?);',string).group(1) # extract image data from 'style' column using regex
-    with open('media/'+row['odk_type'], "wb") as fh:
+    with open(p.media_folder+row['odk_type'], "wb") as fh:
         fh.write(base64.decodebytes(img_data.encode('ascii'))) # encode image into ascii (binary) and save
 
 df_png.rename({'xml-parent':'container_id','odk_type':'image::en'},axis=1,inplace=True)
@@ -236,7 +236,7 @@ df_pngAll=df.loc[df['odk_type'].str.contains('jpeg-image',na=False),['xml-parent
 for index, row in df_pngAll.iterrows():
     string = row['style'] 
     img_data=re.search('image/jpeg,(.+?);',string).group(1) # extract image data from 'style' column using regex
-    with open('media/'+row['odk_type'], "wb") as fh:
+    with open(p.media_folder+row['odk_type'], "wb") as fh:
         fh.write(base64.decodebytes(img_data.encode('ascii'))) # encode image into ascii (binary) and save
 
 df_png.rename({'xml-parent':'container_id','odk_type':'image::en'},axis=1,inplace=True)
