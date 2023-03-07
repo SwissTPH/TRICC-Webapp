@@ -32,9 +32,7 @@ elif form_id == 'almlyb':
     import params_libya as p
 
 
-
-# In[6]:
-
+# In[6]
 
 diagnose_order=p.diagnosis_order
 cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker advice elements

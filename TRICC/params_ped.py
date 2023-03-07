@@ -6,7 +6,7 @@ Created on Mon Jan 16 10:02:12 2023
 @author: rafael
 """
 
-### General
+### Genera
 form_id = 'ped'
 form_title = 'Ped'
 htmlcontent = True # whether the diagram  contains html in the content of objects
@@ -18,7 +18,7 @@ interrupt_flow = True
 activity = 'treatment'
 
 ### Input Streamlit webapp folder
-folder = '/app/'
+folder = ''
 resource_folder = 'resources/'
 inputfile_dx = folder+'uploaded_files/dx.drawio'  # inputfile for jupyter notebook diagnostic
 inputfile = folder+'uploaded_files/tt.drawio' # inputfile for tricc-graph tt

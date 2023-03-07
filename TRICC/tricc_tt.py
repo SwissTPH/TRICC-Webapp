@@ -29,7 +29,8 @@ from CDSS_list_merge import merge_list
 import params_ped as p # for msfecare Ped
 #import params_libya as p # for Almanach Lybia treatment
 #import params_libya_dx as p # for Almanach Lybia diagnostic
-##%% Parse diagram
+
+#%% Parse diagram
 objects = inputs.parse_drawio(p.inputfile) # parse drawing
 
 # Put diagram elements in df_raw
