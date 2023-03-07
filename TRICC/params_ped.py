@@ -6,7 +6,7 @@ Created on Mon Jan 16 10:02:12 2023
 @author: rafael
 """
 
-### Genera
+### General
 form_id = 'ped'
 form_title = 'Ped'
 htmlcontent = True # whether the diagram  contains html in the content of objects
