@@ -51,7 +51,11 @@ df_survey_tt = pd.read_excel(p.output_xls,sheet_name='survey')
 df_choices_dx = pd.read_excel(p.folder+p.form_id+'_dx.xlsx',sheet_name='choices')
 df_choices_tt = pd.read_excel(p.output_xls,sheet_name='choices')
 
-#%% Combine survey tabs of dx and tt
+#%% Delete intermediate xls forms from disk
+os.remove(p.folder+p.form_id+'_dx.xlsx') # for diagnostic
+os.remove(p.output_xls) # for treatment
+
+#%% Combine survey tabs of dx and ttos.remove(p.output_xls) # for treatment
 df_dx = df_survey_dx
 df_tt = df_survey_tt
 
@@ -338,6 +342,8 @@ if p.interrupt_flow:
     pause_old_relevance = df_survey.loc[df_survey['name']=='label_form_pause', 'relevance']
     pause_old_relevance = '(' + pause_old_relevance + ') and ${text_end}!=\'\''
 
+#%% Delete the breakpoints csv-file
+os.remove(p.breakpoints)
 
 # In[39]:
 
