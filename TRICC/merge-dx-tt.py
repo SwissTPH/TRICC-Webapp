@@ -18,6 +18,7 @@ import translation
 from datetime import datetime
 import os
 import shutil
+import glob
 
 # In[2]:
 
@@ -402,9 +403,10 @@ df_survey.loc[df_survey['name']=='text_missing_diagnose_add', 'required']='true(
 #%% make the global flow
 df2xlsform(df_survey, df_choices, df_settings, p.output)
 
-
 #%% Zip the output
-
+os.makedirs(p.folder + 'output_for_zip/',  exist_ok=True)
 os.makedirs(p.folder + 'output/',  exist_ok=True)  # recursively create mediafolder, do nothing if it exists
 
 shutil.make_archive(p.zipfile, 'zip', p.output_folder)
+
+shutil.rmtree(p.output_folder)
