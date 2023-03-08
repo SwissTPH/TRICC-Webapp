@@ -5,6 +5,8 @@ Created on Mon Jan 16 10:02:12 2023
 
 @author: rafael
 """
+import os
+path = os.getcwd()
 
 ### General
 form_id = 'ped'
@@ -18,7 +20,7 @@ interrupt_flow = True
 activity = 'treatment'
 
 ### Input Streamlit webapp folder
-folder = ''
+folder = path + "/"
 resource_folder = 'resources/'
 inputfile_dx = folder+'uploaded_files/dx.drawio'  # inputfile for jupyter notebook diagnostic
 inputfile = folder+'uploaded_files/tt.drawio' # inputfile for tricc-graph tt
@@ -38,7 +40,7 @@ updated_trans = output_folder+'ped_fr_newest.xlsx'
 zipfile = folder+'output/output'
 
 ### Input TRICC Repo folder
-repo_folder = '/app/TRICC/'
+repo_folder = os.path.join(path,'TRICC/')
 drugsfile = repo_folder+'medications_zscores.xlsx'
 headerfile = repo_folder+'formheader_cht.xlsx'
 headerfile_pause = repo_folder+'formheader_cht_pause.xlsx'

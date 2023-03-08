@@ -20,8 +20,8 @@ import inputs
 
 
 #%% Parameters
-#import params_ped_rk as p # for msfecare Ped
-import params_libya_rk as p
+import params_ped as p # for msfecare Ped
+# import params_libya_rk as p
 
 
 #%% Parse diagram

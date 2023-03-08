@@ -22,12 +22,12 @@ import shutil
 # In[2]:
 
 #form_id = 'ped' # for MSFeCARE PED
-form_id = 'almlib' # for Almanach Lybia
+form_id = 'ped' # for Almanach Lybia
 
 #%% Parameters
 # import params as p # for almanach Somalia
 if form_id == 'ped':
-    import params_ped_rk as p # for msfecare Ped
+    import params_ped as p # for msfecare Ped
 elif form_id == 'almlib':
     import params_libya_rk as p
 

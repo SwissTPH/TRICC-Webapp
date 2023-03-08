@@ -13,13 +13,16 @@ import yaml
 from PIL import Image
 from yaml.loader import SafeLoader
 
+current_datetime = str(datetime.now().strftime("%Y%m%dT%H%M%S"))
+path = os.getcwd()
+
 ### Variables
-TRICC_SCRIPT_FILE = "/app/TRICC/merge-dx-tt.py"
-TRICC_LOGO = "tricc_logo.png"
-UPLOAD_FOLDER = "./uploaded_files"
-UPLOAD_FOLDER_FILES = "./uploaded_files/*"
-ZIP_OUTPUT = "/app/output/output.zip"
-OUTPUT_FILENAME = "tricc_output.zip"
+TRICC_SCRIPT_FILE = os.path.join(path, "TRICC/merge-dx-tt.py")
+TRICC_LOGO = os.path.join(path, "tricc_logo.png")
+UPLOAD_FOLDER = os.path.join(path, "uploaded_files/")
+UPLOAD_FOLDER_FILES = os.path.join(path, "uploaded_files/*")
+ZIP_OUTPUT = "output/output.zip"
+OUTPUT_FILENAME = "tricc_output"
 
 ### AUTH
 disabled_bool = True
@@ -152,7 +155,7 @@ if authentication_status:
             btn = st.download_button(
                 label="Download ZIP",
                 data=fp,
-                file_name=OUTPUT_FILENAME,
+                file_name=OUTPUT_FILENAME + "_" + current_datetime + ".zip",
                 mime="application/zip"
         )
     else:
