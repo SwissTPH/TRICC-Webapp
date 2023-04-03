@@ -1,7 +1,6 @@
 # Imports
 import glob
 import os
-import shutil
 import subprocess
 import sys
 from datetime import datetime
@@ -14,6 +13,7 @@ from PIL import Image
 from yaml.loader import SafeLoader
 
 current_datetime = str(datetime.now().strftime("%Y%m%dT%H%M%S"))
+current_datetime_logger = str(datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
 path = os.getcwd()
 
 ### Variables
@@ -75,8 +75,20 @@ def store_file(file, file_name):
         w.write(file.getvalue())
 
 def run_TRICC():
-    tricc_script_output = subprocess.run([f"{sys.executable}", TRICC_SCRIPT_FILE])
+    tricc_log = open(f"logs/tricc.log_{current_datetime}", "w")
+    tricc_log.write(f"TRICC Execution Started {current_datetime_logger}\n")
+    
+    # Start TRICC as a subprocess and pipe the STDOUT
+    proc = subprocess.Popen([f"{sys.executable}", TRICC_SCRIPT_FILE], stdout=subprocess.PIPE)
 
+    # Print output of STDOUT from TRICC to the user and store the response also in a log file
+    st.info("Response from TRICC")
+    for line in iter(lambda: proc.stdout.readline(), b""):
+            st.text(line.decode("utf-8"))
+            tricc_log.write(line.decode("utf-8"))
+    tricc_log.close()
+    st.info("End of TRICC response")
+            
 def filedownload(file):
     xml_file = file
     href = f'<a href="data:file/{xml_file}" download="prediction.csv">Download Predictions</a>'

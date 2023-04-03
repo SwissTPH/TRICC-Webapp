@@ -38,7 +38,6 @@ elif form_id == 'almlib':
 diagnose_order=p.diagnosis_order
 cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker advice elements
 
-
 #%% Run old legacy diagnostic jupyter notebook, that has been exported to a python file
 os.system(f'python3 {p.repo_folder}tricc_dx.py')
 
@@ -273,7 +272,7 @@ dft.fillna('', inplace = True)
 dfl = translation.make_transtable(df_survey, df_choices)
 
 # update the translation table by new and modified strings of the xls form
-print('In the new translation file:, \n')
+# print('In the new translation file:, \n')
 dft_updated = translation.update_trans(dfl, dft)
 # store it
 dft_updated.to_excel(p.updated_trans, index = False)
@@ -373,8 +372,7 @@ if p.interrupt_flow:
         dfa.drop(duplicateendgrouprow, inplace = True)
         df2xlsform(dfa, df_choices, d[newsettings_frame], xlsname)
         # df2xlsform(df_survey, df_choices, df_settings, './'+xlsname)
-        print('Form to continue the algorithm after', breakname, 'created as file', xlsname)
-
+        # print('Form to continue the algorithm after', breakname, 'created as file', xlsname)
         with open(p.output_folder+str(i)+'tasksjs.txt', 'w') as f:
             for i in tasks_strings:
                 f.write(i+'\n')
