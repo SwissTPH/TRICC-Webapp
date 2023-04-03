@@ -76,13 +76,13 @@ def store_file(file, file_name):
 
 def run_TRICC():
     tricc_log = open(f"logs/tricc.log_{current_datetime}", "w")
-    tricc_log.write(f"TRICC Execution Started {current_datetime_logger}\n")
+    tricc_log.write(f"TRICC Execution Started {current_datetime_logger} from user: {name}\n")
     
     # Start TRICC as a subprocess and pipe the STDOUT
     proc = subprocess.Popen([f"{sys.executable}", TRICC_SCRIPT_FILE], stdout=subprocess.PIPE)
 
     # Print output of STDOUT from TRICC to the user and store the response also in a log file
-    st.info("Response from TRICC")
+    st.info("Start of TRICC response")
     for line in iter(lambda: proc.stdout.readline(), b""):
             st.text(line.decode("utf-8"))
             tricc_log.write(line.decode("utf-8"))

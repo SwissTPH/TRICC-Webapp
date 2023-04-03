@@ -8,7 +8,7 @@ credentials:
       email: msf_user@tricc.ch
       name: MSF
       password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
-    piische:
+    patrickm:
       email: patrick.meier@swisstph.ch
       name: Patrick Meier
       password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
@@ -18,4 +18,4 @@ credentials:
       password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
 preauthorized:
   emails:
-  - piische314@gmail.com
+    - patrick.meier@swisstph.ch
