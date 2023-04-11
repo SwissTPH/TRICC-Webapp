@@ -40,16 +40,12 @@ authenticator = stauth.Authenticate(
 
 name, authentication_status, username = authenticator.login("Login", "main")
 
-if authentication_status:
-    authenticator.logout("Logout", "main")
-    welcome_message = st.markdown(f"Welcome {name}!")
-elif authentication_status == False:
-    st.error("Username/password is incorrect")
-elif authentication_status == None:
-    st.warning("Please enter your username and password")
-
 ### APP
 if authentication_status:
+    authenticator.logout("Logout", "main")
+
+    welcome_message = st.markdown(f"Welcome {name}!")
+
     image = Image.open(TRICC_LOGO)
     tricc_logo = st.image(image, use_column_width=True)
     intro_message = st.markdown("""
@@ -60,6 +56,11 @@ if authentication_status:
     - App by [Patrick Meier](https://www.swisstph.ch/en/people-teaser-detail/teaser-detail/patrick-meier#pageRecord)
     - TRICC by [Rafael Kluender](https://www.swisstph.ch/en/people-teaser-detail/teaser-detail/rafael-kluender#pageRecord)
     """)
+
+elif authentication_status == False:
+    st.error("Username/password is incorrect")
+elif authentication_status == None:
+    st.warning("Please enter your username and password")
 
 def remove_files():
     # Remove uploaded files after download of the zip
@@ -93,6 +94,11 @@ def filedownload(file):
     xml_file = file
     href = f'<a href="data:file/{xml_file}" download="prediction.csv">Download Predictions</a>'
     return href
+
+def clear_screen():
+    welcome_message.empty()
+    tricc_logo.empty()
+    intro_message.empty()
 
 ### Sidebar
 if authentication_status:
