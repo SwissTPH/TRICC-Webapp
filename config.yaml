@@ -6,16 +6,28 @@ credentials:
   usernames:
     MSF:
       email: msf_user@tricc.ch
-      name: MSF
-      password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
-    patrickm:
+      name: MSF Demo User
+      password: $2b$12$ULnFsl6.bwjN.Fa88m.cp.0BbnkNQUscRX6.B3ZN8soT723X4SEQ2
+    SwissTPH:
+      email: info@swisstph.ch
+      name: SwissTPH Demo User
+      password: $2b$12$r25Rxhex1UlSdSGw2LAd7eqjeKOyFXaVKZyJ1Zrc6HpVlJH7tdt7q
+    patrick_meier:
       email: patrick.meier@swisstph.ch
       name: Patrick Meier
-      password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
-    rafaelk:
+      password: $2b$12$4RliLmRvgqdb8Uko1YWYZej9Pqv4fmgOKEpIB/qRyGOjl7BoLV2zW
+    rafael_kluender:
       email: rafael.kluender@swisstph.ch
       name: "Rafael Kluender"
-      password: $2b$12$6E2/.UTw/ghiA1uWRfC7wOKWetAmt48IWZDjIcwp.ionoe.dIzKV6
+      password: $2b$12$0Lj9nSLDkQ032VfDhAgGkOhwkrAGxKD2fLXL6rxu2YOa7LER2l4JO
+    martin_norris:
+      email: martin.norris@swisstph.ch
+      name: "Martin Norris"
+      password: $2b$12$aGY.eyJSiSL1N4i.T47wY.YmVIGxJ7Tc36Y.E0GRn64LjqYgBBqAC
+    job_isabai:
+      email: Job.Isabai@nairobi.msf.org
+      name: "Job Isabai"
+      password: $2b$12$utY.Nls9i98p5.PAAo460O7qpbq2qgpEKIuCP/96ADMXrgiIOZPW2
 preauthorized:
   emails:
     - patrick.meier@swisstph.ch
