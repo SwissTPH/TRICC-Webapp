@@ -20,6 +20,9 @@ import os
 import shutil
 import glob
 
+import warnings
+warnings.filterwarnings("ignore")
+
 # In[2]:
 
 #form_id = 'ped' # for MSFeCARE PED

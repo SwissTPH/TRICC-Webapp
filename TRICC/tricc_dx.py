@@ -23,6 +23,9 @@ import inputs
 import params_ped as p # for msfecare Ped
 # import params_libya_rk as p
 
+import warnings
+warnings.filterwarnings("ignore")
+
 
 #%% Parse diagram
 objects = inputs.parse_drawio(p.inputfile_dx) # parse drawing

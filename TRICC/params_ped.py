@@ -16,7 +16,7 @@ platform = 'cht'
 testing = False
 context_params_from_facility=True
 mhsplit = False  # whether several nodes are combined into 1 (multiheadline split)
-interrupt_flow = True
+interrupt_flow = False
 activity = 'treatment'
 
 ### Input Streamlit webapp folder

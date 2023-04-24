@@ -13,6 +13,9 @@ import re
 from html2text import html2text
 import unicodedata
 
+import warnings
+warnings.filterwarnings("ignore")
+
 class HTMLFilter(HTMLParser):
     text = ""
     def handle_data(self, data):
