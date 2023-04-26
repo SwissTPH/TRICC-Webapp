@@ -4,6 +4,10 @@ cookie:
   name: tricc_webapp
 credentials:
   usernames:
+    job_isabai:
+      email: Job.Isabai@nairobi.msf.org
+      name: Job Isabai
+      password: $2b$12$1mJaDm9PSGpwTJxjPrItpuBu.85M.zRW6G6XkUxRM69IrbZQHXjo.
     martin_norris:
       email: martin.norris@swisstph.ch
       name: Martin Norris
@@ -26,4 +30,4 @@ credentials:
       password: $2b$12$r25Rxhex1UlSdSGw2LAd7eqjeKOyFXaVKZyJ1Zrc6HpVlJH7tdt7q
 preauthorized:
   emails:
-    - Job.Isabai@nairobi.msf.org
+  - Nora.MEZIANI@geneva.msf.org
