@@ -20,8 +20,11 @@ import inputs
 
 
 #%% Parameters
-#import params_ped_rk as p # for msfecare Ped
-import params_libya_rk as p
+import params_ped as p # for msfecare Ped
+# import params_libya_rk as p
+
+import warnings
+warnings.filterwarnings("ignore")
 
 
 #%% Parse diagram
@@ -64,7 +67,7 @@ df_raw = df_raw[['tag', 'id', 'value', 'label_userObject', 'style', 'xml-parent'
 #%% Identify break points for the PAUSE function (colored green)
 df_pause = df_raw.loc[df_raw['style'].str.contains('fillColor=#cdeb8b', na=False),['id', 'name', 'odk_type']]
 df_pause['flowtype'] = 'diagnostic'
-df_pause.to_csv('breakpoints.csv')
+df_pause.to_csv(p.breakpoints)
 
 
 #%% make a constraint column

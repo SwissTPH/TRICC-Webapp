@@ -18,16 +18,20 @@ import translation
 from datetime import datetime
 import os
 import shutil
+import glob
+
+import warnings
+warnings.filterwarnings("ignore")
 
 # In[2]:
 
 #form_id = 'ped' # for MSFeCARE PED
-form_id = 'almlib' # for Almanach Lybia
+form_id = 'ped' # for Almanach Lybia
 
 #%% Parameters
 # import params as p # for almanach Somalia
 if form_id == 'ped':
-    import params_ped_rk as p # for msfecare Ped
+    import params_ped as p # for msfecare Ped
 elif form_id == 'almlib':
     import params_libya_rk as p
 
@@ -36,7 +40,6 @@ elif form_id == 'almlib':
 
 diagnose_order=p.diagnosis_order
 cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker advice elements
-
 
 #%% Run old legacy diagnostic jupyter notebook, that has been exported to a python file
 os.system(f'python3 {p.repo_folder}tricc_dx.py')
@@ -50,7 +53,11 @@ df_survey_tt = pd.read_excel(p.output_xls,sheet_name='survey')
 df_choices_dx = pd.read_excel(p.folder+p.form_id+'_dx.xlsx',sheet_name='choices')
 df_choices_tt = pd.read_excel(p.output_xls,sheet_name='choices')
 
-#%% Combine survey tabs of dx and tt
+#%% Delete intermediate xls forms from disk
+os.remove(p.folder+p.form_id+'_dx.xlsx') # for diagnostic
+os.remove(p.output_xls) # for treatment
+
+#%% Combine survey tabs of dx and ttos.remove(p.output_xls) # for treatment
 df_dx = df_survey_dx
 df_tt = df_survey_tt
 
@@ -268,7 +275,7 @@ dft.fillna('', inplace = True)
 dfl = translation.make_transtable(df_survey, df_choices)
 
 # update the translation table by new and modified strings of the xls form
-print('In the new translation file:, \n')
+# print('In the new translation file:, \n')
 dft_updated = translation.update_trans(dfl, dft)
 # store it
 dft_updated.to_excel(p.updated_trans, index = False)
@@ -337,6 +344,8 @@ if p.interrupt_flow:
     pause_old_relevance = df_survey.loc[df_survey['name']=='label_form_pause', 'relevance']
     pause_old_relevance = '(' + pause_old_relevance + ') and ${text_end}!=\'\''
 
+#%% Delete the breakpoints csv-file
+os.remove(p.breakpoints)
 
 # In[39]:
 
@@ -366,8 +375,7 @@ if p.interrupt_flow:
         dfa.drop(duplicateendgrouprow, inplace = True)
         df2xlsform(dfa, df_choices, d[newsettings_frame], xlsname)
         # df2xlsform(df_survey, df_choices, df_settings, './'+xlsname)
-        print('Form to continue the algorithm after', breakname, 'created as file', xlsname)
-
+        # print('Form to continue the algorithm after', breakname, 'created as file', xlsname)
         with open(p.output_folder+str(i)+'tasksjs.txt', 'w') as f:
             for i in tasks_strings:
                 f.write(i+'\n')
@@ -402,9 +410,10 @@ df_survey.loc[df_survey['name']=='text_missing_diagnose_add', 'required']='true(
 #%% make the global flow
 df2xlsform(df_survey, df_choices, df_settings, p.output)
 
-
 #%% Zip the output
-
+os.makedirs(p.folder + 'output_for_zip/',  exist_ok=True)
 os.makedirs(p.folder + 'output/',  exist_ok=True)  # recursively create mediafolder, do nothing if it exists
 
 shutil.make_archive(p.zipfile, 'zip', p.output_folder)
+
+shutil.rmtree(p.output_folder)
