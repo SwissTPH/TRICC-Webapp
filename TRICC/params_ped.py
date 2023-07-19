@@ -38,7 +38,7 @@ updated_trans = output_folder+'ped_fr_newest.xlsx'
 zipfile = folder+'output/output'
 
 ### Input TRICC Repo folder
-repo_folder = '/app/TRICC/'
+repo_folder = './TRICC/'
 drugsfile = repo_folder+'medications_zscores.xlsx'
 headerfile = repo_folder+'formheader_cht.xlsx'
 headerfile_pause = repo_folder+'formheader_cht_pause.xlsx'

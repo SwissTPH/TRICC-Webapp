@@ -21,13 +21,13 @@ import shutil
 
 # In[2]:
 
-#form_id = 'ped' # for MSFeCARE PED
-form_id = 'almlib' # for Almanach Lybia
+form_id = 'ped' # for MSFeCARE PED
+#form_id = 'almlib' # for Almanach Lybia
 
 #%% Parameters
 # import params as p # for almanach Somalia
 if form_id == 'ped':
-    import params_ped_rk as p # for msfecare Ped
+    import params_ped as p # for msfecare Ped
 elif form_id == 'almlib':
     import params_libya_rk as p
 
@@ -39,10 +39,10 @@ cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker ad
 
 
 #%% Run old legacy diagnostic jupyter notebook, that has been exported to a python file
-os.system(f'python3 {p.repo_folder}tricc_dx.py')
+os.system(f'python {p.repo_folder}tricc_dx.py')
 
 #%% Run new tricc_tt script
-os.system(f'python3 {p.repo_folder}tricc_tt.py')
+os.system(f'python {p.repo_folder}tricc_tt.py')
 
 # In[10]:
 df_survey_dx = pd.read_excel(p.folder+p.form_id+'_dx.xlsx',sheet_name='survey')
@@ -375,7 +375,7 @@ if p.interrupt_flow:
 
     # missing: 
     # add acknowledge button that sends the user to the end
-    # do this BEFORE you make the subflows, so that they include it automatically 
+    # do this BEFORE you     make the subflows, so that they include it automatically 
 
 
 # In[40]:
@@ -391,6 +391,7 @@ if p.interrupt_flow:
     
     # write back the old relevance of the label_pause_form 
     df_survey.loc[df_survey['name']=='label_form_pause', 'relevance'] = pause_old_relevance
+    df_survey = df_survey.drop(df_survey.iloc[breakrow+1:].index)
 
 #%% for deceased cases in ped the ca is showing, find out later why.... no, don't, I don't want to know that. 
 if form_id == 'ped':

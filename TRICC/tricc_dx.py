@@ -20,8 +20,8 @@ import inputs
 
 
 #%% Parameters
-#import params_ped_rk as p # for msfecare Ped
-import params_libya_rk as p
+import params_ped as p # for msfecare Ped
+#import params_libya_rk as p
 
 
 #%% Parse diagram
@@ -124,7 +124,9 @@ df.loc[m,'value'] = df.loc[m,'value'].apply(lambda x: remove_html(x) if x!=None 
 # remove html formatting in questions and select_options (not allowed here)
 # df.loc[df['odk_type'].str.contains('select_',na=False),'value'] = df.loc[df['odk_type'].str.contains('select_',na=False),'value'].apply(lambda x: remove_html(x) if x!=None else None)
 # df.loc[df['odk_type']=='hint-message','value'] = df.loc[df['odk_type']=='hint-message','value'].apply(lambda x: remove_html(x) if 
-m = ~df['odk_type'].isin(['note','help-message'])
+#m = ~df['odk_type'].isin(['note','help-message'])
+#CHANGED BY MPEA 2106
+m = ~df['odk_type'].isin(['help-message'])
 df.loc[m,'value'] = df.loc[m,'value'].apply(lambda x: html2plain(x) if x!=None else None)
 
 #%% Duplicates
@@ -688,9 +690,10 @@ else:
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['name'].apply(ch.html2plain), 'name')
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['odk_type'], 'type')
     # if you want to strip off html from text:
-    # dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'].apply(ch.html2plain), 'content')
+    # UNCOMMENTED BY MPEA 2106
+    dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'].apply(ch.html2plain), 'content')
     # if you want to keep the html in the text:
-    dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'], 'content')
+    #dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'], 'content')
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['xml-parent'], 'group')
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['y'], 'y')
 
@@ -1157,15 +1160,16 @@ def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile):
     danger_signs['name']='label_' + danger_signs['name']
     danger_signs.index = danger_signs.index+'danger'
     
-    df_summary = pd.concat([intro, df_diagnose, pd.read_excel(summaryfile).iloc[6:8], danger_signs, endgroup])
-    
-    df_summary.drop(columns=['list_name'], inplace = True)
+    #df_summary = pd.concat([intro, df_diagnose, pd.read_excel(summaryfile).iloc[6:8], danger_signs, endgroup])
+    df_summary = pd.concat([intro, df_diagnose, endgroup])
+    # commented out df_summary.drop(columns=['list_name'], inplace = True)
+
+    #df_summary.drop(columns=['list_name'], inplace = True)
     
     df_summary.fillna('', inplace=True)
-    
     # make group relevance for danger sign group
-    ds_relevance = ' or '.join(danger_signs['relevance'])
-    df_summary.loc[df_summary['name']=='g_danger_signs', 'relevance'] = ds_relevance
+    #ds_relevance = ' or '.join(danger_signs['relevance'])
+    #df_summary.loc[df_summary['name']=='g_danger_signs', 'relevance'] = ds_relevance
     
     
     return df_summary
