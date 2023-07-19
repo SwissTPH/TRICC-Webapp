@@ -13,6 +13,9 @@ from itertools import combinations
 import re
 import base64, os
 
+import warnings
+warnings.filterwarnings("ignore")
+
 def longest_path_lengths(dag, rootelement, df_raw):
     dist = dict.fromkeys(dag.nodes, -float('inf')) # keys are nodes, values their longest path length from source   
     dist[rootelement] = 0 # set path length of source to 0   
