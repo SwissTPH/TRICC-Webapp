@@ -337,7 +337,11 @@ df_choices.loc[df_choices['image::en'].str.contains('.jpeg', na=False),'image::e
 df.drop(df_choices.iloc[:-2].index,inplace=True)
 # drop the remaining unspecified objects (pure xml formating related elements or drawing artefacts) 
 df.drop(df.loc[df.value==''].index,inplace=True)
+# Take color property from drawio object and create new column
+#regex pattern to get everything after FillColor until semi colon:
+pattern = r'fillColor=([^;]*);'
 
+df['color'] = df['style'].apply(lambda x : re.search(pattern, x).group(1) if re.search(pattern, x) and re.search(pattern, x).group(1)!='none' else '#FFFFFF')
 
 #%% preparing df_arrows for logic part:
 
@@ -930,7 +934,7 @@ df.loc[m,'odk_type'] = df.loc[m,'odk_type'] + ' ' + df.loc[m,'name']
 
 # making df look like the 'survey' tab in an xls form
 df[['repeat_count','appearance','required message::en','calculation']]=''
-df=df[['odk_type','name','value','help::en','hint::en','appearance','relevant','constraint',        'constraint_message','required','required message::en','calculation','repeat_count','image::en']]
+df=df[['odk_type','name','value','help::en','hint::en','appearance','relevant','constraint',        'constraint_message','required','required message::en','calculation','repeat_count','image::en', 'color']]
 df.rename(columns={'odk_type':'type','value':'label::en','relevant':'relevance','constraint_message':'constraint message::en'},inplace=True)
 
 # rename begin group
@@ -1000,7 +1004,7 @@ df_choices = pd.concat([df_choices,tt_input_options]) # concat the new options t
 
 # make the first question for data load
 # data_load = ['select_multiple calculate','data_load','Define adaptable parameters','','','','','','','','','','','']
-data_load = ['select_multiple data_load','data_load','Define adaptable parameters','','','','','','','','','','','']
+data_load = ['select_multiple data_load','data_load','Define adaptable parameters','','','','','','','','','','','','']
 
 data_load = pd.DataFrame([data_load],columns=df.columns)
 df = pd.concat([data_load,df])
@@ -1081,6 +1085,7 @@ if p.form_id == 'yi':
 df.drop(df.loc[df['label::en']=='Load Data'].index,inplace=True)
 
 #%% add a 'diagnosis found' message after the diagnosis
+#TODO add background color 
 
 # show the detected diagnosis right on detection
 df.reset_index(inplace=True)
@@ -1088,15 +1093,17 @@ df.fillna('',inplace=True)
 I = df.loc[df['name'].isin(diagnoses_dict.values())].index
 
 for i in I:
-    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                'Diagnosis found: ' + df.loc[i]['label::en'],                                'relevance':'number(${'+df.loc[i]['name']+'})=1'}, index=[i+0.1])
+    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                '<span style="background-color:'+df.loc[i]['color']+ '; color: #FFFFFF">' +'Diagnosis found: ' + df.loc[i]['label::en']+'</span>',                                'relevance':'number(${'+df.loc[i]['name']+'})=1'}, index=[i+0.1])
     
     #df = df.append(d_message, ignore_index=False)
     df = pd.concat([df, d_message], ignore_index = False)
 
 
 # colorize the dm message
-m = df['name'].str.contains('dm_',na=False)
-df.loc[m,'label::en'] = '<span style="color: rgb(163, 92, 56);">' + df.loc[m,'label::en'] + '</span>'
+#m = df['name'].str.contains('dm_',na=False)
+#Get rows with the diagnostics to then get the color
+#diag_rows = df['name'].str.contains('d_',na=False)
+#df.loc[m,'label::en'] = '<span style="color: '+ df.loc[diag_rows,'color']+';">' + df.loc[m,'label::en'] + '</span>'
 
 # sort rows and reset index
 df = df.sort_index()

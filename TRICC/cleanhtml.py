@@ -26,6 +26,10 @@ def html2plain(data):
     f.feed(data)
     return f.text
 
+def getHTML(data): 
+    soup = BeautifulSoup(data, "html.parser")
+    return soup.prettify()
+
 def clean_name(s):
     s = html2plain(s)
     s = s.rstrip()
@@ -180,6 +184,7 @@ def clean_html(s):
     
     #htmlstring = soup.prettify()
     htmlstring = uninorm('NFKD', str(soup))
+
     return htmlstring
 
 
