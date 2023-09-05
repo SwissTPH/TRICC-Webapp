@@ -122,16 +122,26 @@ def remove_weirdo_Microsoft_junk(soup):
     return soup
     
 
-
+self_closing_tags = [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+]
 
 def clean_html(s):
     soup = BeautifulSoup(s, 'html.parser')  
-    
-    # delete empty tags
-    for x in soup.find_all():
-        if len(x.get_text(strip=True)) == 0:
-            x.decompose()
-            
+
     # unwrap font tag
     for x in soup.find_all("font"):
         x.unwrap()
@@ -179,12 +189,21 @@ def clean_html(s):
             x.unwrap()
     
     #htmlstring = soup.prettify()
+
+    # delete empty tags
+    for x in soup.find_all():
+        if (x.name in self_closing_tags): continue
+        if len(x.get_text(strip=True)) == 0:
+            x.decompose()
+
     htmlstring = uninorm('NFKD', str(soup))
     return htmlstring
 
 
 def cleanhtml_fromfile(htmlpath):
-    '''Function to read the string of an html file, the way it is written for Somalia, split of the Somali translation, and clean the html to make it fit for CHT'''
+    '''Function to read the string of an html file, 
+    the way it is written for Somalia, split of the Somali translation, 
+    and clean the html to make it fit for CHT'''
     try:
         with open (htmlpath, 'r') as f:
             contents = f.read()
