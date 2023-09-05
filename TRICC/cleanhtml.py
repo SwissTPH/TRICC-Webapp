@@ -2,8 +2,29 @@
 """
 Created on Wed Jun 15 09:21:11 2022
 
-@author: kluera
+@author: kluera | rukshan
 """
+
+# list of self closing HTML tags (void tags)
+# these tags are slef closing and don't require any content within them
+# https://developer.mozilla.org/en-US/docs/Glossary/Void_element
+
+self_closing_tags = [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+]
 
 from bs4 import BeautifulSoup
 from html import escape
@@ -120,24 +141,6 @@ def remove_weirdo_Microsoft_junk(soup):
             x.extract()
             
     return soup
-    
-
-self_closing_tags = [
-    "area",
-    "base",
-    "br",
-    "col",
-    "embed",
-    "hr",
-    "img",
-    "input",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr",
-]
 
 def clean_html(s):
     soup = BeautifulSoup(s, 'html.parser')  
