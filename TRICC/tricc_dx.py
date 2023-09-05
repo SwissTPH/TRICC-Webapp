@@ -14,6 +14,7 @@ from loadcalculations import loadcalc
 import odk_helpers as oh
 from combinecalculates import calcombo
 from treetodataframe import treetodataframe
+from cleanhtml import remove_html, html2plain
 import graphtools as gt
 import qualitychecks_pd as qcpd
 import inputs
@@ -91,33 +92,6 @@ df.loc[df['required']=='yes','required']='true()'
 # https://stackoverflow.com/questions/14694482/converting-html-to-text-with-python
 
 from html.parser import HTMLParser
-
-class HTMLFilter(HTMLParser):
-    text = ""
-    def handle_data(self, data):
-        self.text += data
-
-def html2plain(data): 
-    f = HTMLFilter()
-    f.feed(data)
-    return f.text
-
-# the soup.text strips off the html formatting also
-def remove_html(string):
-    text = html2text.html2text(string) # retrieve pure text from html
-    text = text.strip('\n') # get rid of empty lines at the end (and beginning)
-    text = text.split('\n') # split string into a list at new lines
-    text = '\n'.join([i.strip(' ') for i in text if i]) # in each element in that list strip empty space (at the end of line) 
-    text = text.replace('\n',' ')
-    # and delete empty lines
-    return text
-
-def remove_html_value(string):
-    text = string.strip('\n') # get rid of empty lines at the end (and beginning)
-    text = text.split('\n') # split string into a list at new lines
-    text = '\n'.join([i.strip(' ') for i in text if i]) # in each element in that list strip empty space (at the end of line) 
-    # and delete empty lines
-    return text
 
 # remove html formatting and keep text inside rhombus
 m = df['odk_type']=='rhombus'
