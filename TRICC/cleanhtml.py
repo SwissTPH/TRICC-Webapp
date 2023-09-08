@@ -2,8 +2,29 @@
 """
 Created on Wed Jun 15 09:21:11 2022
 
-@author: kluera
+@author: kluera | rukshan
 """
+
+# list of self closing HTML tags (void tags)
+# these tags are slef closing and don't require any content within them
+# https://developer.mozilla.org/en-US/docs/Glossary/Void_element
+
+self_closing_tags = [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+]
 
 from bs4 import BeautifulSoup
 from html import escape
@@ -16,7 +37,6 @@ import unicodedata
 import warnings
 warnings.filterwarnings("ignore")
 
-
 class HTMLFilter(HTMLParser):
     text = ""
     def handle_data(self, data):
@@ -26,10 +46,6 @@ def html2plain(data):
     f = HTMLFilter()
     f.feed(data)
     return f.text
-
-def getHTML(data): 
-    soup = BeautifulSoup(data, "html.parser")
-    return soup.prettify()
 
 def clean_name(s):
     s = html2plain(s)
@@ -125,37 +141,20 @@ def remove_weirdo_Microsoft_junk(soup):
             x.extract()
             
     return soup
-    
-
-
 
 def clean_html(s):
     soup = BeautifulSoup(s, 'html.parser')  
-    
-    # delete empty tags 
-    # ADDING EXCEPTION WHEN HAVING IMG IN THE NAME TO NOT MESS UP THE DM_ messages
-    for x in soup.select(':not(.fa *)'):
-        if x.attrs:
-            if len(x.get_text(strip=True)) == 0:
-                x.decompose()
-            
-    # unwrap font tag
-    filtered_elements = soup.select('font:not(.fa):not(font.fa)')
 
-    for x in filtered_elements:
-        if x.attrs:  
-            x.unwrap()
+    # unwrap font tag
+    for x in soup.find_all("font"):
+        x.unwrap()
         
     # rename tags
-    filtered_elements = soup.select('b:not(.fa):not(b.fa)')
-
-    for x in filtered_elements:
-        if x.attrs:
-            x.name = 'strong'
+    for x in soup.find_all("b"):
+        x.name = 'strong'
     
     # delete all attributes except color (set to brand color)
-    for tag in soup.select(':not(.fa *)'): 
-    
+    for tag in soup.find_all(True): 
         if 'style' in tag.attrs:
             if 'color:' in tag.attrs['style']:
                 s = tag.attrs['style']
@@ -169,27 +168,52 @@ def clean_html(s):
                 tag.attrs = {}
         
     # unwrap span tags without attributes
-    filtered_elements = soup.select('span:not(.fa):not(span.fa)')
-
-    for x in filtered_elements:
+    for x in soup.find_all("span"):
         if x.attrs == {}:
             x.unwrap()
+       
+    # delete all attributes except color (set to brand color)
+    for tag in soup.find_all(True): 
+        if 'style' in tag.attrs:
+            if 'color:' in tag.attrs['style']:
+                s = tag.attrs['style']
+                try:
+                    s = re.search('(?<!-)color(.+?);',s).group(0)
+                except AttributeError:
+                    tag.attrs = {}
+                else:
+                    tag.attrs = {'style' : s}
+            else:
+                tag.attrs = {}
         
+    # unwrap span tags without attributes
+    for x in soup.find_all("span"):
+        if x.attrs == {}:
+            x.unwrap()
+    
     #htmlstring = soup.prettify()
-    htmlstring = uninorm('NFKD', str(soup))
 
+    # delete empty tags
+    for x in soup.find_all():
+        if (x.name in self_closing_tags): continue
+        if len(x.get_text(strip=True)) == 0:
+            x.decompose()
+
+    htmlstring = uninorm('NFKD', str(soup))
     return htmlstring
 
 
 def cleanhtml_fromfile(htmlpath):
-    '''Function to read the string of an html file, the way it is written for Somalia, split of the Somali translation, and clean the html to make it fit for CHT'''
+    '''Function to read the string of an html file, 
+    the way it is written for Somalia, split of the Somali translation, 
+    and clean the html to make it fit for CHT'''
     try:
         with open (htmlpath, 'r') as f:
             contents = f.read()
             contents = re.sub('\n', ' ', contents)
             contents = re.sub('\t', '', contents)
-            contents = re.sub('<br/>', '<p></p>', contents)
-            contents = re.sub('<br>', '<p></p>', contents)
+            contents = re.sub('<br/>', '</p><p>', contents)
+            contents = re.sub('<br>', '</p><p>', contents)
             soup = BeautifulSoup(contents, 'lxml')
             # unwrap font tag
             for x in soup.find_all("font"):
