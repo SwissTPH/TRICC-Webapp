@@ -19,8 +19,9 @@ from datetime import datetime
 import os
 import shutil
 import glob
-
+import pickle
 import warnings
+
 warnings.filterwarnings("ignore")
 
 # In[2]:
@@ -118,7 +119,6 @@ df.drop(df.loc[df.duplicated(subset='name', keep=False) & (df['name']!='') & (df
 # In[19]:
 
 
-import pickle
 
 # open a file, where you stored the pickled data
 file = open(p.folder+'df_summary.pickle', 'rb')
@@ -160,27 +160,16 @@ if p.context_params_from_facility==True:
 
 # In[22]:
 
-
 df_survey = df.copy()
-
-
-# In[ ]:
-
-
-
-
-
 # ### Combine choices lists from dx and tt
 
 # In[23]:
-
 
 df_dx = df_choices_dx
 df_tt = df_choices_tt
 
 
 # In[24]:
-
 
 # remove diagnoses from df_tt
 diagnoses = list(pd.read_csv(diagnose_order)['id'])
@@ -196,13 +185,10 @@ df_tt.drop(droprows, inplace = True)
 
 # In[25]:
 
-
 # finally, the option from dx, that were included in tt to make it standalone 
 df_tt.drop(df_tt.loc[(df_tt['list_name']=='data_load') & ~df_tt['name'].str.contains('load_')].index, inplace=True)
 
-
 # In[26]:
-
 
 # merge the two option lists
 df_choices = pd.concat([df_dx, df_tt], ignore_index = True)
@@ -211,17 +197,14 @@ df_choices.fillna('', inplace = True)
 
 # In[27]:
 
-
 df = pd.concat([df_dx,df_tt],ignore_index=True)
 # following step now obsolete as you sort the options based on 'y' value
 # df.sort_values(by=['list_name','name'],inplace=True)  
 df_choices=df
 
-
 # ### Make a settings tab
 
 # In[28]:
-
 
 now = datetime.now()
 version=now.strftime('%Y%m%d%H%M')
@@ -230,39 +213,28 @@ indx=[[1]]
 settings={'form_title':p.form_title,'form_id':form_id,'version':version,'default_language':'en','style':'pages'}
 df_settings=pd.DataFrame(settings,index=indx)
 
-
-# ### clean html
-
 # In[29]:
-
 
 # # keep the tables, so that their html is not modified in the next step. 
 df_tables = df_survey.loc[df_survey['name'].str.contains('table')]
 
-
 # In[30]:
-
 
 # mask for all columns containing text
 m = df_survey.columns.str.contains('label') | df_survey.columns.str.contains('help')
 textcols = df_survey.columns[m]
 df_survey[textcols] = df_survey[textcols].applymap(clh.clean_html)
 
-
 # In[31]:
-
 
 # mask for help columns
 m = df_survey['name'].str.contains('help_')
 df_survey.loc[m,'label::en'] = df_survey.loc[m,'label::en'].apply(clh.make_green_background)
 
-
 # In[32]:
-
 
 # bring back the tables
 df_survey.update(df_tables)
-
 
 #%% Implement and export translations
 
@@ -282,7 +254,6 @@ dft_updated.to_excel(p.updated_trans, index = False)
 
 
 # integrated translation
-
 # import the new strings into the xls file: 
 df_survey = translation.import_trans(df_survey, dft)
 df_choices = translation.import_trans(df_choices, dft)
@@ -304,11 +275,10 @@ if p.testing == True:
     df_survey.reset_index(drop=True, inplace = True)
 
 
-# ### hardcode add select_option filters for PED
 
 # In[37]:
 
-
+### hardcode add select_option filters for PED
 if form_id == 'ped':
     df_survey['choice_filter']=''
     df_survey.loc[df_survey['name']=='select_symptoms_other', 'choice_filter']='Min_age_months<=${p_age}'
@@ -349,7 +319,6 @@ os.remove(p.breakpoints)
 
 # In[39]:
 
-
 if p.interrupt_flow:
     for i in breaks:
         dfa, hidden_names = bp.make_breakpoints(df_survey_a, i)
@@ -387,7 +356,6 @@ if p.interrupt_flow:
 
 
 # In[40]:
-
 
 if p.interrupt_flow:
     # interrupt after the pause question:
