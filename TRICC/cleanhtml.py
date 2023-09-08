@@ -16,6 +16,7 @@ import unicodedata
 import warnings
 warnings.filterwarnings("ignore")
 
+
 class HTMLFilter(HTMLParser):
     text = ""
     def handle_data(self, data):
@@ -131,21 +132,30 @@ def remove_weirdo_Microsoft_junk(soup):
 def clean_html(s):
     soup = BeautifulSoup(s, 'html.parser')  
     
-    # delete empty tags
-    for x in soup.find_all():
-        if len(x.get_text(strip=True)) == 0:
-            x.decompose()
+    # delete empty tags 
+    # ADDING EXCEPTION WHEN HAVING IMG IN THE NAME TO NOT MESS UP THE DM_ messages
+    for x in soup.select(':not(.fa *)'):
+        if x.attrs:
+            if len(x.get_text(strip=True)) == 0:
+                x.decompose()
             
     # unwrap font tag
-    for x in soup.find_all("font"):
-        x.unwrap()
+    filtered_elements = soup.select('font:not(.fa):not(font.fa)')
+
+    for x in filtered_elements:
+        if x.attrs:  
+            x.unwrap()
         
     # rename tags
-    for x in soup.find_all("b"):
-        x.name = 'strong'
+    filtered_elements = soup.select('b:not(.fa):not(b.fa)')
+
+    for x in filtered_elements:
+        if x.attrs:
+            x.name = 'strong'
     
     # delete all attributes except color (set to brand color)
-    for tag in soup.find_all(True): 
+    for tag in soup.select(':not(.fa *)'): 
+    
         if 'style' in tag.attrs:
             if 'color:' in tag.attrs['style']:
                 s = tag.attrs['style']
@@ -159,29 +169,12 @@ def clean_html(s):
                 tag.attrs = {}
         
     # unwrap span tags without attributes
-    for x in soup.find_all("span"):
+    filtered_elements = soup.select('span:not(.fa):not(span.fa)')
+
+    for x in filtered_elements:
         if x.attrs == {}:
             x.unwrap()
-       
-    # delete all attributes except color (set to brand color)
-    for tag in soup.find_all(True): 
-        if 'style' in tag.attrs:
-            if 'color:' in tag.attrs['style']:
-                s = tag.attrs['style']
-                try:
-                    s = re.search('(?<!-)color(.+?);',s).group(0)
-                except AttributeError:
-                    tag.attrs = {}
-                else:
-                    tag.attrs = {'style' : s}
-            else:
-                tag.attrs = {}
         
-    # unwrap span tags without attributes
-    for x in soup.find_all("span"):
-        if x.attrs == {}:
-            x.unwrap()
-    
     #htmlstring = soup.prettify()
     htmlstring = uninorm('NFKD', str(soup))
 
@@ -195,8 +188,8 @@ def cleanhtml_fromfile(htmlpath):
             contents = f.read()
             contents = re.sub('\n', ' ', contents)
             contents = re.sub('\t', '', contents)
-            contents = re.sub('<br/>', '</p><p>', contents)
-            contents = re.sub('<br>', '</p><p>', contents)
+            contents = re.sub('<br/>', '<p></p>', contents)
+            contents = re.sub('<br>', '<p></p>', contents)
             soup = BeautifulSoup(contents, 'lxml')
             # unwrap font tag
             for x in soup.find_all("font"):

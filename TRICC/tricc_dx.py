@@ -9,14 +9,15 @@ import os
 import base64 # to extract images from base64 strings (as they are stored in xml files)
 from datetime import datetime
 import html2text
-import cleanhtml as ch #my own helper functions
 from loadcalculations import loadcalc
+from cleanhtml import remove_html, html2plain
 import odk_helpers as oh
 from combinecalculates import calcombo
 from treetodataframe import treetodataframe
 import graphtools as gt
 import qualitychecks_pd as qcpd
 import inputs
+import uuid
 
 
 #%% Parameters
@@ -89,35 +90,6 @@ df.loc[df['required']=='yes','required']='true()'
 
 # that solution is actually working best. From the answer of 'FrBrGeorge'
 # https://stackoverflow.com/questions/14694482/converting-html-to-text-with-python
-
-from html.parser import HTMLParser
-
-class HTMLFilter(HTMLParser):
-    text = ""
-    def handle_data(self, data):
-        self.text += data
-
-def html2plain(data): 
-    f = HTMLFilter()
-    f.feed(data)
-    return f.text
-
-# the soup.text strips off the html formatting also
-def remove_html(string):
-    text = html2text.html2text(string) # retrieve pure text from html
-    text = text.strip('\n') # get rid of empty lines at the end (and beginning)
-    text = text.split('\n') # split string into a list at new lines
-    text = '\n'.join([i.strip(' ') for i in text if i]) # in each element in that list strip empty space (at the end of line) 
-    text = text.replace('\n',' ')
-    # and delete empty lines
-    return text
-
-def remove_html_value(string):
-    text = string.strip('\n') # get rid of empty lines at the end (and beginning)
-    text = text.split('\n') # split string into a list at new lines
-    text = '\n'.join([i.strip(' ') for i in text if i]) # in each element in that list strip empty space (at the end of line) 
-    # and delete empty lines
-    return text
 
 # remove html formatting and keep text inside rhombus
 m = df['odk_type']=='rhombus'
@@ -694,13 +666,13 @@ if p.form_id == 'almsom': # in Somalia TT, the 'name' is in the content
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['xml-parent'], 'group')
     #dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['y'], 'y')
 else: 
-    dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['name'].apply(ch.html2plain), 'name')
+    dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['name'].apply(html2plain), 'name')
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['odk_type'], 'type')
     # if you want to strip off html from text:
     # UNCOMMENTED BY MPEA 2106
-    dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'].apply(ch.html2plain), 'content')
+    #dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'].apply(ch.html2plain), 'content')
     # if you want to keep the html in the text:
-    #dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'], 'content')
+    dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'], 'content')
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['xml-parent'], 'group')
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['y'], 'y')
 
@@ -1008,7 +980,10 @@ data_load = ['select_multiple data_load','data_load','Define adaptable parameter
 
 data_load = pd.DataFrame([data_load],columns=df.columns)
 df = pd.concat([data_load,df])
-
+for image in p.images_to_import:
+    identifier = uuid.uuid4()
+    import_note = pd.DataFrame({ 'type': 'note', 'name': 'import_'+str(identifier), 'relevance': 'false()', 'image::en':image, 'image::fr':image}, index = [int(identifier)])
+    df = pd.concat([import_note, df], ignore_index = False)
 # populate the load_ calculate fields
 df.loc[(df['type']=='calculate') & df['name'].str.contains('load_',na=False),'calculation']='number(selected(${data_load}, \''+ df.loc[df['type']=='calculate','name'] + '\'))'
 
@@ -1091,9 +1066,13 @@ df.drop(df.loc[df['label::en']=='Load Data'].index,inplace=True)
 df.reset_index(inplace=True)
 df.fillna('',inplace=True)
 I = df.loc[df['name'].isin(diagnoses_dict.values())].index
-
+print(len(I))
 for i in I:
-    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                '<span style="background-color:'+df.loc[i]['color']+ '; color: #FFFFFF">' +'Diagnosis found: ' + df.loc[i]['label::en']+'</span>',                                'relevance':'number(${'+df.loc[i]['name']+'})=1'}, index=[i+0.1])
+    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                
+                              '''<i class="fa" style="width=100%"><div style="display: flex; align-items: center; background-color: {} ; padding: 10px; color: #FFFFFF; font-size:20px; font-weight: bold;">
+                              <img data-media-src="images/icon-healthcare-diagnosis.svg" style="display:inline;" width="10%"> 
+                              <span> Diagnosis found: {} </span></i>'''.format(df.loc[i]['color'], df.loc[i]['label::en']),
+                                                                                              'relevance':'number(${'+df.loc[i]['name']+'})=1'}, index=[i+0.1])
     
     #df = df.append(d_message, ignore_index=False)
     df = pd.concat([df, d_message], ignore_index = False)
@@ -1109,6 +1088,12 @@ for i in I:
 df = df.sort_index()
 df.set_index('index',inplace=True)
 
+
+# %%
+
+# %%
+
+# %%
 
 #%% Make CHT conform help fields
 df = oh.helpfields(df)

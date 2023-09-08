@@ -19,6 +19,7 @@ from datetime import datetime
 import os
 import shutil
 import glob
+import uuid
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -198,7 +199,7 @@ df_tt.drop(droprows, inplace = True)
 
 
 # finally, the option from dx, that were included in tt to make it standalone 
-df_tt.drop(df_tt.loc[(df_tt['list_name']=='data_load') & ~df_tt['name'].str.contains('load_')].index, inplace=True)
+df_tt.drop(df_tt.loc[(df_tt['list_name']=='data_load') & ~df_tt['name'].str.contains('load_', na=False)].index, inplace=True)
 
 
 # In[26]:
@@ -244,7 +245,7 @@ df_tables = df_survey.loc[df_survey['name'].str.contains('table')]
 
 
 # mask for all columns containing text
-m = df_survey.columns.str.contains('label') | df_survey.columns.str.contains('help')
+m = (df_survey.columns.str.contains('label') | df_survey.columns.str.contains('help')) 
 textcols = df_survey.columns[m]
 df_survey[textcols] = df_survey[textcols].applymap(clh.clean_html)
 
@@ -317,8 +318,8 @@ if form_id == 'ped':
     df_choices['Max_p_temp']=''
     df_choices.loc[(df_choices['list_name']=='select_symptoms_other'),'Min_age_months']='2'
     df_choices.loc[(df_choices['list_name']=='major_symptoms'), 'Max_p_temp']='45'
-    df_choices.loc[(df_choices['list_name']=='select_symptoms_other') & df_choices['name'].isin(['opt_9', 'opt_10']),'Min_age_months']='24'
-    df_choices.loc[(df_choices['list_name']=='select_symptoms_other') & df_choices['name'].isin(['opt_9', 'opt_10']),'Min_age_months']='24'
+    df_choices.loc[(df_choices['list_name']=='select_symptoms_other') & df_choices['name'].isin(['opt_8']),'Min_age_months']='24'
+    df_choices.loc[(df_choices['list_name']=='select_symptoms_other') & df_choices['name'].isin(['opt_8']),'Min_age_months']='24'
     df_choices.loc[(df_choices['list_name']=='major_symptoms') & df_choices['name'].isin(['opt_1']), 'Max_p_temp']='37.5'
 
 
@@ -368,6 +369,10 @@ if p.interrupt_flow:
         # shift the elements that do not belong to group input out of group input
         index_a = df_inputgroup_a.loc[(df_inputgroup_a['type']=='end group') & (df_inputgroup_a['name']=='inputs')].index[0]
         df_inputgroup_a.loc[index_a:].index = df_inputgroup_a.loc[index_a:].index +1
+        for image in p.images_to_import:
+            identifier = uuid.uuid4()
+            import_note = pd.DataFrame({ 'type': 'note', 'name': 'import_'+str(identifier), 'relevance': 'false()', 'image::en':image, 'image::fr':image}, index = [int(identifier)])
+            dfa = pd.concat([import_note, dfa], ignore_index = False)
         dfa = pd.concat([df_inputgroup_a, dfa])
         dfa.sort_index(inplace=True)
         # drop second end-group-inputs row

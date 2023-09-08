@@ -67,8 +67,11 @@ df_choices=df_raw.loc[df_raw['odk_type']=='select_option']
 df_choices=df_choices.merge(df_raw[['name','odk_type','id']],how='left',left_on='parent',right_on='id')
 df_choices=df_choices[['name_y','name_x','value']]
 
-df_choices.rename({'name_y':'list_name','name_x':'name','value':'label::en'},axis=1,inplace=True)
 
+df_choices.rename({'name_y':'list_name','name_x':'name','value':'label::en'},axis=1,inplace=True)
+## MPEA ADDED BECAUSE I WANTED TO TAKE CHOICES FROM DRUGS TO THE NEW XLS
+drug_choices = pd.read_excel(p.drugsfile, sheet_name="choices")
+df_choices = pd.concat([df_choices, drug_choices])
 # add rows for yesno
 yes=pd.DataFrame({'list_name':'yesno','name':'Yes','label::en':'Yes'}, index=['zzz_yes'])
 no=pd.DataFrame({'list_name':'yesno','name':'No','label::en':'No'}, index=['zzz_no'])

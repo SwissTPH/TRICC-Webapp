@@ -38,6 +38,7 @@ output = output_folder+form_id+'.xlsx'
 media_folder = output_folder+'media/images/'
 updated_trans = output_folder+'ped_fr_newest.xlsx'
 zipfile = folder+'output/output'
+images_to_import =['icon-healthcare-diagnosis.svg']
 
 ### Input TRICC Repo folder
 repo_folder = os.path.join(path,'TRICC/')
