@@ -80,7 +80,6 @@ df_tt.drop(df_tt.loc[(df_tt['type']=='select_multiple select_diagnosis')].index,
 # the rows with 'select_multiple select_dataload'
 df_tt.drop(df_tt.loc[(df_tt['type']=='select_multiple select_dataload')].index, inplace=True)
 
-
 #%% wrap treatment in a group
 dfa = pd.DataFrame(columns=df_tt.columns)
 tt_relevance = df_dx.loc[df_dx['label::en']=='TREATMENT','relevance'].values[0] # get relevance field for TT group
@@ -93,7 +92,6 @@ df_tt = pd.concat([df_tt, dfa],ignore_index=True)
 
 
 # In[15]:
-
 
 # insert treatment
 df = df_dx
@@ -109,16 +107,12 @@ df.drop(drops,inplace=True)
 
 # In[18]:
 
-
 # drop duplicates after stitch
 df.drop(df.loc[df.duplicated(subset='name', keep=False) & (df['name']!='') & (df['name']!='data_load')].index, inplace=True)
-
 
 # ### Insert summary / report
 
 # In[19]:
-
-
 
 # open a file, where you stored the pickled data
 file = open(p.folder+'df_summary.pickle', 'rb')
@@ -132,7 +126,6 @@ file.close()
 
 # In[20]:
 
-
 # include into the form
 df.reset_index(drop=True, inplace=True)
 cut = df.loc[df['label::en']=='SUMMARY'].index[0]
@@ -142,7 +135,6 @@ df = pd.concat([df.iloc[:cut], df_summary, df.iloc[cut+1:]],ignore_index=True)
 # ### Load contextual parameters from facility
 
 # In[21]:
-
 
 df_dataload = pd.read_excel(p.headerfile)
 df = pd.concat([df_dataload,df],ignore_index=True)
@@ -182,7 +174,6 @@ df_tt['label::en'] = df_tt['label::en'].apply(clh.html2plain)
 droprows = df_tt[['list_name', 'name']].reset_index().merge(df_dx[['list_name', 'name']], how='inner', on=['list_name', 'name']).set_index('index').index
 df_tt.drop(droprows, inplace = True)
 
-
 # In[25]:
 
 # finally, the option from dx, that were included in tt to make it standalone 
@@ -193,7 +184,6 @@ df_tt.drop(df_tt.loc[(df_tt['list_name']=='data_load') & ~df_tt['name'].str.cont
 # merge the two option lists
 df_choices = pd.concat([df_dx, df_tt], ignore_index = True)
 df_choices.fillna('', inplace = True)
-
 
 # In[27]:
 
@@ -273,8 +263,6 @@ if p.testing == True:
     df_survey = pd.concat([df_survey, timestamprow])
     df_survey = df_survey.sort_index()
     df_survey.reset_index(drop=True, inplace = True)
-
-
 
 # In[37]:
 

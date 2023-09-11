@@ -147,7 +147,15 @@ def clean_html(s):
 
     # unwrap font tag
     for x in soup.find_all("font"):
-        x.unwrap()
+        color = x.attrs.get('color')
+        if (color):
+            color = x.attrs['color']
+            newTag = x.name = "span"
+            colorAttribute = "color:" + color + ";"
+            del x.attrs['color']
+            x.attrs['style'] = colorAttribute
+        else:
+            x.name = "span"
         
     # rename tags
     for x in soup.find_all("b"):
