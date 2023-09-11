@@ -145,7 +145,15 @@ def remove_weirdo_Microsoft_junk(soup):
 def clean_html(s):
     soup = BeautifulSoup(s, 'html.parser')  
 
-    # unwrap font tag
+    
+    '''
+        Draw.io changes color by adding a <font> tag
+        Where pasted text from word changes color by adding a div or span 
+        with a inlie styling 
+        This function changes all font tags into span tags
+        and changes color elements in font tags into inline styles
+    '''
+
     for x in soup.find_all("font"):
         color = x.attrs.get('color')
         if (color):
