@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  web:
+    build: ./
+    restart: always
+    environment:
+      - HOSTNAME=localhost
+    volumes:
+      - ./logs:/app/logs
+      - ./config.yaml:/app/config.yaml
+    ports:
+      - 8501:8501

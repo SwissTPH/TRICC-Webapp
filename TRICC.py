@@ -1,25 +1,27 @@
 # Imports
 import glob
 import os
-import shutil
 import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
-import lxml.etree as etree
 import streamlit as st
 import streamlit_authenticator as stauth
 import yaml
 from PIL import Image
 from yaml.loader import SafeLoader
 
+current_datetime = str(datetime.now().strftime("%Y%m%dT%H%M%S"))
+current_datetime_logger = str(datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+path = os.getcwd()
+
 ### Variables
-TRICC_SCRIPT_FILE = "/app/TRICC/merge-dx-tt.py"
-TRICC_LOGO = "tricc_logo.png"
-UPLOAD_FOLDER = "./uploaded_files"
-UPLOAD_FOLDER_FILES = "./uploaded_files/*"
-ZIP_OUTPUT = "/app/output/output.zip"
-OUTPUT_FILENAME = "tricc_output.zip"
+TRICC_SCRIPT_FILE = os.path.join(path, "TRICC/merge-dx-tt.py")
+TRICC_LOGO = os.path.join(path, "tricc_logo.png")
+UPLOAD_FOLDER = os.path.join(path, "uploaded_files/")
+UPLOAD_FOLDER_FILES = os.path.join(path, "uploaded_files/*")
+ZIP_OUTPUT = "output/output.zip"
+OUTPUT_FILENAME = "tricc_output"
 
 ### AUTH
 disabled_bool = True
@@ -37,16 +39,12 @@ authenticator = stauth.Authenticate(
 
 name, authentication_status, username = authenticator.login("Login", "main")
 
-if authentication_status:
-    authenticator.logout("Logout", "main")
-    welcome_message = st.markdown(f"Welcome {name}!")
-elif authentication_status == False:
-    st.error("Username/password is incorrect")
-elif authentication_status == None:
-    st.warning("Please enter your username and password")
-
 ### APP
 if authentication_status:
+    authenticator.logout("Logout", "main")
+
+    welcome_message = st.markdown(f"Welcome {name}!")
+
     image = Image.open(TRICC_LOGO)
     tricc_logo = st.image(image, use_column_width=True)
     intro_message = st.markdown("""
@@ -57,6 +55,11 @@ if authentication_status:
     - App by [Patrick Meier](https://www.swisstph.ch/en/people-teaser-detail/teaser-detail/patrick-meier#pageRecord)
     - TRICC by [Rafael Kluender](https://www.swisstph.ch/en/people-teaser-detail/teaser-detail/rafael-kluender#pageRecord)
     """)
+
+elif authentication_status == False:
+    st.error("Username/password is incorrect")
+elif authentication_status == None:
+    st.warning("Please enter your username and password")
 
 def remove_files():
     # Remove uploaded files after download of the zip
@@ -71,13 +74,66 @@ def store_file(file, file_name):
     with open(save_path, mode="wb") as w:
         w.write(file.getvalue())
 
+def create_zip_file():
+    ### Output
+    # Enable the download of the output files as zip
+    st.header("Output")
+    st.success("4. The output files can now be downloaded")
+    with open(ZIP_OUTPUT, "rb") as fp:
+        btn = st.download_button(
+            label="Download ZIP",
+            data=fp,
+            file_name=OUTPUT_FILENAME + "_" + current_datetime + ".zip",
+            mime="application/zip"
+    )
+
 def run_TRICC():
-    tricc_script_output = subprocess.run([f"{sys.executable}", TRICC_SCRIPT_FILE])
+    tricc_log = open(f"logs/tricc.log_{current_datetime}", "w")
+    tricc_log.write(f"TRICC Execution Started {current_datetime_logger} from user: {name}\n")
+    
+    # Start TRICC as a subprocess and pipe the STDOUT
+    proc = subprocess.Popen([f"{sys.executable}", TRICC_SCRIPT_FILE], stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
+    
+    st.info("Start of TRICC response")
+
+    st.write(f"**Information:**") 
+
+    # Display any STDOUT and write them as well to a log file
+    for line in iter(lambda: proc.stdout.readline(), b""):
+        st.text(line.decode("utf-8"))
+        tricc_log.write(line.decode("utf-8"))
+
+    # In case of an error, the lines with errors are also displayed and logged
+    if proc.stderr:    
+        st.write(f"**Warnings/Errors:**")    
+        for line in iter(lambda: proc.stderr.readline(), b""):
+            decoded_line = line.decode("utf-8")
+            tricc_log.write(decoded_line)
+            st.text(decoded_line)
+
+        proc.wait()
+        st.info("End of TRICC response")
+        tricc_log.write("Return Code: ")
+        tricc_log.write(str(proc.returncode))
+        tricc_log.close()
+
+        if proc.returncode == 0:
+            st.success("TRICC Conversion Done!")
+            create_zip_file()
+        elif proc.returncode == 1:
+            st.error("There was an error, check the output above")
+        else:
+            st.error("The TRICC script did not finish")
 
 def filedownload(file):
-    xml_file = file
-    href = f'<a href="data:file/{xml_file}" download="prediction.csv">Download Predictions</a>'
-    return href
+        xml_file = file
+        href = f'<a href="data:file/{xml_file}" download="prediction.csv">Download Predictions</a>'
+        return href
+
+def clear_screen():
+    welcome_message.empty()
+    tricc_logo.empty()
+    intro_message.empty()
 
 ### Sidebar
 if authentication_status:
@@ -140,20 +196,5 @@ if authentication_status:
         with st.spinner("Doing the TRICC.. (~15min)"):
             run_TRICC()
         st.write("___")
-
-
-        ### Output
-        # Enable the download of the output files as zip
-        st.header("Output")
-        st.success("4. The output files can now be downloaded")
-
-
-        with open(ZIP_OUTPUT, "rb") as fp:
-            btn = st.download_button(
-                label="Download ZIP",
-                data=fp,
-                file_name=OUTPUT_FILENAME,
-                mime="application/zip"
-        )
     else:
         st.info("Upload draw.io workflow data in the sidebar to start!")

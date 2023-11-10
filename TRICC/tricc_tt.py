@@ -28,6 +28,11 @@ from CDSS_list_merge import merge_list
 #import params_almsom_tt as p # for almanach Somalia TT
 # import params_ped_rk as p # for msfecare Ped
 import params_msf_sti as p # for Almanach Libya
+#import params_ped as p # for msfecare Ped
+# import params_libya_rk as p # for Almanach Libya
+
+import warnings
+warnings.filterwarnings("ignore")
 
 #%% Parse diagram
 objects = inputs.parse_drawio(p.inputfile) # parse drawing
