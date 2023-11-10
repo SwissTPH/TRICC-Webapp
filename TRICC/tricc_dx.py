@@ -17,19 +17,21 @@ from treetodataframe import treetodataframe
 import graphtools as gt
 import qualitychecks_pd as qcpd
 import inputs
+import uuid
 
 
 #%% Parameters
 #import params_ped_rk as p # for msfecare Ped
-import params_libya_rk as p
+import params_msf_sti as p
 
 
 #%% Parse diagram
 objects = inputs.parse_drawio(p.inputfile_dx) # parse drawing
-
 # Put diagram elements in df_raw
 df_raw = inputs.treetodataframe(objects) # import drawing elements into a df
 df_raw.fillna('', inplace = True) 
+# Changed label to note since newest scratchpad is using note as type
+#df_raw.loc[df_raw['label']!='','value'] = df_raw['label'] # all content into the same column
 df_raw.loc[df_raw['label']!='','value'] = df_raw['label'] # all content into the same column
 
 
@@ -119,6 +121,7 @@ def remove_html_value(string):
 # remove html formatting and keep text inside rhombus
 m = df['odk_type']=='rhombus'
 df.loc[m,'value'] = df.loc[m,'value'].apply(lambda x: remove_html(x) if x!=None else None)
+
 #df.loc[m,'value'] = df.loc[m,'value'].replace('\n',' ',regex=True)
 
 # remove html formatting in questions and select_options (not allowed here)
@@ -333,6 +336,10 @@ df.drop(df_choices.iloc[:-2].index,inplace=True)
 # drop the remaining unspecified objects (pure xml formating related elements or drawing artefacts) 
 df.drop(df.loc[df.value==''].index,inplace=True)
 
+pattern = r'fillColor=([^;]*);'
+
+df['color'] = df['style'].apply(lambda x : re.search(pattern, x).group(1) if re.search(pattern, x) and re.search(pattern, x).group(1)!='none' else '#FFFFFF')
+
 
 #%% preparing df_arrows for logic part:
 
@@ -485,6 +492,8 @@ m = (df_arrows['source_type']=='rhombus') & (df_arrows['rhombus_refer_to_odk_typ
 df_arrows.loc[m,'value_of_rhombus'] = df_arrows.loc[m,'value_of_rhombus'].str.replace(r'^[^<=>]+','',regex=True) # only keep what comes after <,= or >
 df_arrows.loc[m,'value_of_rhombus'] = df_arrows.loc[m,'value_of_rhombus'].str.replace('?','',regex=False) # remove the '?' at the end
 
+
+
 # new mask to get the df_arrows of all connectors that point to counters
 m1 = df_arrows['target'].isin(df.loc[df['odk_type']=='count'].index) # mask for connectors that point to 'count' objects
 gk = df_arrows.loc[m1].groupby('target') # group them by counters
@@ -503,7 +512,6 @@ for elem, group in gk:
     m2 = (df_arrows['source_name']==counter_name) & (df_arrows['value']=='No')
     df_arrows.loc[m & m2,'value_of_rhombus'] = df_arrows.loc[m & m2,'value_of_rhombus'].replace({'<=':'>','>=':'<','<':'>=','>':'<=','=':'!=','!=':'='},regex=True)
     df_arrows.loc[m & (df_arrows['source_name']==counter_name),'expression'] = full_expression + df_arrows['value_of_rhombus']
-
 
 # In[33]:
 
@@ -571,7 +579,6 @@ page_starts = page_objects[~page_objects.isin(df_arrows['target'])]
 
 # get the page_starts that are a rhombus (needed for later)
 page_starts_rhombus = df.loc[page_starts].loc[df['odk_type']=='rhombus'].index
-
 # get the page_objects where all objects in a single page are notes (needed for later)
 
 # get page_start - container_id pairs
@@ -824,15 +831,15 @@ for elem in df.index:
 
     # when the source is a rhombus and it's relevant IS empty and the rhombus is on a page
     # you have to combine the expression with the relevant of the page
-    # first merge with df again to the the relevant of the page
+    # first merge with df again to the the relevant of the page 
+    # ADDED (df_sources['relevant_page']!='') OTHERWISE ERROR SOMETIMES WITH EMPTY PARENTHESIS TODO
     df_sources = df_sources.merge(df[['relevant']],how='left',left_on='xml-parent',right_index=True,suffixes=('', '_page'))
-    m=df_sources['source_type'].isin(['rhombus']) & (df_sources['relevant']=='') & df_sources['xml-parent'].isin(container_ids)
+    m=df_sources['source_type'].isin(['rhombus']) & (df_sources['relevant']=='') & (df_sources['relevant_page']!='')& df_sources['xml-parent'].isin(container_ids)
     df_sources.loc[m,'expression'] = df_sources.loc[m,'expression'] + ' and (' + df_sources.loc[m,'relevant_page'] + ')'    
     
     # when the source is a rhombus and it's relevant is NOT empty, you have to combine both with AND
     m=df_sources['source_type'].isin(['rhombus']) & (df_sources['relevant']!='')
     df_sources.loc[m,'expression'] = df_sources.loc[m,'expression'] + ' and (' + df_sources.loc[m,'relevant'] + ')'
-    
     # when the source is a note, just take its relevant and put it into expression
     m=df_sources['source_type'].isin(['note'])
     df_sources.loc[m,'expression'] = df_sources.loc[m,'relevant']    
@@ -924,7 +931,7 @@ df.loc[m,'odk_type'] = df.loc[m,'odk_type'] + ' ' + df.loc[m,'name']
 
 # making df look like the 'survey' tab in an xls form
 df[['repeat_count','appearance','required message::en','calculation']]=''
-df=df[['odk_type','name','value','help::en','hint::en','appearance','relevant','constraint',        'constraint_message','required','required message::en','calculation','repeat_count','image::en']]
+df=df[['odk_type','name','value','help::en','hint::en','appearance','relevant','constraint',        'constraint_message','required','required message::en','calculation','repeat_count','image::en','color']]
 df.rename(columns={'odk_type':'type','value':'label::en','relevant':'relevance','constraint_message':'constraint message::en'},inplace=True)
 
 # rename begin group
@@ -994,11 +1001,15 @@ df_choices = pd.concat([df_choices,tt_input_options]) # concat the new options t
 
 # make the first question for data load
 # data_load = ['select_multiple calculate','data_load','Define adaptable parameters','','','','','','','','','','','']
-data_load = ['select_multiple data_load','data_load','Define adaptable parameters','','','','','','','','','','','']
+data_load = ['select_multiple data_load','data_load','Define adaptable parameters','','','','','','','','','','','','']
 
 data_load = pd.DataFrame([data_load],columns=df.columns)
 df = pd.concat([data_load,df])
 
+for image in p.images_to_import:
+    identifier = uuid.uuid4()
+    import_note = pd.DataFrame({ 'type': 'note', 'name': 'import_'+str(identifier), 'relevance': 'false()', 'image::en':image, 'image::fr':image}, index = [int(identifier)])
+    df = pd.concat([import_note, df], ignore_index = False)
 # populate the load_ calculate fields
 df.loc[(df['type']=='calculate') & df['name'].str.contains('load_',na=False),'calculation']='number(selected(${data_load}, \''+ df.loc[df['type']=='calculate','name'] + '\'))'
 
@@ -1079,10 +1090,14 @@ df.drop(df.loc[df['label::en']=='Load Data'].index,inplace=True)
 # show the detected diagnosis right on detection
 df.reset_index(inplace=True)
 df.fillna('',inplace=True)
-I = df.loc[df['name'].isin(diagnoses_dict.values())].index
+I = df.loc[df['name'].isin(diagnoses_dict.values()) & ~df['name'].isin(p.hide_diagnoses)].index
 
 for i in I:
-    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                'Diagnosis found: ' + df.loc[i]['label::en'],                                'relevance':'number(${'+df.loc[i]['name']+'})=1'}, index=[i+0.1])
+    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                
+                              '''<i><div style="display: flex; align-items: center; background-color: {} ; padding: 10px; color: #FFFFFF; font-size:20px; font-weight: bold;">
+                              <img data-media-src="images/icon-healthcare-diagnosis.svg" style="display:inline;" width="10%"> 
+                              <span> Diagnosis found: {} </span></i>'''.format(df.loc[i]['color'], df.loc[i]['label::en']),
+                                                                                              'relevance':'number(${'+df.loc[i]['name']+'})=1'}, index=[i+0.1])
     
     #df = df.append(d_message, ignore_index=False)
     df = pd.concat([df, d_message], ignore_index = False)
@@ -1134,10 +1149,10 @@ df = pd.concat([df_calc, df])
 #%% make a summary xlx 
 
 
-def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile):
+def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, diagnoses_to_hide):
     # need to reload diagnose_id_hierarchy, because the sorting here is wrong, because it is dervied from the 
     # drawing. There should be no diagnose_hierarchy in the dx flow, it makes no sense to me at all. 
-    df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy)].copy()
+    df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy) & ~df['name'].isin(diagnoses_to_hide)].copy()
     df_diagnose['calculation']=''
     df_diagnose['relevance']='number(${' + df['name'] + '})=1'
     df_diagnose['appearance']='center'
@@ -1157,15 +1172,16 @@ def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile):
     danger_signs['name']='label_' + danger_signs['name']
     danger_signs.index = danger_signs.index+'danger'
     
-    df_summary = pd.concat([intro, df_diagnose, pd.read_excel(summaryfile).iloc[6:8], danger_signs, endgroup])
+    #df_summary = pd.concat([intro, df_diagnose, pd.read_excel(summaryfile).iloc[6:8], danger_signs, endgroup])
+    df_summary = pd.concat([intro, df_diagnose, endgroup])
     
-    df_summary.drop(columns=['list_name'], inplace = True)
+    # TODO commented out df_summary.drop(columns=['list_name'], inplace = True)
     
     df_summary.fillna('', inplace=True)
     
-    # make group relevance for danger sign group
-    ds_relevance = ' or '.join(danger_signs['relevance'])
-    df_summary.loc[df_summary['name']=='g_danger_signs', 'relevance'] = ds_relevance
+    # TODO commented out for LIBYA make group relevance for danger sign group
+    #ds_relevance = ' or '.join(danger_signs['relevance'])
+    #df_summary.loc[df_summary['name']=='g_danger_signs', 'relevance'] = ds_relevance
     
     
     return df_summary
@@ -1181,7 +1197,7 @@ diagnosis_id_hierarchy = list(df_diagnose['id'])
 # In[258]:
 
 
-df_summary = make_summary(df, df_choices, diagnosis_id_hierarchy, p.summaryfile)
+df_summary = make_summary(df, df_choices, diagnosis_id_hierarchy, p.summaryfile, p.hide_diagnoses)
 
 # store df_summary
 import pickle

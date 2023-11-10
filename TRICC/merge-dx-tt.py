@@ -22,15 +22,16 @@ import shutil
 # In[2]:
 
 #form_id = 'ped' # for MSFeCARE PED
-form_id = 'almlib' # for Almanach Lybia
+form_id = 'msf_sti' # for Almanach Lybia
 
 #%% Parameters
 # import params as p # for almanach Somalia
-if form_id == 'ped':
-    import params_ped_rk as p # for msfecare Ped
-elif form_id == 'almlib':
+if form_id == 'ped':    
+    import params_ped as p # for msfecare Ped
+elif form_id == 'almanach_libya':
     import params_libya_rk as p
-
+elif form_id == 'msf_sti':
+    import params_msf_sti as p
 
 # In[6]
 
@@ -39,10 +40,10 @@ cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker ad
 
 
 #%% Run old legacy diagnostic jupyter notebook, that has been exported to a python file
-os.system(f'python3 {p.repo_folder}tricc_dx.py')
+os.system(f'python {p.repo_folder}tricc_dx.py')
 
 #%% Run new tricc_tt script
-os.system(f'python3 {p.repo_folder}tricc_tt.py')
+os.system(f'python {p.repo_folder}tricc_tt.py')
 
 # In[10]:
 df_survey_dx = pd.read_excel(p.folder+p.form_id+'_dx.xlsx',sheet_name='survey')
@@ -70,13 +71,14 @@ df_tt.drop(df_tt.loc[(df_tt['type']=='note') & (df_tt['name']=='data_loader')].i
 # the rows with 'select_multiple select_diagnosis'
 df_tt.drop(df_tt.loc[(df_tt['type']=='select_multiple select_diagnosis')].index, inplace=True)
 # the rows with 'select_multiple select_dataload'
-df_tt.drop(df_tt.loc[(df_tt['type']=='select_multiple select_dataload')].index, inplace=True)
+df_tt.drop(df_tt.loc[(df_tt['type']=='select_multiple data_load')].index, inplace=True)
 
 
 #%% wrap treatment in a group
 dfa = pd.DataFrame(columns=df_tt.columns)
 tt_relevance = df_dx.loc[df_dx['label::en']=='TREATMENT','relevance'].values[0] # get relevance field for TT group
-dfa.loc[0,['type','name','label::en', 'appearance', 'relevance']]=['begin group','g_tt', 'Treatment and Management', 'field-list', tt_relevance]
+## field-list taken out in hope this will stop have TT in one page MPEA
+dfa.loc[0,['type','name','label::en', 'appearance', 'relevance']]=['begin group','g_tt', 'Treatment and Management', '', tt_relevance]
 dfa.fillna('',inplace=True)
 df_tt = pd.concat([dfa,df_tt],ignore_index=True)
 dfa.loc[0]=''
@@ -128,6 +130,7 @@ file.close()
 
 # include into the form
 df.reset_index(drop=True, inplace=True)
+
 cut = df.loc[df['label::en']=='SUMMARY'].index[0]
 df = pd.concat([df.iloc[:cut], df_summary, df.iloc[cut+1:]],ignore_index=True)
 
@@ -190,9 +193,8 @@ df_tt.drop(droprows, inplace = True)
 # In[25]:
 
 
-# finally, the option from dx, that were included in tt to make it standalone 
-df_tt.drop(df_tt.loc[(df_tt['list_name']=='data_load') & ~df_tt['name'].str.contains('load_')].index, inplace=True)
-
+# finally, the option from dx, that were included in tt to make it standalone ADDED NA= FALSE
+df_tt.drop(df_tt.loc[(df_tt['list_name']=='data_load') & ~df_tt['name'].str.contains('load_', na=False)].index, inplace=True)
 
 # In[26]:
 
@@ -387,7 +389,7 @@ if p.interrupt_flow:
     breakrow = df_survey.loc[df_survey['name']=='label_form_pause'].index[0]
     afterlab_indices = list(df_survey[breakrow:].index)
     m = df_survey.index.isin(afterlab_indices) & (df_survey['relevance']!='')
-    df_survey.loc[m, 'relevance'] = '( ' + df_survey.loc[m, 'relevance'] + ') and (${ask_pause}=\'No\' or ${ask_pause}=\'\')'
+    df_survey.loc[m, 'relevance'] = '( ' + df_survey.loc[m, 'relevance'] + ') and (${ask_pause}=\'continue_consultation\' or ${ask_pause}=\'\')'
     
     # write back the old relevance of the label_pause_form 
     df_survey.loc[df_survey['name']=='label_form_pause', 'relevance'] = pause_old_relevance

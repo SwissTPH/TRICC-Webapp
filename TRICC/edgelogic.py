@@ -25,8 +25,12 @@ def edge_assign_true(dag, logic, columnlist):
 def edge_assign_sourcename(dag, logic, logicmap, negated_logicmap, columnlist):
     e = [edge for edge in dag.edges if dag.nodes[edge[0]]['type'] in columnlist]
     source_node_names = [dag.nodes[i[0]]['name'] for i in e] # names of source nodes of the edges
-    odk_expressions =  ['${' + str(n) + '}=1' for n in source_node_names]
     logicsymbols = [Symbol(dag.nodes[i[0]]['name']) for i in e]
+    for i in e: 
+        if i[1].startswith('dr_') and i[1] not in source_node_names:
+            source_node_names.append(i[1])
+            logicsymbols.append(Symbol(i[1]))
+    odk_expressions =  ['${' + str(n) + '}=1' for n in source_node_names]
     
     #logicmap.update(dict(zip(logicsymbols, source_node_names)))
     logicmap_symbols = [str(i) for i in logicsymbols]
@@ -66,7 +70,7 @@ def edge_add_name_to_logic(dag, logic, logicmap, negated_logicmap, columnlist):
     negated_odk_expressions = [n.replace('\'Yes\'', '\'No\'') for n in negated_odk_expressions]
     negated_odk_expressions = [n.replace('\'YES\'', '\'Yes\'') for n in negated_odk_expressions]
     negated_logicmap.update(dict(zip(negated_expression_symbols, negated_odk_expressions)))
-    # logicmap.update(dict(zip(expression_symbols, zip(source_nodes_names, edges_values))))
+    #logicmap.update(dict(zip(expression_symbols, zip(source_nodes_names, edges_values))))
     
     return logic, logicmap, negated_logicmap
 
@@ -148,7 +152,7 @@ def get_rhombus_refers(dag):
     @result rhombus_refer_names is a dictionary where the keys are the IDs of the rhombus nodes and the values
     are the names that those rhombus refer to'''
     # gets rid of the legacy prefix 'stored_' if still existant, in not, not
-    rhombus_refer_names = {i:re.sub(r'^stored_', r'', dag.nodes[i]['name']) for i in dag.nodes if dag.nodes[i]['type']=='rhombus'}
+    rhombus_refer_names = {i:re.sub(r'^stored_', r'', dag.nodes[i]['name']) for i in dag.nodes if 'type' in dag.nodes[i].keys() and dag.nodes[i]['type']=='rhombus'}
     return rhombus_refer_names
 
 def get_rhombus_content(dag):
@@ -159,7 +163,7 @@ def get_rhombus_content(dag):
     # {rhombusID : names of the nodes that rhombus refer to}
     # remove also eventual html from the content
     # strip of the brackets [ ] around the content and got only what is inside (for select_options)
-    rhombus_content = {i:strip_off_brackets(ch.html2plain(dag.nodes[i]['content'])) for i in dag.nodes if dag.nodes[i]['type']=='rhombus'}
+    rhombus_content = {i:strip_off_brackets(ch.html2plain(dag.nodes[i]['content'])) for i in dag.nodes if len(dag.nodes[i])>0 and dag.nodes[i]['type']=='rhombus'}
     return rhombus_content
 
 def get_rhombus_equation(dag):
@@ -170,7 +174,7 @@ def get_rhombus_equation(dag):
     # {rhombusID : names of the nodes that rhombus refer to}
     # remove also eventual html from the content
     # strip of the brackets [ ] around the content and got only what is inside (for select_options)
-    rhombus_content = {i:re.sub(r'^[^<=>]+','',ch.html2plain(dag.nodes[i]['content'])) for i in dag.nodes if dag.nodes[i]['type']=='rhombus'}
+    rhombus_content = {i:re.sub(r'^[^<=>]+','',ch.html2plain(dag.nodes[i]['content'])) for i in dag.nodes if  len(dag.nodes[i])>0 and dag.nodes[i]['type']=='rhombus'}
     return rhombus_content
 
 def get_rhombus_types(dag, refer_types):
@@ -181,9 +185,10 @@ def get_rhombus_types(dag, refer_types):
     @result: rhombus_types is a dictionary where the keys are the IDs of the rhombus nodes and the values are
     the types of the nodes that they refer to.'''
     rhombus_refer_names = get_rhombus_refers(dag)
-    rhombusIDs = rhombus_refer_names.keys() 
+    rhombusIDs = rhombus_refer_names.keys()
+
     # {rhombusID : type of node it refers to}
-    rhombus_types = {i : [dag.nodes[n]['type'] for n in dag.nodes if dag.nodes[n]['name']==rhombus_refer_names[i] and dag.nodes[n]['type'] in refer_types][0] for i in rhombusIDs}
+    rhombus_types = {i : [dag.nodes[n]['type'] for n in dag.nodes if len(dag.nodes[n])>0 and dag.nodes[n]['name']==rhombus_refer_names[i] and dag.nodes[n]['type'] in refer_types][0] for i in rhombusIDs}
     
     return rhombus_types
 
@@ -262,7 +267,7 @@ def assign_refername_and_content_to_edges(dag, refer_types, refers_to, value):
     rhombus_types = get_rhombus_types(dag, refer_types)
     
     # map between rhombus content and the name of the select_option it refers to (for rhombus refering to select_one and select_multiple)
-    rhombus_content_to_refername = {dag.nodes[n]['content']:dag.nodes[n]['name'] for n in dag.nodes if dag.nodes[n]['content'] in rhombus_content.values() and dag.nodes[n]['type'] in ['select_option']}
+    rhombus_content_to_refername = {dag.nodes[n]['content']:dag.nodes[n]['name'] for n in dag.nodes if len(dag.nodes[n])>0 and dag.nodes[n]['content'] in rhombus_content.values() and dag.nodes[n]['type'] in ['select_option']}
     
     # map between rhombusID and the name of the select_option it is refering to 
     rhombus_select_optionname = {c:rhombus_content_to_refername[rhombus_content[c]] for c in rhombus_content if rhombus_types[c] in refers_to}
@@ -374,9 +379,17 @@ def parse_sympy_logic(s, negated_logicmap, logicmap):
     :param negated_logicmap: is the dictionary for negated expression like NOT(Fever)
     :param logicmap: is the dictionary for the non-negated expressions like ${d_fever}=1'''
     s = str(s) # convert sympy expression into string
-
+    
     for key, value in negated_logicmap.items():
-        s = s.replace(str(key), value)
+        """ if (key+" " or key+" )") in s: 
+            print("key ", key, "value ", value)
+        s = s.replace(str(key+" "), value+" ")
+        s = s.replace(str(key+" )"), value+" )")
+        s = s.replace(str(key), value+" ") """
+        regex_pattern = f"{key}(?=[^a-zA-Z]|$)"
+
+        if re.search(regex_pattern, s):
+            s = re.sub(regex_pattern, value, s)
 
     for key, value in logicmap.items():
             # first replace the (rare) EQUAL TO expressions like 'Eq(p_age, 24.0)'

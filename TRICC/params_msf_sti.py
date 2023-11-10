@@ -7,24 +7,24 @@ Created on Mon Jan 16 10:02:12 2023
 """
 
 ### General
-form_id = 'almanach_libya'
-form_title = 'Almanach Libya'
-htmlcontent = False # whether the diagram  contains html in the content of objects
+form_id = 'msf_sti'
+form_title = 'STI'
+htmlcontent = True # whether the diagram  contains html in the content of objects
 platform = 'cht'
-testing = False
+testing = True
 context_params_from_facility=False
 mhsplit = True  # whether several nodes are combined into 1 (multiheadline split)
 interrupt_flow = True
 activity = 'treatment'
-hide_diagnoses = ['d_critical_condition','d_non_critical_condition','d_no_malnut']
+hide_diagnoses = ['']
 ### Input Streamlit webapp folder
-folder = 'U:/Projects/Almanach-Libya/release20221025/Libya/'
+folder = 'C:/Users/perema/Documents/Projects/msfSTI/'
 resource_folder = './resources/'
-inputfile_dx = folder+'ALM LBY_Diagnostic.drawio'  # inputfile for jupyter notebook diagnostic
-inputfile = folder+'ALM LBY_Treatment_grouped.drawio' # inputfile for tricc-graph tt
+inputfile_dx = folder+'diagnostic.drawio'  # inputfile for jupyter notebook diagnostic
+inputfile = folder+'tt.drawio' # inputfile for tricc-graph tt
 diagnosis_order = folder+'diagnose_order.csv'
-input_trans = folder + '../../form/translation.xlsx'
-htmlfolder = folder + '../../form/htm_files/' # folder where the html files are stored (that will replace the text in notes)
+input_trans = folder + 'translation.xlsx'
+htmlfolder = folder + 'htm_files/' # folder where the html files are stored (that will replace the text in notes)
 images_to_import =['icon-healthcare-diagnosis.svg']
 
 ### Resources

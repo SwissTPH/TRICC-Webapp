@@ -50,6 +50,34 @@ def hierarchy_diagnosis(dag, diagnosis_id_hierarchy):
     
     return d
 
+def hierarchy_yesno(dag):
+    '''
+    I need a hierarchy of successors of [yes-no questions, rhombus] when sorting parallel flows. This is to ensure that the same question in 
+    different diagnsis subgraphs is sorted the same. Without a yesno hierarchy, the sorting might choose the YES path in one diagnosis and 
+    the NO path in another one, resulting with different sortings for different diagnosis, making the merging lists impossible. 
+    I choose to always priorityse the YES path over the NO path. This function implements that. (For serial forms this has no influence on the output behaviour.)
+    Output of this function is a dictionary where the values are the node ids of the successors of yes-no questions and the values are 1 for the
+    YES successor and 0 for the NO successor. 
+    '''
+    
+    # get all 'select_one yesno' nodes
+    n_yesno = [n for n in dag.nodes if 'type' in dag.nodes[n] and dag.nodes[n]['type'] in ['select_one yesno', 'rhombus']]
+    # get all successors of all 'select_one yesno' nodes
+     
+    # get out_edges of 'select_one yesno' nodes
+    # those nodes have as logic values tuples of the style (yesno-id, YES/NO)
+    # those connected with 'Yes' edges
+    # added 'logic' part of the expression to both yes and no successors MPEA
+    n_yesno_successors_yes = [e[1] for e in dag.edges(data=True) if e[0] in n_yesno and (("value" in e[2].keys() and e[2]['value']=='Yes') or ("logic" in e[2].keys() and str(e[2]['logic']).endswith('Yes') ))]
+    opt_prio_yes = {i:0.2 for i in n_yesno_successors_yes}
+    
+    # those connected with 'No' edges 
+    n_yesno_successors_no = [e[1] for e in dag.edges(data=True) if e[0] in n_yesno and (("value" in e[2].keys() and e[2]['value']=='No') or ("logic" in e[2].keys() and str(e[2]['logic']).endswith('No') ))]
+    opt_prio_no = {i:0.1 for i in n_yesno_successors_no}
+    
+    opt_prio_yesno = opt_prio_yes | opt_prio_no
+    
+    return opt_prio_yesno
 
 def hierarchy_select_options(df_raw):
     '''
@@ -83,6 +111,7 @@ def topo_sort_cdss_dag(dag, df_raw):
     df_raw_sorted.reset_index(inplace = True)
     
     return df_raw_sorted, topo_order
+
 
 
 def get_graph_entry_point(dag):
@@ -631,7 +660,7 @@ def build_node_relevance(dag, n, node_edge_logic, s=True):
     @ node_edge_logic: the list of singular expressions for each incoming edge into n
     @ s: boolean, wheather the expression should be simplified to be shorter and quicker to execute (if True, TRICC is slowed down)
     @ return: the logical expression for n'''
-    if dag.nodes[n]['type']!='count':
+    if len(dag.nodes[n])>0 and dag.nodes[n]['type']!='count':
         if s:
             # print('Simplifying relevance expression of node', n, 'Name:', dag.nodes[n]['name'])
             relevance = simplify(Or(*node_edge_logic)) # combine node-edge-logic combos of all pn->n with OR
@@ -658,11 +687,11 @@ def get_node_ids(candidate, dag):
     '''Function to retrieve a list of nodes that have the type-attribute candidate[0] and the name-attribute candidate[1]
     @result is a list of node_ids'''
     # nodes of that candidate
-    nodes = [n for n in dag.nodes if dag.nodes[n]['type'] == candidate[0] and dag.nodes[n]['name'] == candidate[1]] 
+    nodes = [n for n in dag.nodes if 'type' in dag.nodes[n] and dag.nodes[n]['type'] == candidate[0] and dag.nodes[n]['name'] == candidate[1]] 
     
     return nodes
 
-def contract_duplicates(dag, contract_types):
+def contract_duplicates(dag, contract_types, d):
     ''' Function to contract duplicates in a graph. Duplicates are defined as nodes that have the same type and name at the same time. 
     The function attempts to contract all occurences into one single node by trying all combinations of the occurence of this node. 
     If a contraction  would create cycle, it is aborted and further combinations are tried
@@ -671,7 +700,7 @@ def contract_duplicates(dag, contract_types):
     @result dag is the graph with the nodes contracted'''
     
     # identify all duplicates in (name, type) pairs
-    candidates = list(set([(dag.nodes[n]['type'], dag.nodes[n]['name']) for n in dag.nodes if dag.nodes[n]['type'] in contract_types]))
+    candidates = list(set([(dag.nodes[n]['type'], dag.nodes[n]['name']) for n in dag.nodes if 'type' in dag.nodes[n] and dag.nodes[n]['type'] in contract_types]))
 
     # list of lists of nodes that qualify  for contraction
     candidate_duplicates = [get_node_ids(n, dag) for n in candidates if len(get_node_ids(n, dag))>1] 
@@ -684,12 +713,24 @@ def contract_duplicates(dag, contract_types):
                         # check if contraction would create a loop
                         dag2 = nx.contracted_nodes(dag, j, k, self_loops=False) # merge k into j
                         if nx.is_directed_acyclic_graph(dag2):
-                            dag = dag2                      
+                            dag = dag2
+                            #added MPEA                
+                            d = replace_node_in_list_of_lists(k, j, d)
                         else:
                             print('For the combination:', dag.nodes[j]['type'], ' -' , dag.nodes[j]['name'], '\n the node', k, 'did not contract into', j, 'because it would have created a cycle')
     k = a - len(dag.nodes) # amount of contracted nodes
     print('In total,', k, 'nodes have been contracted.')
-    return dag
+    return dag, d
+
+def replace_node_in_list_of_lists(removed_node, contracted_node, d):
+    ''' Replaces every occurence of the node 'removed_node' by 'contracted_node' in the list of lists 'd' 
+    '''
+    for l in d:
+        for item in l: 
+            if item == removed_node:
+                i = l.index(item)
+                l[i]=contracted_node
+    return d
 
 
 def push_down_relevance(dag,n):
@@ -745,7 +786,7 @@ def make_help_attributes(dag):
     '''
     for t in ['help-message', 'hint-message']:
         # works only if a help message is pointing to 1 node only
-        d = {list(dag.successors(n))[0]:dag.nodes[n]['content'] for n in dag.nodes if dag.nodes[n]['type'] in [t]} 
+        d = {list(dag.successors(n))[0]:dag.nodes[n]['content'] for n in dag.nodes if 'type' in dag.nodes[n] and dag.nodes[n]['type'] in [t]} 
         nx.set_node_attributes(dag, d, name=t)
         
     return  dag
@@ -770,11 +811,12 @@ def extract_images(dag, df_raw, mediafolder):
             # extract image itself
             img_data=re.search('image=data:image/.+,(.+?);',image).group(1) # extract image data from 'style' column using regex
             
+            img_name = i
             # write imagename to node attribute `image::en`
-            dag.nodes[j]['image::en']=i + '.' + img_type
+            dag.nodes[j]['image::en']=img_name + '.' + img_type
             
             # store file to disk
-            with open(mediafolder+i+'.'+img_type, "wb") as fh:
+            with open(mediafolder+img_name+'.'+img_type, "wb") as fh:
                 fh.write(base64.decodebytes(img_data.encode('ascii'))) # encode image into ascii (binary) and save
         
     return  dag
@@ -785,7 +827,7 @@ def rename_duplicates(dag,types):
     Add to the name of those nodes the node-id
     '''
     # get all name,type combos
-    candidates = list(set([(dag.nodes[n]['type'], dag.nodes[n]['name']) for n in dag.nodes if dag.nodes[n]['type'] in types]))
+    candidates = list(set([(dag.nodes[n]['type'], dag.nodes[n]['name']) for n in dag.nodes if 'type' in dag.nodes[n] and dag.nodes[n]['type'] in types]))
     
     # list of lists of nodes that qualify  for contraction
     candidate_duplicates = [get_node_ids(n, dag) for n in candidates if len(get_node_ids(n, dag))>1] 
@@ -840,7 +882,7 @@ def pop_rhombus(l, dag):
     
     new_l = []
     for n in l:
-        if dag.nodes[n]['type']!='rhombus':
+        if 'type' in dag.nodes[n] and dag.nodes[n]['type']!='rhombus':
             new_l.append(n)
     
     return new_l

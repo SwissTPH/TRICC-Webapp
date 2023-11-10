@@ -27,7 +27,7 @@ from CDSS_list_merge import merge_list
 #%% Parameters - > choose your form (ped, yi, almsom) here
 #import params_almsom_tt as p # for almanach Somalia TT
 # import params_ped_rk as p # for msfecare Ped
-import params_libya_rk as p # for Almanach Libya
+import params_msf_sti as p # for Almanach Libya
 
 #%% Parse diagram
 objects = inputs.parse_drawio(p.inputfile) # parse drawing
@@ -37,9 +37,11 @@ df_raw = inputs.treetodataframe(objects) # import drawing elements into a df
 df_raw.fillna('', inplace = True) 
 df_raw.loc[df_raw['label']!='','value'] = df_raw['label'] # all content into the same column
 
+# this keeps specific tabs in the diagram
+#df_raw = df_raw.loc[df_raw['activity']=='oral antibiotics']
 
 #%% Focus on treatment only and strip off the follow up (FOR NOW, in Almsom TT)
-df_raw = df_raw.loc[df_raw['activity']!='Follow up advise']
+#df_raw = df_raw.loc[df_raw['activity']!='Follow up advise']
 
 
 #%% Quality checks
@@ -64,7 +66,11 @@ df_choices=df_raw.loc[df_raw['odk_type']=='select_option']
 df_choices=df_choices.merge(df_raw[['name','odk_type','id']],how='left',left_on='parent',right_on='id')
 df_choices=df_choices[['name_y','name_x','value']]
 
+
+## MPEA ADDED BECAUSE I WANTED TO TAKE CHOICES FROM DRUGS TO THE NEW XLS
 df_choices.rename({'name_y':'list_name','name_x':'name','value':'label::en'},axis=1,inplace=True)
+drug_choices = pd.read_excel(p.drugsfile, sheet_name="choices")
+df_choices = pd.concat([df_choices, drug_choices])
 
 # add rows for yesno
 yes=pd.DataFrame({'list_name':'yesno','name':'Yes','label::en':'Yes'}, index=['zzz_yes'])
@@ -209,7 +215,14 @@ As indicated in the conceptual document, this step must be done before contracti
 in orrder to avaid that diagnosis branches are mixed up after the contraction. 
 In the contracted node, the "longest path from root" will the maximum of the longest paths of the contracted
 nodes.'''
+
+#%% SORTING: Make hierarchy for yesno branching
+opt_prio_yesno = gt.hierarchy_yesno(dag)
+
+#%% SORTING: Make hierarchy of select options
 opt_prio = gt.hierarchy_select_options(df_raw) # hierarchy of select_options in the form
+#%% SORTING: Combine select_options and select yesno hierarchies
+opt_prio = opt_prio | opt_prio_yesno
 
 if p.activity == 'treatment':
     # make a hierarchy for the select_diagnosis options
@@ -227,7 +240,18 @@ nx.set_node_attributes(dag, dist, name = 'distance_from_root')
 
 
 #%% CDSS adapted topological sort
-topo_order = gt.topo_sort_cdss_attrib(dag, 'distance_from_root') # the complete sorting of the graph
+#MODIFIED MPEA, CAUSE THIS IS ONLY DONE FOR DX
+#topo_order = gt.topo_sort_cdss_attrib(dag, 'distance_from_root') # the complete sorting of the graph
+## ADDED BY MPEA 
+if p.activity =='treatment':
+    # the sorting for this case is based on merging lists. We build first a `list of lists` of nodes for each diagnosis
+    # this must happen prior to contracting nodes. 
+    # it picks each diagnosis for the hierarchy and makes a CDSS sorted list of successor nodes
+    d = gt.make_sorted_nodes_list(dag, diagnosis_id_hierarchy, opt_prio)
+    # we have to remove 'rhombus' nodes from the list of lists, to avoid that they get merged into one    
+    d_new = [gt.pop_rhombus(n, dag) for n in d] #list of lists
+
+    d=d_new 
 '''
 # this approach is good, but not for Treatment or any other activity where diagnosis graphs are parallel
 if p.activity!='treatment':
@@ -268,7 +292,9 @@ if p.activity=='treatment':
     '''before contraction, write the relevance of the to be contracted node into the 
     selected successors of that node add the relevance expression of the contracted node into the one that has been created
     ''' 
-    dag = gt.contract_duplicates(dag, contract_types)
+    #Added d 
+    #dag,d  = gt.contract_duplicates(dag, contract_types, d)
+    dag, d  = gt.contract_duplicates(dag, contract_types, d)
     
     # flatten relevance by combining it with 'contracted' relevances in each node
     [gt.make_node_relevance(dag, n) for n in dag.nodes if 'contraction' in dag.nodes[n]]
@@ -276,11 +302,25 @@ if p.activity=='treatment':
     # flatten also the distance-from-root. It 
     [gt.make_node_distance_from_root(dag, n) for n in dag.nodes if 'contraction' in dag.nodes[n]]
     
+## ADDED MPEA
+if p.activity=='treatment':
+    # the sorting for treatment (and for its groups) is based on merging lists. We build first a `list of lists` of nodes for each diagnosis
+    # must happen prior to contracting nodes, moved up 
+    # d = gt.make_sorted_nodes_list(dag, diagnosis_id_hierarchy, opt_prio)
+
+    # we have to remove 'rhombus' nodes from the list of lists, to avoid that they get merged into one    
+    # d_new = [gt.pop_rhombus(n, dag) for n in d]
+    # d=d_new
+    # MPEA : inverted list to try different approach
+    #inverted_diagnostic_list = d[::-1]
+    topo_order = d[0] # variable for the globally sorted nodes, we start with the diagnosis_sort of the most severe diagnosis
+    for diagnosis_sort in d[1:]:
+        topo_order = merge_list(diagnosis_sort, topo_order)
 #%% Reset group relevance in group children
 # set group relevance to true for all nodes inside that group (exemple caretaker advice in Ped TT)
 
 # get ids of all groups
-group_ids = [n for n in dag.nodes if dag.nodes[n]['type']=='container_page']
+group_ids = [n for n in dag.nodes if 'type' in dag.nodes[n] and dag.nodes[n]['type']=='container_page']
 
 # get ids of all nodes that are in groups 
 nodes_in_groups = [n for n in dag.nodes if 'group' in dag.nodes[n].keys() and dag.nodes[n]['group'] in group_ids]
@@ -308,7 +348,9 @@ dag = gt.rename_duplicates(dag, types)
 ''' The relevance logic expressions are generic Sympy expressions. As we will be using Enketo based solutions, 
 we must convert them into odk conform expressions. The maping between sympy expressions and odk is given in the 
 dictionaries negated_logicmap and logicmap'''
-        
+""" for n in dag.nodes:
+    print(dag.nodes[n]) """
+
 for n in dag.nodes:
     dag.nodes[n]['relevance'] = el.parse_sympy_logic(dag.nodes[n]['relevance'], negated_logicmap, logicmap)
 
@@ -320,13 +362,13 @@ for n in dag.nodes:
 
 #%% Replace note headings with content from html files
 # first, insure that all html files are encoded in UTF-8
-if p.form_id == 'almsom':
+if p.form_id == 'almsom' or p.form_id == 'almanach_libya':
     for n in dag.nodes:
-        if dag.nodes[n]['type'] in ['note', 'select_one', 'select_one yesno', 'select_multiple']:
+        if 'type' in  dag.nodes[n] and dag.nodes[n]['type'] in ['note', 'select_one', 'select_one yesno', 'select_multiple']:
             utf8(p.htmlfolder + dag.nodes[n]['content'] + '.htm')
             
-if p.form_id == 'almsom':
-    content = {n:ch.cleanhtml_fromfile(p.htmlfolder + dag.nodes[n]['content'] + '.htm')  for n in dag.nodes if dag.nodes[n]['type'] in ['note', 'select_one', 'select_one yesno', 'select_multiple']}
+if p.form_id == 'almsom' or p.form_id == 'almanach_libya':
+    content = {n:ch.cleanhtml_fromfile(p.htmlfolder + dag.nodes[n]['content'] + '.htm')  for n in dag.nodes if 'type' in  dag.nodes[n] and dag.nodes[n]['type'] in ['note', 'select_one', 'select_one yesno', 'select_multiple']}
     nx.set_node_attributes(dag, content, 'content')
 
 #%% Convert html strings to markdown for inferiour platforms
@@ -379,7 +421,7 @@ df_settings.head()
 #%% Add select_diagnosis and data_load to df_choices
 '''Currently done by hand, later based on graph. See issue posted on github'''
 def diagnosis_to_dfchoices(dag, df_choices, listname):
-    d = {n:dag.nodes[n] for n in dag.nodes if (dag.nodes[n]['type']=='select_option') and (dag.nodes[n]['group']==listname)}
+    d = {n:dag.nodes[n] for n in dag.nodes if 'type' in  dag.nodes[n] and (dag.nodes[n]['type']=='select_option') and (dag.nodes[n]['group']==listname)}
     df_select_diagnosis = pd.DataFrame.from_dict(d, orient='index')
     df_select_diagnosis = df_select_diagnosis[['group', 'name', 'content']]
     df_select_diagnosis.rename(columns={'group':'list_name', 'content':'label::en'}, inplace=True)

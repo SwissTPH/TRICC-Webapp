@@ -28,7 +28,7 @@ def encodeUTF8(filename):
             os.remove(filename) # remove old encoding file
             os.rename(filename+'l', filename) # rename new encoding
         except UnicodeDecodeError:
-            print('Decode Error')
+            print('Decode Error with filename: ', filename)
         except UnicodeEncodeError:
             print('Encode Error')
             

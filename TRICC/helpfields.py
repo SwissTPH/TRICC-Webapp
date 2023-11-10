@@ -16,7 +16,6 @@ import pandas as pd
 def concat_str(help_id):
     intro_en = 'For more information on '
     extro_en = ' click here'
-    
     d_en = {'select_danger_signs':'convulsions',\
             'select_symptoms_further': 'apnoea and diarrhoea',\
             'select_danger_signs_additional': 'how to check for jaundice',\

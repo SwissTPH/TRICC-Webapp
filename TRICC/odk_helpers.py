@@ -181,7 +181,7 @@ def frame_to_odk(df, drugsfile, form_id):
     '''Adapt the survey dataframe so that it fits to ODK requirements. This is necessary for
     ODK/Enketo based solutions, such as CHT, Commcare, ODK Collect'''
     newcols = ['repeat_count', 'appearance', 'required', 'required message::en', 'calculation', \
-               'constraint', 'constraint message::en', 'image::en']
+               'constraint', 'constraint message::en']
     df[newcols]=''
 
     # short term workaround for select_xxx + NAME to add the same name as list_name
@@ -230,7 +230,14 @@ def concat_str(help_id):
     intro_en = 'For more information on '
     extro_en = ' click here'
     
-    d_en = {'select_danger_signs':'convulsions',\
+    d_en = {'label_diazepam_ds' : 'the application of diazepam',\
+            'label_salbutatomol':'the application of salbutamol',\
+            'ask_diarrhoea':'diarrhoea',\
+            'select_hydration_behaviour':'skin pinch',\
+            'select_hydration_behaviour_throat':'skin pinch',\
+            'ask_hydration_eyes_sunken':'sunken eyes',\
+            'ask_hydration_eyes_sunken_throat':'sunken eyes',\
+            'select_danger_signs':'convulsions',\
             'select_symptoms_further': 'apnoea and diarrhoea',\
             'select_danger_signs_additional': 'how to check for jaundice',\
             'label_phenobarbital': 'causes of convulsions',\
