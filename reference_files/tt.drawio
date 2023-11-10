@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-08-30T13:24:55.978Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.7.4 Chrome/106.0.5249.199 Electron/21.3.3 Safari/537.36" etag="jhMpYgDDkQdAyc0m-jdb" compressed="false" version="20.7.4" type="device" pages="5">
+<mxfile host="Electron" modified="2023-09-13T13:56:01.177Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.7.4 Chrome/106.0.5249.199 Electron/21.3.3 Safari/537.36" etag="LoZxDDjCbAcn0Rr4_UUI" compressed="false" version="20.7.4" type="device" pages="5">
   <diagram id="kWf_blgi_NdiUHzsN4Vi" name="referral">
-    <mxGraphModel dx="1472" dy="1229" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="780" dy="504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -24,7 +24,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Very severe disease" odk_type="diagnosis" name="d_vsd" id="KudxtqichP8pmQ3-9l3r-6">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="1190" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -79,7 +79,7 @@
           </mxGeometry>
         </mxCell>
         <object label="VSD - acute malnutrition with complications" odk_type="diagnosis" name="d_vsd_malnutrition_acute_complications" id="KudxtqichP8pmQ3-9l3r-16">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="40" y="2150" width="240" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -273,7 +273,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Severe Anaemia" odk_type="diagnosis" name="d_anemia_severe" id="KudxtqichP8pmQ3-9l3r-48">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="1350" width="100" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -281,7 +281,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Severe Complicated Measles" odk_type="diagnosis" name="d_scm" id="KudxtqichP8pmQ3-9l3r-50">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="1270" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -369,7 +369,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Severe dehydration" odk_type="diagnosis" name="d_dehydration_severe" id="KudxtqichP8pmQ3-9l3r-65">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="39.99999999999977" y="2430" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -377,7 +377,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Severe respiratory disease" odk_type="diagnosis" name="d_respiratory_severe" id="KudxtqichP8pmQ3-9l3r-67">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="1670" width="200" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -387,12 +387,12 @@
           </mxGeometry>
         </mxCell>
         <object label="VSD - difficult breathing" odk_type="diagnosis" name="d_vsd_breathing_difficult" id="KudxtqichP8pmQ3-9l3r-69">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="40" y="1590" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
         <object label="VSD - dehydrated" odk_type="diagnosis" name="d_vsd_dehydrated" id="KudxtqichP8pmQ3-9l3r-70">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="40" y="2310" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -408,7 +408,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="VSD - stridor" odk_type="diagnosis" name="d_vsd_stridor" id="KudxtqichP8pmQ3-9l3r-74">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="40" y="1830" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -484,7 +484,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Severe anaphylaxis" odk_type="diagnosis" name="d_anaphylaxis_severe" id="KudxtqichP8pmQ3-9l3r-90">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="40" y="1990" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -544,7 +544,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Severe varicella (chickenpox)" odk_type="diagnosis" name="d_varicella_severe" id="KudxtqichP8pmQ3-9l3r-101">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="40" y="1470" width="210" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -681,19 +681,6 @@
         <object label="Present fever" odk_type="calculate" name="d_fever" id="KudxtqichP8pmQ3-9l3r-124">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" parent="1" vertex="1">
             <mxGeometry x="1270" y="270" width="100" height="40" as="geometry" />
-          </mxCell>
-        </object>
-        <mxCell id="KudxtqichP8pmQ3-9l3r-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="KudxtqichP8pmQ3-9l3r-126" target="KudxtqichP8pmQ3-9l3r-112" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1479" y="220" />
-              <mxPoint x="1879" y="220" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <object label="Hypothermia" odk_type="calculate" name="d_hypothermia" id="KudxtqichP8pmQ3-9l3r-126">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" parent="1" vertex="1">
-            <mxGeometry x="1440" y="270" width="80" height="40" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="KudxtqichP8pmQ3-9l3r-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="KudxtqichP8pmQ3-9l3r-128" target="KudxtqichP8pmQ3-9l3r-112" edge="1">
@@ -1016,7 +1003,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Severe Malaria" odk_type="diagnosis" name="d_malaria_severe" id="KudxtqichP8pmQ3-9l3r-183">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="1109" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1024,7 +1011,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Possible Severe Malaria" odk_type="diagnosis" name="d_malaria_severe_possible" id="KudxtqichP8pmQ3-9l3r-185">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="1030" width="140" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1060,7 +1047,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;div&gt;&lt;b&gt;Salbutamol&lt;/b&gt;: Administration:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;Shake the inhaler vigorously before each puff&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Cover the child’s mouth and nose with the mask of the inhaler&lt;/span&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Introduce 2 to 6 puff (100 mcg each) into the inhalation chamber and allow the child to breath normally five times, shaking the inhaler between each puff&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Evaluate response to treatment after 15 minutes. If improvement, continue repeating every 10-30 minutes until symptoms improve during 1 hour, then every 1- 3 hours until arrival to the hospital.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" odk_type="help-message" name="salbutamol" id="KudxtqichP8pmQ3-9l3r-194">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="1800" y="1370" width="550" height="140" as="geometry" />
           </mxCell>
         </object>
@@ -1068,7 +1055,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Ceftriaxone IM&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: CEFTRIAXONE powder 1000mg (1g)&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in 3.5ml water for injection&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;You obtain a 4ml solution containing 250mg/mL of Ceftriaxone&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject IM into mid-anterolateral thigh&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;ATTENTION: do NOT administer more than 4mL at the same place: administer half dose in each thigh if necessary&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="ceftriaxone-im" id="KudxtqichP8pmQ3-9l3r-196">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="3310" y="1130" width="440" height="200" as="geometry" />
           </mxCell>
         </object>
@@ -1086,7 +1073,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;font-weight: 700; background-color: initial;&quot;&gt;Ampicillin (dose 50mg/kg) IM&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: powder for injection 500mg and 1 g vials&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Reconstitution: add 1.7 mL of water for injection to the 500 mg OR add 3.3 mL of water for injection to the 1 g vial (final concentration 250 mg/mL solution)&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration:&amp;nbsp;&lt;/span&gt;Inject IM into mid-anterolateral thigh&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Gentamicin (dose 7.5mg/kg) IM&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: 80mg/2ml (40mg/ml) ampoule&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;No dilution needed for IM administration&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject IM into mid-anterolateral thigh&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="ampigenta" id="KudxtqichP8pmQ3-9l3r-200">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="3840" y="1231" width="440" height="310" as="geometry" />
           </mxCell>
         </object>
@@ -1099,7 +1086,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Artesunate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: ARTESUNATE powder 60mg&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in 1 mL of sodium bicarbonate; then add 2mL of NaCl 0.9%&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;This results in a solution of 3mL containing 20mg of Artesunate per mL&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject slowly IM into antero-external part of the thigh&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="artesunate-im" id="KudxtqichP8pmQ3-9l3r-203">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="5335" y="1170" width="300" height="230" as="geometry" />
           </mxCell>
         </object>
@@ -1112,7 +1099,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;font-weight: 700; background-color: initial;&quot;&gt;Preparation:&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: ARTESUNATE powder 60mg&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in&amp;nbsp;1 mL&amp;nbsp;of 5% sodium bicarbonate&amp;nbsp;; then add&amp;nbsp;5 mL&amp;nbsp;of&amp;nbsp;NaCl&amp;nbsp;0.9%&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;This results in a&amp;nbsp;solution&amp;nbsp;of 6 mL containing&amp;nbsp;10 mg&amp;nbsp;of Artesunate&amp;nbsp;per mL&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;The solution has to be administered slowly IV over 2-3 minutes&lt;/p&gt;" odk_type="help-message" name="artesunate-iv" id="KudxtqichP8pmQ3-9l3r-206">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="6040" y="1200" width="320" height="190" as="geometry" />
           </mxCell>
         </object>
@@ -1125,7 +1112,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;background-color: initial; box-sizing: border-box; font-weight: 700;&quot;&gt;Rectal&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;administration (if IM or IV form NOT available):&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Introduce the ARTESUNATE suppository into the anus and keep the gluteus muscles tight to ensure retention&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;If the suppository is expelled within the first 30 minutes, give a second dose&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="artesuante-rectal" id="KudxtqichP8pmQ3-9l3r-209">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="6500" y="1200" width="300" height="160" as="geometry" />
           </mxCell>
         </object>
@@ -1138,7 +1125,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;background-color: initial; box-sizing: border-box; font-weight: 700;&quot;&gt;Rectal&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;administration (if IM or IV form NOT available):&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Introduce the ARTESUNATE suppository into the anus and keep the gluteus muscles tight to ensure retention&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;If the suppository is expelled within the first 30 minutes, give a second dose&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="artesunate-rectal" id="KudxtqichP8pmQ3-9l3r-212">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="5820" y="1590" width="340" height="120" as="geometry" />
           </mxCell>
         </object>
@@ -1151,7 +1138,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Artesunate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: ARTESUNATE powder 60mg&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in 1 mL of sodium bicarbonate; then add 2mL of NaCl 0.9%&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;This results in a solution of 3mL containing 20mg of Artesunate per mL&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject slowly IM into antero-external part of the thigh&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="artesunate-im" id="KudxtqichP8pmQ3-9l3r-215">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="5260" y="1580" width="360" height="220" as="geometry" />
           </mxCell>
         </object>
@@ -1164,7 +1151,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Ceftriaxone IM&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: CEFTRIAXONE powder 1000mg (1g)&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in 3.5ml water for injection&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;You obtain a 4ml solution containing 250mg/mL of Ceftriaxone&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject IM into mid-anterolateral thigh&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;ATTENTION: do NOT administer more than 4mL at the same place: administer half dose in each thigh if necessary&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="ceftriaxone-im" id="KudxtqichP8pmQ3-9l3r-218">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="2990" y="1760" width="420" height="220" as="geometry" />
           </mxCell>
         </object>
@@ -1177,7 +1164,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;If&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial; box-sizing: border-box; font-weight: 700;&quot;&gt;IV administration&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;available at the health centre:&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: CEFTRIAXONE powder 1000mg (1g)&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Reconstitute&amp;nbsp;with 10&amp;nbsp;mL&amp;nbsp;WFI (final&amp;nbsp;concentration 100mg/mL)&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Slow IV injection (3-5 min) or IV infusion&amp;nbsp;(children &amp;gt;20kg: administer in 30 minutes)&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;ATTENTION:&amp;nbsp;Never administer/mix with RINGER Lactate&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="ceftriaxone-iv" id="KudxtqichP8pmQ3-9l3r-221">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="3840" y="1762" width="380" height="220" as="geometry" />
           </mxCell>
         </object>
@@ -1190,7 +1177,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Ceftriaxone IM&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: CEFTRIAXONE powder 1000mg (1g)&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in 3.5ml water for injection&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;You obtain a 4ml solution containing 250mg/mL of Ceftriaxone&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject IM into mid-anterolateral thigh&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;ATTENTION: do NOT administer more than 4mL at the same place: administer half dose in each thigh if necessary&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="ceftriaxone-im" id="KudxtqichP8pmQ3-9l3r-224">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="2990" y="2175" width="420" height="220" as="geometry" />
           </mxCell>
         </object>
@@ -1276,7 +1263,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Severe Pneumonia" odk_type="diagnosis" name="d_pneumonia_severe" id="JQYen5lddctWRZ4AoUcz-2">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="1750" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1284,7 +1271,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Mastoiditis" odk_type="diagnosis" name="d_mastoiditis" id="06t2nJ2md0ElOhlP4nJC-2">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="3190" width="80" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1292,7 +1279,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Upper complicated UTI" odk_type="diagnosis" name="d_uti_febrile" id="06t2nJ2md0ElOhlP4nJC-4">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="3670" width="200" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1300,7 +1287,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Complicated uvulectomy" odk_type="diagnosis" name="d_uvulectomy_complicated" id="06t2nJ2md0ElOhlP4nJC-6">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="40" y="3270" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1386,7 +1373,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Acute malnutrition with complications" odk_type="diagnosis" name="d_sam_complications" id="06t2nJ2md0ElOhlP4nJC-21">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="4810" width="200" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1394,7 +1381,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="High nutritional risk" odk_type="diagnosis" name="d_risk_nutritional_high" id="06t2nJ2md0ElOhlP4nJC-23">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="5270" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1402,7 +1389,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Resistant wheezing" odk_type="diagnosis" name="d_wheezing_resistant" id="06t2nJ2md0ElOhlP4nJC-25">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="4030" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1410,7 +1397,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Risk of testicular torsion" odk_type="diagnosis" name="d_torsion_testicular_risk" id="06t2nJ2md0ElOhlP4nJC-27">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="4450" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1418,7 +1405,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Possible strangulated inguinal hernia" odk_type="diagnosis" name="d_hernia_inguinal_possible" id="06t2nJ2md0ElOhlP4nJC-29">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="4530" width="200" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1428,7 +1415,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Severe abdominal pain" odk_type="diagnosis" name="d_pain_obdominal_severe" id="06t2nJ2md0ElOhlP4nJC-31">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="3450" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1436,7 +1423,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Complicated dehydration" odk_type="diagnosis" name="d_dehydration_complicated" id="06t2nJ2md0ElOhlP4nJC-33">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="4190" width="140" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1444,7 +1431,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Complicated dysentery" odk_type="diagnosis" name="d_dysentery_complicated" id="06t2nJ2md0ElOhlP4nJC-35">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="3350" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1452,7 +1439,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Possible intussusception" odk_type="diagnosis" name="d_intussusception_possible" id="06t2nJ2md0ElOhlP4nJC-37">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="4310" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1460,7 +1447,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Possible corneal lesions" odk_type="diagnosis" name="d_lesions_corneal_possible" id="06t2nJ2md0ElOhlP4nJC-39">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;" parent="1" vertex="1">
             <mxGeometry x="40" y="4690" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1468,7 +1455,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Stomatitis" odk_type="diagnosis" name="d_stomatitis" id="06t2nJ2md0ElOhlP4nJC-41">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="40" y="4610" width="80" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1777,7 +1764,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;font color=&quot;#000000&quot;&gt;Periorbital or orbital cellulitis&lt;/font&gt;" odk_type="diagnosis" name="d_cellulitis_periorbital" id="06t2nJ2md0ElOhlP4nJC-103">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="40" y="3110" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1785,7 +1772,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;font color=&quot;#000000&quot;&gt;Febrile cellulitis&lt;/font&gt;" odk_type="diagnosis" name="d_cellulitis_febrile" id="06t2nJ2md0ElOhlP4nJC-105">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="40" y="2950" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -1793,7 +1780,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;font color=&quot;#000000&quot;&gt;Multiple or large abscess&lt;/font&gt;" odk_type="diagnosis" name="d_abscess_large" id="06t2nJ2md0ElOhlP4nJC-107">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=#b85450;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="40" y="3030" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2004,7 +1991,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;font-weight: 700; background-color: initial;&quot;&gt;Ampicillin (dose 50mg/kg) IM&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: powder for injection 500mg and 1 g vials&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Reconstitution: add 1.7 mL of water for injection to the 500 mg OR add 3.3 mL of water for injection to the 1 g vial (final concentration 250 mg/mL solution)&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration:&amp;nbsp;&lt;/span&gt;Inject IM into mid-anterolateral thigh&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Gentamicin (dose 7.5mg/kg) IM&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: 80mg/2ml (40mg/ml) ampoule&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;No dilution needed for IM administration&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject IM into mid-anterolateral thigh&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="ampigenta" id="06t2nJ2md0ElOhlP4nJC-165">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="4320" y="3110" width="440" height="310" as="geometry" />
           </mxCell>
         </object>
@@ -2012,7 +1999,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Ceftriaxone IM&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: CEFTRIAXONE powder 1000mg (1g)&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in 3.5ml water for injection&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;You obtain a 4ml solution containing 250mg/mL of Ceftriaxone&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject IM into mid-anterolateral thigh&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;ATTENTION: do NOT administer more than 4mL at the same place: administer half dose in each thigh if necessary&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="ceftriaxone-im" id="06t2nJ2md0ElOhlP4nJC-167">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="4350" y="3630" width="380" height="240" as="geometry" />
           </mxCell>
         </object>
@@ -2142,11 +2129,24 @@
             <mxGeometry x="920" y="3420" width="240" height="100" as="geometry" />
           </mxCell>
         </UserObject>
+        <mxCell id="C_A73sztjclHlHe1Ct-D-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="C_A73sztjclHlHe1Ct-D-1" target="C_A73sztjclHlHe1Ct-D-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <object label="Hypothermia" odk_type="diagnosis" name="d_hypothermia" id="C_A73sztjclHlHe1Ct-D-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c00000;strokeColor=default;" parent="1" vertex="1">
+            <mxGeometry x="60" y="5530" width="80" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <UserObject label="&lt;p class=&quot;MsoNormal&quot; style=&quot;margin-bottom: 0cm ; margin-bottom: 0.0001pt ; line-height: 12.0pt&quot;&gt;&lt;b&gt;&lt;span lang=&quot;EN-GB&quot;&gt;Treat for possible&lt;br&gt;hypoglycaemia:&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(35 , 31 , 32)&quot;&gt;Administration&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(35 , 31 , 32)&quot;&gt;of Glucose: 10% (G10) e&lt;/span&gt;&lt;span&gt;ither 2 ml/kg IV or 10ml/kg through nasogastric tube&amp;nbsp;&lt;/span&gt;&lt;span&gt;(NGT) OR if no IV/NGT available: place under the tongue, or inside the cheek,&amp;nbsp;&lt;/span&gt;&lt;span&gt;1ml/kg of GLUCOSE 50% (G50), or one level teaspoon full of sugar moistened with&amp;nbsp;&lt;/span&gt;&lt;span&gt;water.&lt;/span&gt;&lt;span&gt;&lt;br&gt;&lt;/span&gt;" odk_type="note" name="hypothermia_tt" id="C_A73sztjclHlHe1Ct-D-2">
+          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
+            <mxGeometry x="210" y="5500" width="390" height="100" as="geometry" />
+          </mxCell>
+        </UserObject>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="DB0zl9DT9hGGJXzaNjfC" name="persistent">
-    <mxGraphModel dx="1472" dy="1229" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1232" dy="1229" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2154,7 +2154,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Persistent cough" odk_type="diagnosis" name="d_cough_persistent" id="tLzNK9RUPLIciazGCoQ8-2">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f47920;strokeColor=#d79b00;" parent="1" vertex="1">
             <mxGeometry x="43" y="108" width="229" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2162,7 +2162,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Persistent fever" odk_type="diagnosis" name="d_" id="tLzNK9RUPLIciazGCoQ8-4">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f47920;strokeColor=#d79b00;" parent="1" vertex="1">
             <mxGeometry x="151" y="975" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2232,7 +2232,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Possible trachoma" odk_type="diagnosis" name="d_" id="tLzNK9RUPLIciazGCoQ8-18">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f47920;strokeColor=#d79b00;" parent="1" vertex="1">
             <mxGeometry x="163" y="1175" width="130" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2273,7 +2273,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Extensive or febrile ulcer" odk_type="diagnosis" name="d_" id="tLzNK9RUPLIciazGCoQ8-29">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f47920;strokeColor=#d79b00;" parent="1" vertex="1">
             <mxGeometry x="143" y="845" width="146" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2444,7 +2444,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Possible schistosomiasis" odk_type="diagnosis" name="d_" id="CsCwUnhW-o_SeSLwhETq-2">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f47920;strokeColor=#d79b00;" parent="1" vertex="1">
             <mxGeometry x="270" y="2210" width="161" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2487,7 +2487,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;background-color: initial; box-sizing: border-box; font-weight: 700;&quot;&gt;Rectal&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;administration (if IM or IV form NOT available):&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Introduce the ARTESUNATE suppository into the anus and keep the gluteus muscles tight to ensure retention&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;If the suppository is expelled within the first 30 minutes, give a second dose&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="artesunate-rectal" id="-arsJKwa1kDmRJQ1oXMa-4">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="2276.17" y="557" width="340" height="120" as="geometry" />
           </mxCell>
         </object>
@@ -2500,7 +2500,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Artesunate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Preparation&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Check the vial: ARTESUNATE powder 60mg&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Dissolve the powder in 1 mL of sodium bicarbonate; then add 2mL of NaCl 0.9%&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;This results in a solution of 3mL containing 20mg of Artesunate per mL&lt;br style=&quot;box-sizing: border-box;&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;span style=&quot;box-sizing: border-box; font-weight: 700;&quot;&gt;Administration&lt;/span&gt;:&lt;/p&gt;&lt;ul style=&quot;box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px;&quot;&gt;&lt;li style=&quot;box-sizing: border-box;&quot;&gt;Inject slowly IM into antero-external part of the thigh&lt;/li&gt;&lt;/ul&gt;" odk_type="help-message" name="artesunate-im" id="-arsJKwa1kDmRJQ1oXMa-7">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="1716.17" y="547" width="360" height="220" as="geometry" />
           </mxCell>
         </object>
@@ -2558,35 +2558,37 @@
     </mxGraphModel>
   </diagram>
   <diagram name="moderate" id="Treatment">
-    <mxGraphModel dx="1472" dy="1229" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="780" dy="504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" value="Form" parent="0" />
-        <mxCell id="Fab0Ng7aJDDTEN_AT0G1-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="40jmn-HTxE84RKwItLAu-322" target="40jmn-HTxE84RKwItLAu-491" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="Fab0Ng7aJDDTEN_AT0G1-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="40jmn-HTxE84RKwItLAu-322" target="3llZYAhm8XHxuoIVYnnp-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="286.6199999999999" y="350" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <object label="Pneumonia" odk_type="diagnosis" name="d_pneumonia" id="40jmn-HTxE84RKwItLAu-322">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="50" y="330" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
-        <mxCell id="40jmn-HTxE84RKwItLAu-323" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" source="40jmn-HTxE84RKwItLAu-324" target="40jmn-HTxE84RKwItLAu-555" edge="1">
+        <mxCell id="40jmn-HTxE84RKwItLAu-323" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="40jmn-HTxE84RKwItLAu-324" target="GM9S1_OKIwXxxOdvYUlF-1" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="933" y="860" as="targetPoint" />
+            <mxPoint x="240.75" y="740" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <object label="Wheezing episode" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-324">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40.75" y="720" width="119.25" height="40" as="geometry" />
           </mxCell>
         </object>
-        <mxCell id="40jmn-HTxE84RKwItLAu-325" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" source="40jmn-HTxE84RKwItLAu-326" target="40jmn-HTxE84RKwItLAu-558" edge="1">
+        <mxCell id="40jmn-HTxE84RKwItLAu-325" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="40jmn-HTxE84RKwItLAu-326" target="3llZYAhm8XHxuoIVYnnp-2" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="762.7600000000002" y="1350.0000000000005" as="targetPoint" />
+            <mxPoint x="200.75" y="1035" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <object label="Bronchiolitis" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-326">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40" y="1040" width="80" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2594,7 +2596,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Acute diarrhoea with some dehydration" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-328">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40.75" y="4730" width="220" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2602,7 +2604,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Anaphylaxis with positive evolution" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-330">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="521" y="1600" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2610,7 +2612,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Persistent diarrhoea" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-332">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40.75" y="4530" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2618,7 +2620,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Dysentery" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-334">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40.75" y="4140" width="80" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2628,7 +2630,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Vomiting with some dehydration" odk_type="diagnosis" name="d_vomiting_with_dehydration_some" id="40jmn-HTxE84RKwItLAu-336">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontSize=11;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="40.75" y="4810" width="160" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2638,7 +2640,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Simple malaria" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-338">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="261" y="2440" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2648,7 +2650,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Presumptive malaria" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-340">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="260" y="2553.5" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2661,7 +2663,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Moderate Acute Malnutrition (MAM) with no complications" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-342">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="561.5" y="6175" width="320" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2669,7 +2671,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="MODERATE NUTRITIONAL RISK" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-344">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="442.25" y="6320" width="200" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2677,7 +2679,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="SEVERE ACUTE MALNUTRITION (SAM) with no complications" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-346">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="521.5" y="5975" width="360" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2687,7 +2689,7 @@
           </mxGeometry>
         </mxCell>
         <object label="NON-Severe Anaemia" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-348">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="40" y="5780" width="140" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2695,7 +2697,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Acute ear infection" odk_type="diagnosis" name="d_aei" id="40jmn-HTxE84RKwItLAu-349">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="170" y="3560" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2703,7 +2705,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="ORAL THRUSH" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-351">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="514" y="3127.5" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2711,7 +2713,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Possible streptococcal pharyngitis" odk_type="diagnosis" name="d_pharyngitis_possible" id="40jmn-HTxE84RKwItLAu-353">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="311" y="2030" width="164" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2721,7 +2723,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Lower urinary tract infection" odk_type="diagnosis" name="d_lower_uti" id="40jmn-HTxE84RKwItLAu-355">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="250" y="5305" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2750,7 +2752,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Measles with complications" odk_type="diagnosis" name="d_measles_with_complications" id="40jmn-HTxE84RKwItLAu-360">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="520" y="8000" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2758,7 +2760,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Non-febrile cellulitis" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-362">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40" y="6600" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2766,7 +2768,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Extensive impetigo or ecthyma" odk_type="diagnosis" name="d_impetigo_ecthyma_extensive" id="40jmn-HTxE84RKwItLAu-364">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40" y="6680" width="180" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2774,7 +2776,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Facial or multiple boils, or folliculitis" odk_type="diagnosis" name="d_folliculitis_facial_or_multiple" id="40jmn-HTxE84RKwItLAu-366">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40" y="6760" width="200" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2782,7 +2784,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Infected eczema" odk_type="diagnosis" name="d_eczema_infected" id="40jmn-HTxE84RKwItLAu-368">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40" y="7000" width="100" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2790,7 +2792,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Urticaria (Hives)" odk_type="diagnosis" name="d_urticaria" id="40jmn-HTxE84RKwItLAu-370">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="519.9999999999991" y="8850" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2798,7 +2800,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Ringworm" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-372">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="38.879999999999995" y="9200" width="80" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2824,7 +2826,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Infected chickenpox" odk_type="diagnosis" name="d_chickenpox_infected" id="40jmn-HTxE84RKwItLAu-376">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40" y="6920" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2840,7 +2842,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Bacterial conjunctivitis" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-380">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="518" y="2917.5" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -2870,7 +2872,7 @@
             <mxPoint x="2316.411764705882" y="3655" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="40jmn-HTxE84RKwItLAu-387">
+        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/5ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="40jmn-HTxE84RKwItLAu-387">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="1599.82" y="3660" width="360.18" height="140" as="geometry" />
           </mxCell>
@@ -3148,7 +3150,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Abscess" odk_type="diagnosis" name="d_" id="40jmn-HTxE84RKwItLAu-442">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;labelBackgroundColor=none;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;labelBackgroundColor=none;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="560" y="8540" width="70" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -3211,7 +3213,7 @@
         <mxCell id="40jmn-HTxE84RKwItLAu-456" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="40jmn-HTxE84RKwItLAu-457" target="40jmn-HTxE84RKwItLAu-453" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="40jmn-HTxE84RKwItLAu-457">
+        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/5ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="40jmn-HTxE84RKwItLAu-457">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="1360" y="8240" width="360" height="140" as="geometry" />
           </mxCell>
@@ -3224,16 +3226,16 @@
             <mxGeometry x="1120" y="7970" width="280" height="100" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="40jmn-HTxE84RKwItLAu-461" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="40jmn-HTxE84RKwItLAu-462" target="40jmn-HTxE84RKwItLAu-605" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="40jmn-HTxE84RKwItLAu-461" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="3llZYAhm8XHxuoIVYnnp-3" target="40jmn-HTxE84RKwItLAu-605" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1080" y="1060" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <UserObject label="&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;b&gt;&lt;i&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;Explain to the caretaker to:&lt;/span&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;Perform nasal aspiration or rinsing before breastfeeding or meals.&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;Continue breastfeeding more frequently and for shorter periods, both day and night. Increase liquids.&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;The child may continue to cough for &lt;b&gt;1 to 10 days.&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;" name="nasal_aspiration" odk_type="note" id="40jmn-HTxE84RKwItLAu-462">
-          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="721" y="1020" width="359" height="80" as="geometry" />
-          </mxCell>
-        </UserObject>
-        <mxCell id="40jmn-HTxE84RKwItLAu-463" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" parent="1" source="40jmn-HTxE84RKwItLAu-558" target="40jmn-HTxE84RKwItLAu-462" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="40jmn-HTxE84RKwItLAu-463" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3llZYAhm8XHxuoIVYnnp-2" target="3llZYAhm8XHxuoIVYnnp-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="1035" as="sourcePoint" />
+            <mxPoint x="721" y="1060" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="40jmn-HTxE84RKwItLAu-464" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="40jmn-HTxE84RKwItLAu-465" target="40jmn-HTxE84RKwItLAu-607" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -3254,7 +3256,7 @@
         <mxCell id="40jmn-HTxE84RKwItLAu-468" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" parent="1" source="40jmn-HTxE84RKwItLAu-469" target="40jmn-HTxE84RKwItLAu-465" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="40jmn-HTxE84RKwItLAu-469">
+        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/5ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="40jmn-HTxE84RKwItLAu-469">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
             <mxGeometry x="1118.88" y="2140" width="361.12" height="150" as="geometry" />
           </mxCell>
@@ -3342,14 +3344,10 @@
             <mxGeometry x="740" y="5860" width="200" height="40" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;Discuss and propose a HIV screening test, if this is not the first pneumonia episode for this child.&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;Prescribe antibiotics.&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;" name="tt_pneumonia" odk_type="note" id="40jmn-HTxE84RKwItLAu-491">
-          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="286.62" y="319.75" width="270" height="60" as="geometry" />
-          </mxCell>
-        </UserObject>
-        <mxCell id="40jmn-HTxE84RKwItLAu-492" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#000000;" parent="1" source="40jmn-HTxE84RKwItLAu-491" target="40jmn-HTxE84RKwItLAu-571" edge="1">
+        <mxCell id="40jmn-HTxE84RKwItLAu-492" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="3llZYAhm8XHxuoIVYnnp-1" target="40jmn-HTxE84RKwItLAu-571" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="585.62" y="350" as="targetPoint" />
+            <mxPoint x="556.6199999999999" y="350" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="40jmn-HTxE84RKwItLAu-493" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="40jmn-HTxE84RKwItLAu-494" target="40jmn-HTxE84RKwItLAu-604" edge="1">
@@ -3371,9 +3369,9 @@
         <mxCell id="40jmn-HTxE84RKwItLAu-497" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontColor=#000000;" parent="1" source="40jmn-HTxE84RKwItLAu-498" target="40jmn-HTxE84RKwItLAu-494" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="40jmn-HTxE84RKwItLAu-498">
+        <UserObject label="&lt;p&gt;&lt;span&gt;Amoxicillin 40mg/kg two times a day for 6 days.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;For a child of &lt;/span&gt;&lt;span style=&quot;color: rgb(0 , 128 , 0)&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;${ds_amoxitab250}tabs&lt;/b&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;b&gt;${ds_amoxitab500}tabs&lt;/b&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/5ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;If the child does not show any improvement after 2-3 days add Azithromycin 10mg/kg (${ds_azythrosyr_10} mg) once daily for 5 days.&lt;/p&gt;" name="amoxicillin_pneumonia" odk_type="note" id="40jmn-HTxE84RKwItLAu-498">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
-            <mxGeometry x="1360.45" y="500" width="382.37" height="150" as="geometry" />
+            <mxGeometry x="1360.45" y="480" width="382.37" height="200" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="40jmn-HTxE84RKwItLAu-499" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" source="w7rZArqJ9NvHrYEOPANQ-13" target="40jmn-HTxE84RKwItLAu-504" edge="1">
@@ -3429,7 +3427,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Infected scabies" odk_type="diagnosis" name="d_scabies_infected" id="40jmn-HTxE84RKwItLAu-512">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="40" y="6840" width="100" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -3810,8 +3808,10 @@
             <mxGeometry x="1158" y="710" width="62" height="60" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="40jmn-HTxE84RKwItLAu-606" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="40jmn-HTxE84RKwItLAu-555" target="40jmn-HTxE84RKwItLAu-605" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="40jmn-HTxE84RKwItLAu-606" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="GM9S1_OKIwXxxOdvYUlF-1" target="40jmn-HTxE84RKwItLAu-605" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="740" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <UserObject label="Caretaker advice" odk_type="goto" name="shortcut_g_advice_caretaker" id="40jmn-HTxE84RKwItLAu-607">
           <mxCell style="shape=offPageConnector;whiteSpace=wrap;html=1;rounded=0;fontSize=12;strokeColor=default;fillColor=none;" parent="1" vertex="1">
@@ -3977,32 +3977,26 @@
             <mxGeometry x="826.5" y="5030" width="100" height="100" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="r1NDghmUqpZV67pCmRRB-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="r1NDghmUqpZV67pCmRRB-1" target="40jmn-HTxE84RKwItLAu-555" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="r1NDghmUqpZV67pCmRRB-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="r1NDghmUqpZV67pCmRRB-1" target="GM9S1_OKIwXxxOdvYUlF-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350.5" y="760" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <object label="&lt;div&gt;&lt;b&gt;Salbutamol&lt;/b&gt;: Administration:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;Shake the inhaler vigorously before each puff&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Cover the child’s mouth and nose with the mask of the inhaler&lt;/span&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Introduce 2 to 6 puff (100 mcg each) into the inhalation chamber and allow the child to breath normally five times, shaking the inhaler between each puff&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Evaluate response to treatment after 15 minutes. If improvement, continue repeating every 10-30 minutes until symptoms improve during 1 hour, then every 1- 3 hours until arrival to the hospital.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" odk_type="help-message" name="salbutamol" id="r1NDghmUqpZV67pCmRRB-1">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="90.37" y="800" width="520" height="140" as="geometry" />
           </mxCell>
         </object>
-        <UserObject label="&lt;p style=&quot;margin: 0cm ; font-size: 12px&quot;&gt;&lt;span lang=&quot;EN-US&quot;&gt;Inhaled&amp;nbsp;&lt;/span&gt;&lt;b&gt;salbutamol&lt;/b&gt;&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0cm ; font-size: 12px&quot;&gt;2 puffs, 4 to 6 times a day, for 5 days.&lt;/p&gt;" name="salbutamol_5days" odk_type="note" id="40jmn-HTxE84RKwItLAu-555">
-          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=11;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="240.75" y="720" width="219.25" height="40" as="geometry" />
-          </mxCell>
-        </UserObject>
-        <mxCell id="r1NDghmUqpZV67pCmRRB-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="r1NDghmUqpZV67pCmRRB-3" target="40jmn-HTxE84RKwItLAu-558" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="r1NDghmUqpZV67pCmRRB-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.48;entryY=0.987;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="r1NDghmUqpZV67pCmRRB-3" target="3llZYAhm8XHxuoIVYnnp-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420.5" y="1110" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <object label="&lt;div&gt;&lt;b&gt;Salbutamol&lt;/b&gt;: Administration:&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;Shake the inhaler vigorously before each puff&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Cover the child’s mouth and nose with the mask of the inhaler&lt;/span&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Introduce 2 to 6 puff (100 mcg each) into the inhalation chamber and allow the child to breath normally five times, shaking the inhaler between each puff&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Evaluate response to treatment after 15 minutes. If improvement, continue repeating every 10-30 minutes until symptoms improve during 1 hour, then every 1- 3 hours until arrival to the hospital.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" odk_type="help-message" name="salbutamol" id="r1NDghmUqpZV67pCmRRB-3">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
-            <mxGeometry x="200" y="1150" width="440" height="160" as="geometry" />
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+            <mxGeometry x="200" y="1180" width="440" height="160" as="geometry" />
           </mxCell>
         </object>
-        <UserObject label="&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;Explain to the caretaker that Bronchiolitis is a self-limiting viral disease. Bronchiolitis does not usually respond to bronchodilators.&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;At the health centre, try salbutamol &lt;i&gt;(see &lt;/i&gt;&lt;/span&gt;&lt;i&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;help menu&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;)&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;: &lt;b&gt;give 6 puff of inhaled salbutamol and re-assess&lt;/b&gt; the response after 15 minutes.&lt;/span&gt;&lt;/i&gt;&lt;/font&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;C&lt;/span&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;ontinue the treatment at home only if the wheezing &lt;b&gt;improves&lt;/b&gt; after treatment.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;br&gt;&lt;/p&gt;" name="salbutamol_bronchitis" odk_type="note" id="40jmn-HTxE84RKwItLAu-558">
-          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="200.75" y="1010" width="439.25" height="100" as="geometry" />
-          </mxCell>
-        </UserObject>
         <mxCell id="r1NDghmUqpZV67pCmRRB-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="40jmn-HTxE84RKwItLAu-534" target="40jmn-HTxE84RKwItLAu-535" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -4038,7 +4032,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="&lt;p&gt;&lt;strong&gt;Ear flow&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Dry the ear at least 3 times a day:&lt;/p&gt;&lt;li&gt;Wash your hands&lt;/li&gt;&lt;li&gt;Roll a clean, absorbent fabric or soft, strong paper into a wick&lt;/li&gt;&lt;li&gt;Place the wick in the child&amp;rsquo;s ear&lt;/li&gt;&lt;li&gt;Remove the wick when it is wet and replace it with a clean wick&lt;/li&gt;&lt;li&gt;Repeat the procedure until the wick is dry&lt;/li&gt;" odk_type="help-message" name="ear-flow" id="40jmn-HTxE84RKwItLAu-560">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="480" y="3300" width="300" height="180" as="geometry" />
           </mxCell>
         </object>
@@ -4237,11 +4231,12 @@
             <mxGeometry x="890" y="5340" width="100" height="100" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="OQuzLdAdQ1aOXOOObdgq-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="40jmn-HTxE84RKwItLAu-617" edge="1">
+        <mxCell id="OQuzLdAdQ1aOXOOObdgq-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="Sc4VDhbuitDaFW4alm-4-3" target="40jmn-HTxE84RKwItLAu-617" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2630" y="5390" />
               <mxPoint x="2630" y="5330" />
+              <mxPoint x="2629" y="5330" />
             </Array>
             <mxPoint x="2542" y="5390" as="sourcePoint" />
           </mxGeometry>
@@ -4258,7 +4253,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Upper uncomplicated UTI" odk_type="calculate" name="d_upper_uti_uncomplicated" id="Sc4VDhbuitDaFW4alm-4-1">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc20d;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="250" y="5230" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4269,7 +4264,7 @@
         </mxCell>
         <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin/Clavulanic Acid PO 20-25 mg/kg/dose&lt;/strong&gt;, &lt;strong&gt;twice daily for 7 days&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;For a child of &lt;strong&gt;&lt;span style=&quot;color: #008000;&quot;&gt;${p_weight}kg&lt;/span&gt;&lt;/strong&gt; give either:&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;li style=&quot;padding-left: 30px;&quot;&gt;&lt;strong&gt;${ds_amoxiclavtab200}tabs&lt;/strong&gt; of dispersable tab 200mg Amoxicillin/28,5mg clavulanic acid&lt;/li&gt;&lt;li style=&quot;padding-left: 30px;&quot;&gt;OR &lt;strong&gt;${ds_amoxiclavtab500}tabs&lt;/strong&gt; of Amoxi/clavulanic acid tab 500/62,5mg&lt;/li&gt;&lt;li style=&quot;padding-left: 30px;&quot;&gt;OR &lt;strong&gt;${ds_amoxiclavtab875}tabs&lt;/strong&gt; of Amoxi/clavulanic acid tab 875/125mg&lt;/li&gt;&lt;li style=&quot;padding-left: 30px;&quot;&gt;OR &lt;strong&gt;${ds_amoxiclavsyr500}ml&lt;/strong&gt; of Amoxi/clavulanic acid syrup 500mg/62,5mg /5ml&lt;/li&gt;&lt;li style=&quot;padding-left: 30px;&quot;&gt;OR &lt;strong&gt;${ds_amoxiclavsyr400}ml&lt;/strong&gt; of Amoxi/clavulanic acid syrup 400mg/57mg /5ml &lt;strong&gt;2 times per day for 3 days&lt;/strong&gt;&lt;/li&gt;" name="amoxiclav" odk_type="note" id="Sc4VDhbuitDaFW4alm-4-3">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="1861" y="5310" width="600" height="160" as="geometry" />
+            <mxGeometry x="1940" y="5305" width="600" height="160" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="tdTqC2mvRSC5zJzwaCiw-4" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tdTqC2mvRSC5zJzwaCiw-1" target="tdTqC2mvRSC5zJzwaCiw-3" edge="1">
@@ -4283,7 +4278,7 @@
             <mxGeometry x="1352" y="5410" width="100" height="100" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="tdTqC2mvRSC5zJzwaCiw-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="40jmn-HTxE84RKwItLAu-617" edge="1">
+        <mxCell id="tdTqC2mvRSC5zJzwaCiw-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="tdTqC2mvRSC5zJzwaCiw-3" target="40jmn-HTxE84RKwItLAu-617" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="2716" y="5316" as="targetPoint" />
             <mxPoint x="2186" y="5565" as="sourcePoint" />
@@ -4294,11 +4289,31 @@
             <mxGeometry x="1575" y="5475" width="600" height="180" as="geometry" />
           </mxCell>
         </UserObject>
+        <UserObject label="&lt;p&gt;Discuss and propose a HIV screening test, if this is not the frist pneumonia episode for this child.&lt;/p&gt;&lt;p&gt;Prescribe antibiotics&lt;/p&gt;" odk_type="note" name="tt_pneumonia" id="3llZYAhm8XHxuoIVYnnp-1">
+          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
+            <mxGeometry x="270" y="319.75" width="274.62" height="60" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;p&gt;Explain to the caretaker that Bronchiolitis is a self-limiting viral disease.&amp;nbsp; Bronchiolitis does not usually respond to bronchodialtors.&lt;/p&gt;&lt;p&gt;At the health centre, try salbutamol &lt;i&gt;(see help menu): &lt;b&gt;give 6 puffs of inhaled salbutamol and re-assess &lt;/b&gt;the response after 15 minutes.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Continue the treatment at home only if the wheeziing &lt;b&gt;improves &lt;/b&gt;after treatment.&lt;/i&gt;&lt;/p&gt;" odk_type="note" name="salbutamol_bronchitis" id="3llZYAhm8XHxuoIVYnnp-2">
+          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
+            <mxGeometry x="216.38" y="985" width="424.62" height="150" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;p&gt;&lt;b&gt;Explain to the caretaker to:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Perform nasal aspiration or rinsing before breastfeeding or meals.&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;p&gt;Continue breastfeeding more frequently and for shorter periods, both day and night.&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;p&gt;Increase liquids.&lt;/p&gt;&lt;p&gt;The child may continue to cough for &lt;b&gt;1 to 10 days.&lt;/b&gt;&lt;/p&gt;" odk_type="note" name="nasal_aspiration" id="3llZYAhm8XHxuoIVYnnp-3">
+          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
+            <mxGeometry x="752.25" y="981" width="311.75" height="150" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;p&gt;Inhaled&amp;nbsp; &lt;b&gt;salbutamol&lt;/b&gt;&lt;/p&gt;&lt;p&gt;2 puffs, 4 to 6 times a day, for 5 days.&lt;/p&gt;" odk_type="note" name="salbutamol_5days" id="GM9S1_OKIwXxxOdvYUlF-1">
+          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
+            <mxGeometry x="255" y="715" width="190" height="50" as="geometry" />
+          </mxCell>
+        </UserObject>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="JHEENCU9KCrIVojRLu7X" name="benign">
-    <mxGraphModel dx="1472" dy="1229" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="780" dy="504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -4306,7 +4321,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Upper respiratory tract infection" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-2">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="168" y="70" width="349.5" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4314,7 +4329,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Viral pharyngitis" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-4">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="366.5" y="400" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4322,7 +4337,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Acute diarrhoea with no dehydration" odk_type="diagnosis" name="d_diarhoea_acute_without_dehydration" id="_Z0all5cDn6oR5MDufjb-6">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="278" y="2600" width="208.5" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4330,12 +4345,12 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Vomiting with no dehydration" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-8">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;fontSize=11;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="268" y="2784" width="245" height="40" as="geometry" />
           </mxCell>
         </object>
         <object label="Likely viral infection" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-9">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="367.5" y="1540" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4346,7 +4361,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Viral ear infection" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-12">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="366.5" y="750" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4354,7 +4369,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Chronic ear infection" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-14">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="367.5" y="1140" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4362,7 +4377,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Viral or allergic conjunctivitis" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-16">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="366.5" y="1905" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4370,7 +4385,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Benign oral lesions" odk_type="diagnosis" name="d_lesions_oral_benign" id="_Z0all5cDn6oR5MDufjb-18">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="367.5" y="2240" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4378,7 +4393,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Pain associated with a respiratory infection" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-20">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="366.5" y="210" width="138" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4386,14 +4401,14 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Constipation" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-22">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="349" y="3000" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="_Z0all5cDn6oR5MDufjb-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_Z0all5cDn6oR5MDufjb-24" target="_Z0all5cDn6oR5MDufjb-131" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-size: 13px&quot;&gt;&lt;font style=&quot;font-size: 13px&quot;&gt;Explain to the caretaker that URTIs are &lt;b&gt;self-limiting viral&lt;/b&gt; pathologies.&lt;/font&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm ; font-size: 13px&quot;&gt;&lt;font style=&quot;font-size: 13px&quot;&gt;&lt;i&gt;&lt;b&gt;Explain to the caretaker:&lt;/b&gt; &lt;/i&gt;How to calm the cough and relieve the throat with breastfeeding in infants or with lemon tea or honey tea in older children.&lt;/font&gt;&lt;/p&gt;" name="tt_urti" odk_type="note" id="_Z0all5cDn6oR5MDufjb-24">
+        <UserObject label="&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Explain to the caretaker that URTIs are &lt;b style=&quot;&quot;&gt;self-limiting viral&lt;/b&gt; pathologies.&lt;/font&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0cm;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;i style=&quot;&quot;&gt;&lt;b&gt;Explain to the caretaker:&lt;/b&gt; &lt;/i&gt;How to calm the cough and relieve the throat with breastfeeding in infants or with lemon tea or honey tea in older children.&lt;/font&gt;&lt;/p&gt;" name="tt_urti" odk_type="note" id="_Z0all5cDn6oR5MDufjb-24">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=14;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="596.5" y="50" width="340" height="80" as="geometry" />
           </mxCell>
@@ -4437,7 +4452,7 @@
             <mxPoint x="944.3800000000001" y="1210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <UserObject label="&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;Discuss and propose a HIV screening test&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;" name="tt_cei" odk_type="note" id="_Z0all5cDn6oR5MDufjb-38">
+        <UserObject label="&lt;p style=&quot;margin: 0cm;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Discuss and propose a HIV screening test&lt;/font&gt;&lt;/p&gt;" name="tt_cei" odk_type="note" id="_Z0all5cDn6oR5MDufjb-38">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="574.6199999999999" y="1140" width="270" height="40" as="geometry" />
           </mxCell>
@@ -4453,7 +4468,7 @@
         <mxCell id="_Z0all5cDn6oR5MDufjb-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_Z0all5cDn6oR5MDufjb-44" target="_Z0all5cDn6oR5MDufjb-137" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-size: 14px ; text-align: center&quot;&gt;Reassure the caretaker oral lesions will disappear by themselves after a few days.&amp;nbsp;&lt;/span&gt;" name="tt_lesions_oral_benign" odk_type="note" id="_Z0all5cDn6oR5MDufjb-44">
+        <UserObject label="&lt;span style=&quot;color: rgb(0, 0, 0); text-align: center;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Reassure the caretaker oral lesions will disappear by themselves after a few days.&amp;nbsp;&lt;/font&gt;&lt;/span&gt;" name="tt_lesions_oral_benign" odk_type="note" id="_Z0all5cDn6oR5MDufjb-44">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#FF0000;" parent="1" vertex="1">
             <mxGeometry x="571.5" y="2225" width="230" height="70" as="geometry" />
           </mxCell>
@@ -4474,19 +4489,23 @@
             <mxGeometry x="1077" y="2510" width="590" height="220" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="_Z0all5cDn6oR5MDufjb-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;" parent="1" source="_Z0all5cDn6oR5MDufjb-50" target="_Z0all5cDn6oR5MDufjb-80" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="_Z0all5cDn6oR5MDufjb-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_Z0all5cDn6oR5MDufjb-50" target="Ifsyz6n8KCnB46WXDRrW-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="544.5" y="6080" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <object label="Fungal skin infection" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-50">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="368" y="6060" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
-        <mxCell id="_Z0all5cDn6oR5MDufjb-51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;" parent="1" source="_Z0all5cDn6oR5MDufjb-52" target="_Z0all5cDn6oR5MDufjb-91" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="_Z0all5cDn6oR5MDufjb-51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_Z0all5cDn6oR5MDufjb-52" target="Ifsyz6n8KCnB46WXDRrW-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="561.8799999999999" y="5550" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <object label="Varicella (Chickenpox)" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-52">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="198" y="5530" width="288" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4496,7 +4515,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Herpes" odk_type="diagnosis" name="d_herpes" id="_Z0all5cDn6oR5MDufjb-54">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="366" y="5240" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4506,7 +4525,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Shingles" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-56">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="366.0000000000009" y="5360" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4516,7 +4535,7 @@
           </mxGeometry>
         </mxCell>
         <object label="Molluscum contagiosum" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-58">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="366.0000000000009" y="6280" width="199.5" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4524,7 +4543,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Measles" odk_type="diagnosis" name="d_measles" id="_Z0all5cDn6oR5MDufjb-60">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="172.9999999999991" y="3295" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4532,7 +4551,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Simple localised impetigo" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-62">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="30" y="3670" width="248" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4540,7 +4559,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Isolated boil (furuncle)" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-64">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="278" y="5790" width="220" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4548,7 +4567,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Eczema" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-66">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="357.88" y="4610" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4556,7 +4575,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Scabies" odk_type="diagnosis" name="d_scabies" id="_Z0all5cDn6oR5MDufjb-68">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="308" y="4900" width="120" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4571,24 +4590,24 @@
         <mxCell id="_Z0all5cDn6oR5MDufjb-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" source="_Z0all5cDn6oR5MDufjb-72" target="_Z0all5cDn6oR5MDufjb-130" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;p&gt;&lt;strong&gt;VITAMINE A&lt;/strong&gt;&lt;/p&gt;&lt;li style=&quot;padding-left: 60px;&quot;&gt;Give &lt;strong&gt;${ds_vitA} PO&lt;/strong&gt; on D1 and D2.&lt;/li&gt;&lt;li style=&quot;padding-left: 60px;&quot;&gt;If the child has received it during the previous month give only one dose.&lt;/li&gt;" name="vitamineA_d1_d2" odk_type="note" id="_Z0all5cDn6oR5MDufjb-72">
+        <UserObject label="&lt;p&gt;&lt;strong&gt;VITAMIN A&lt;/strong&gt;&lt;/p&gt;&lt;li style=&quot;padding-left: 60px&quot;&gt;Give &lt;strong&gt;${ds_vitA} PO&lt;/strong&gt; on D1 and D2.&lt;/li&gt;&lt;li style=&quot;padding-left: 60px&quot;&gt;&lt;span style=&quot;font-size: 11pt ; line-height: 107% ; font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;A third dose of Vitamin A should be given to children with signs of vitamin A deficiency (xeropthalmia, corneal ulceration), 4 to 6 weeks later. If the patient is unlikely to receive their 3rd dose 4-6 weeks later, it is possible to give the 3rd dose from day 8 onwards.&lt;/span&gt;&lt;br&gt;&lt;/li&gt;" name="vitamineA_three_doses" odk_type="note" id="_Z0all5cDn6oR5MDufjb-72">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;" parent="1" vertex="1">
-            <mxGeometry x="366" y="3270" width="290" height="90" as="geometry" />
+            <mxGeometry x="310" y="3217.5" width="320.5" height="195" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="_Z0all5cDn6oR5MDufjb-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_Z0all5cDn6oR5MDufjb-74" target="_Z0all5cDn6oR5MDufjb-70" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;p&gt;&lt;strong&gt;Amoxicillin &lt;/strong&gt;40mg/kg 2 times per day, for 6 days&lt;/p&gt;&lt;p&gt;For a child of &lt;span style=&quot;color: #008000;&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;" name="amoxicillin" odk_type="note" id="_Z0all5cDn6oR5MDufjb-74">
+        <UserObject label="&lt;p&gt;&lt;span style=&quot;font-size: 11.0pt ; line-height: 107% ; font-family: &amp;quot;calibri&amp;quot; , sans-serif&quot;&gt;If recommended in your project, give &lt;b&gt;Amoxicillin &lt;/b&gt;40mg/kg, twice a day for 5 days. WHO no longer recommends systematic antibiotic treatment for uncomplicated Measles cases.&lt;br&gt;&lt;/span&gt;&lt;span&gt;&lt;br&gt;For a child of &lt;/span&gt;&lt;span style=&quot;color: rgb(0 , 128 , 0)&quot;&gt;&lt;strong&gt;${p_weight}kg&lt;/strong&gt;&lt;/span&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;${ds_amoxitab250}tabs&lt;/strong&gt; dispersable and breakable tab of Amoxicillin 250mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxitab500}tabs&lt;/strong&gt; of Amoxicillin 500mg tablets&lt;/li&gt;&lt;li&gt;OR &lt;strong&gt;${ds_amoxisyr}ml&lt;/strong&gt; of Amoxicillin syrup 125mg/5ml&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;2 times per day for a total of 5 days.&lt;/p&gt;&lt;p&gt;&lt;i&gt;&lt;span lang=&quot;EN-GB&quot; style=&quot;font-size: 11.0pt ; line-height: 107% ; font-family: &amp;quot;calibri&amp;quot; , sans-serif&quot;&gt;Explain to the caretaker to come back immediately if the child is unable to drink,&amp;nbsp;breastfeed, becomes sicker, or is having difficulty breathing.&lt;/span&gt;&lt;/i&gt;&lt;br&gt;&lt;/p&gt;" name="amoxicillin_measles" odk_type="note" id="_Z0all5cDn6oR5MDufjb-74">
           <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="918" y="3240" width="359" height="150" as="geometry" />
+            <mxGeometry x="918" y="3130" width="392" height="270" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="_Z0all5cDn6oR5MDufjb-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" source="_Z0all5cDn6oR5MDufjb-76" target="_Z0all5cDn6oR5MDufjb-78" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Unclassified skin problem (likely mild viral rash)" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-76">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="118" y="3995" width="450" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4600,14 +4619,11 @@
             <mxGeometry x="657.5" y="3950" width="490" height="130" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="_Z0all5cDn6oR5MDufjb-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_Z0all5cDn6oR5MDufjb-80" target="_Z0all5cDn6oR5MDufjb-147" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="_Z0all5cDn6oR5MDufjb-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Ifsyz6n8KCnB46WXDRrW-2" target="_Z0all5cDn6oR5MDufjb-147" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1004.5" y="6080" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <UserObject label="&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;On the skin treatment:&lt;/span&gt;&lt;/b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt; &lt;/span&gt;&lt;b&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;Twice a day,&lt;/span&gt;&lt;/b&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt; clean with soap and water, dry, apply &lt;/span&gt;&lt;b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;M&lt;/span&gt;&lt;/b&gt;&lt;b&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;iconazole 2% or Whitfield&#39;s ointment&lt;/span&gt;&lt;/b&gt;&lt;b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;*&lt;/span&gt;&lt;/b&gt;&lt;b&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;, &lt;/span&gt;&lt;/b&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;for 2 to 4 weeks or 2 weeks after cure.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;*&lt;/span&gt;&lt;span style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;In the case of oozing lesions in skin folds, do not use Whitfield&#39;s ointment.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" name="tt_fungal" odk_type="note" id="_Z0all5cDn6oR5MDufjb-80">
-          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="544.5" y="6050" width="460" height="60" as="geometry" />
-          </mxCell>
-        </UserObject>
         <mxCell id="_Z0all5cDn6oR5MDufjb-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_Z0all5cDn6oR5MDufjb-82" target="_Z0all5cDn6oR5MDufjb-141" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -4650,14 +4666,11 @@
             <mxGeometry x="1297.5" y="5770" width="340" height="80" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="_Z0all5cDn6oR5MDufjb-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" source="_Z0all5cDn6oR5MDufjb-91" target="_Z0all5cDn6oR5MDufjb-87" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="_Z0all5cDn6oR5MDufjb-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Ifsyz6n8KCnB46WXDRrW-1" target="_Z0all5cDn6oR5MDufjb-87" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1041.88" y="5550" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <UserObject label="&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;Apply&amp;nbsp;&lt;b&gt;calamine lotion&lt;/b&gt;&amp;nbsp;on non-infected skin lesions:&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;-Clean the skin with clean water. Dry the lesions.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0cm ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family: &amp;#34;calibri&amp;#34; , sans-serif&quot;&gt;- Apply a thin layer 3 to 4 times per day, until symptoms resolve&lt;/span&gt;&lt;/p&gt;" name="calamine_lotion" odk_type="note" id="_Z0all5cDn6oR5MDufjb-91">
-          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-            <mxGeometry x="561.8799999999999" y="5520" width="480" height="60" as="geometry" />
-          </mxCell>
-        </UserObject>
         <mxCell id="_Z0all5cDn6oR5MDufjb-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" source="_Z0all5cDn6oR5MDufjb-93" target="BSN_lmMtZy0ccYZDBUxW-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="894" y="5320" as="targetPoint" />
@@ -4891,7 +4904,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Unclassified eye problem" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-150">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="222" y="4230" width="450" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4899,7 +4912,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object label="Unclassified ear problem" odk_type="diagnosis" name="d_" id="_Z0all5cDn6oR5MDufjb-152">
-          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
             <mxGeometry x="214.94000000000005" y="4310" width="450" height="40" as="geometry" />
           </mxCell>
         </object>
@@ -4978,7 +4991,7 @@
           </mxGeometry>
         </mxCell>
         <object label="&lt;p&gt;&lt;strong&gt;Ear flow&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Dry the ear at least 3 times a day:&lt;/p&gt;&lt;li&gt;Wash your hands&lt;/li&gt;&lt;li&gt;Roll a clean, absorbent fabric or soft, strong paper into a wick&lt;/li&gt;&lt;li&gt;Place the wick in the child&amp;rsquo;s ear&lt;/li&gt;&lt;li&gt;Remove the wick when it is wet and replace it with a clean wick&lt;/li&gt;&lt;li&gt;Repeat the procedure until the wick is dry&lt;/li&gt;" odk_type="help-message" name="ear-flow" id="VNvRYiwbj2HJHRTRxGvp-3">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#72bf44;strokeColor=#82b366;align=left;fontSize=12;" parent="1" vertex="1">
             <mxGeometry x="1417.25" y="940" width="300" height="180" as="geometry" />
           </mxCell>
         </object>
@@ -5087,11 +5100,21 @@
             <mxGeometry x="1850" y="2880" width="380" height="240" as="geometry" />
           </mxCell>
         </UserObject>
+        <UserObject label="&lt;p&gt;Apply &lt;b&gt;calamine lotion &lt;/b&gt;on non-infected skin lesions:&lt;/p&gt;&lt;p&gt;- Clean the skin with clean water. Dry the lesions.&lt;/p&gt;&lt;p&gt;- Apply a thin layer 3 to 4 times per day, until symptoms resolve&lt;/p&gt;" odk_type="note" name="calamine_lotion" id="Ifsyz6n8KCnB46WXDRrW-1">
+          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
+            <mxGeometry x="620" y="5505" width="340" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;p&gt;&lt;b&gt;On the skin treatment: Twice a day, &lt;/b&gt;clean with soap and water, dry, apply &lt;b&gt;Miconazole 2% or Whitfield&#39;s Ointment*,&lt;/b&gt;&amp;nbsp;for 2 to 4 weeks or 2 weeks after cure.&lt;/p&gt;&lt;p&gt;*In the case of oozing lesions in skin folds, do not use Whitfield&#39;s ointment&lt;/p&gt;" odk_type="note" name="tt_fungal" id="Ifsyz6n8KCnB46WXDRrW-2">
+          <mxCell style="html=1;whiteSpace=wrap;fillColor=none;align=left;" parent="1" vertex="1">
+            <mxGeometry x="591" y="6035" width="340" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="gnYlAxpJk76wZge7bWYf" name="caretaker_advice">
-    <mxGraphModel dx="1020" dy="471" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="780" dy="504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

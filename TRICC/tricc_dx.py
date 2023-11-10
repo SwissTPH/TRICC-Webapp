@@ -669,7 +669,6 @@ else:
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['name'].apply(html2plain), 'name')
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['odk_type'], 'type')
     # if you want to strip off html from text:
-    # UNCOMMENTED BY MPEA 2106
     #dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'].apply(ch.html2plain), 'content')
     # if you want to keep the html in the text:
     dag = gt.add_nodeattrib(dag, df_raw['id'], df_raw['value'], 'content')
