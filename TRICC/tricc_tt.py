@@ -27,9 +27,9 @@ from CDSS_list_merge import merge_list
 #%% Parameters - > choose your form (ped, yi, almsom) here
 #import params_almsom_tt as p # for almanach Somalia TT
 # import params_ped_rk as p # for msfecare Ped
-import params_msf_sti as p # for Almanach Libya
+import params_msf_sti as p
 #import params_ped as p # for msfecare Ped
-# import params_libya_rk as p # for Almanach Libya
+#import params_libya_rk as p # for Almanach Libya
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -43,7 +43,7 @@ df_raw.fillna('', inplace = True)
 df_raw.loc[df_raw['label']!='','value'] = df_raw['label'] # all content into the same column
 
 # this keeps specific tabs in the diagram
-#df_raw = df_raw.loc[df_raw['activity']=='oral antibiotics']
+#df_raw = df_raw.loc[df_raw['activity']=='Follow up advise']
 
 #%% Focus on treatment only and strip off the follow up (FOR NOW, in Almsom TT)
 #df_raw = df_raw.loc[df_raw['activity']!='Follow up advise']

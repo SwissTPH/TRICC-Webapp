@@ -24,7 +24,7 @@ import uuid
 #import params_ped_rk as p # for msfecare Ped
 import params_msf_sti as p
 #import params_ped as p # for msfecare Ped
-# import params_libya_rk as p
+#import params_libya_rk as p
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -216,7 +216,7 @@ df_png.drop('style',axis=1,inplace=True)
 df=df.join(df_png)
 
 # remove the rows with those 'png messages' in df as they are no longer needed
-df.drop(index_delete,inplace=True)
+#df.drop(index_delete,inplace=True)
 
 # df.loc[df['image::en'].notna()].head()
 
@@ -1157,6 +1157,7 @@ df = pd.concat([df_calc, df])
 def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, diagnoses_to_hide):
     # need to reload diagnose_id_hierarchy, because the sorting here is wrong, because it is dervied from the 
     # drawing. There should be no diagnose_hierarchy in the dx flow, it makes no sense to me at all. 
+    
     df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy) & ~df['name'].isin(diagnoses_to_hide)].copy()
     df_diagnose['calculation']=''
     df_diagnose['relevance']='number(${' + df['name'] + '})=1'

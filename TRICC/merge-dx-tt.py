@@ -26,7 +26,8 @@ warnings.filterwarnings("ignore")
 # In[2]:
 
 #form_id = 'ped' # for MSFeCARE PED
-form_id = 'msf_sti' # for Almanach Lybia
+form_id = 'msf_sti'
+#form_id = 'almanach_libya' # for Almanach Lybia
 
 #%% Parameters
 # import params as p # for almanach Somalia
@@ -46,7 +47,7 @@ cafile = p.folder+'ca.xlsx' #logic table for the relevance field of caretaker ad
 os.system(f'python {p.repo_folder}tricc_dx.py')
 
 #%% Run new tricc_tt script
-os.system(f'python {p.repo_folder}tricc_tt.py')
+os.system(f'python {p.repo_folder}tricc_tt.py') 
 
 # In[10]:
 df_survey_dx = pd.read_excel(p.folder+p.form_id+'_dx.xlsx',sheet_name='survey')
