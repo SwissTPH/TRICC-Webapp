@@ -57,7 +57,7 @@ df_choices_tt = pd.read_excel(p.output_xls,sheet_name='choices')
 
 #%% Delete intermediate xls forms from disk
 os.remove(p.folder+p.form_id+'_dx.xlsx') # for diagnostic
-os.remove(p.output_xls) # for treatment
+os.remove(p.output_xls) # for treatment 
 
 #%% Combine survey tabs of dx and ttos.remove(p.output_xls) # for treatment
 df_dx = df_survey_dx

@@ -1095,7 +1095,7 @@ df.drop(df.loc[df['label::en']=='Load Data'].index,inplace=True)
 # show the detected diagnosis right on detection
 df.reset_index(inplace=True)
 df.fillna('',inplace=True)
-I = df.loc[df['name'].isin(diagnoses_dict.values()) & ~df['name'].isin(p.hide_diagnoses)].index
+I = df.loc[df['name'].isin(diagnoses_dict.values()) & ~df['name'].isin(p.hide_diagnoses) & ~df['name'].str.startswith('as_')].index
 
 for i in I:
     d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                
@@ -1154,11 +1154,11 @@ df = pd.concat([df_calc, df])
 #%% make a summary xlx 
 
 
-def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, diagnoses_to_hide):
+def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, df_diagnose_list, diagnoses_to_hide):
     # need to reload diagnose_id_hierarchy, because the sorting here is wrong, because it is dervied from the 
     # drawing. There should be no diagnose_hierarchy in the dx flow, it makes no sense to me at all. 
     
-    df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy) & ~df['name'].isin(diagnoses_to_hide)].copy()
+    df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy) & ~df['name'].isin(diagnoses_to_hide) & ~df['name'].str.startswith('as')].copy()
     df_diagnose['calculation']=''
     df_diagnose['relevance']='number(${' + df['name'] + '})=1'
     df_diagnose['appearance']='center'
@@ -1167,27 +1167,40 @@ def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, diagnoses_t
     df_diagnose['name']=df_diagnose['name'].replace({'d_':'label_'},regex=True)
 
     df_diagnose.index=df_diagnose.index+'label'
-    
     intro = pd.read_excel(summaryfile).iloc[:6]
-    
     endgroup = pd.read_excel(summaryfile).iloc[-2:]
+    ## This was doing danger signs section under summary, now doing positive tests
     
-    danger_signs = df_choices.loc[df_choices['list_name'].str.contains('select_signs') & ~df_choices['name'].str.contains('none')].copy()
-    danger_signs['relevance']='selected(${' + danger_signs['list_name'] + '},\'' + danger_signs['name'] + '\')'
-    danger_signs['type']='note'
-    danger_signs['name']='label_' + danger_signs['name']
-    danger_signs.index = danger_signs.index+'danger'
-    
-    #df_summary = pd.concat([intro, df_diagnose, pd.read_excel(summaryfile).iloc[6:8], danger_signs, endgroup])
-    df_summary = pd.concat([intro, df_diagnose, endgroup])
+    df_medical_tests=df.loc[df['name'].isin(diagnose_id_hierarchy) & (df['name'].str.startswith('as'))].copy()
+    df_tests_list = df_diagnose_list.loc[df_diagnose_list['id'].str.startswith('as_',na=False)]
+
+    df_medical_tests['calculation']=''
+    df_tests_list = df_tests_list.rename(columns={"Name":"label::en","id":"name", "relevant":"relevance"})
+    df_medical_tests_index = df_medical_tests.index
+    df_medical_tests = df_medical_tests.merge(df_tests_list, how='right')
+    df_medical_tests.index = df_medical_tests_index 
+    print(df_medical_tests)
+
+    df_medical_tests['appearance']='center'
+    df_medical_tests['type']='note'
+    df_medical_tests['label::en']='<p>' + df_medical_tests['label::en'] + '</p>'
+    df_medical_tests['name']=df_medical_tests['name'].replace({'as_':'label_'},regex=True)
+    df_medical_tests.index=df_medical_tests.index+'tests'
+
+    #danger_signs = df_choices.loc[df_choices['list_name'].str.contains('select_signs') & ~df_choices['name'].str.contains('none')].copy()
+    #danger_signs['relevance']='selected(${' + danger_signs['list_name'] + '},\'' + danger_signs['name'] + '\')'
+    #danger_signs['type']='note'
+    #danger_signs['name']='label_' + danger_signs['name']
+    #danger_signs.index = danger_signs.index+'danger'
+
+    df_summary = pd.concat([intro, df_diagnose, pd.read_excel(summaryfile).iloc[6:8], df_medical_tests, endgroup])
+    #df_summary = pd.concat([intro, df_diagnose, endgroup])
     
     # TODO commented out df_summary.drop(columns=['list_name'], inplace = True)
     
     df_summary.fillna('', inplace=True)
-    
-    # TODO commented out for LIBYA make group relevance for danger sign group
-    #ds_relevance = ' or '.join(danger_signs['relevance'])
-    #df_summary.loc[df_summary['name']=='g_danger_signs', 'relevance'] = ds_relevance
+    ds_relevance = ' or '.join(df_medical_tests['relevance'])
+    df_summary.loc[df_summary['name']=='g_positive_tests_summary', 'relevance'] = ds_relevance
     
     
     return df_summary
@@ -1203,7 +1216,7 @@ diagnosis_id_hierarchy = list(df_diagnose['id'])
 # In[258]:
 
 
-df_summary = make_summary(df, df_choices, diagnosis_id_hierarchy, p.summaryfile, p.hide_diagnoses)
+df_summary = make_summary(df, df_choices, diagnosis_id_hierarchy, p.summaryfile, df_diagnose, p.hide_diagnoses)
 
 # store df_summary
 import pickle

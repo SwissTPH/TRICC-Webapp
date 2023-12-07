@@ -186,7 +186,7 @@ def get_rhombus_types(dag, refer_types):
     the types of the nodes that they refer to.'''
     rhombus_refer_names = get_rhombus_refers(dag)
     rhombusIDs = rhombus_refer_names.keys()
-
+    
     # {rhombusID : type of node it refers to}
     rhombus_types = {i : [dag.nodes[n]['type'] for n in dag.nodes if len(dag.nodes[n])>0 and dag.nodes[n]['name']==rhombus_refer_names[i] and dag.nodes[n]['type'] in refer_types][0] for i in rhombusIDs}
     
