@@ -71,7 +71,8 @@ def make_breakpoints(df, pausepoint):
     df_input.sort_index(inplace = True)
     
     # make the df that resumes after the break, it starts right after the breakpoint
-    df = df.loc[pausepoint+1:] 
+    #CHANGED BY MPEA BECAUSE SOME ROWS WERE THERE WHEN THEY SHOULDN'T
+    df = df.loc[pausepoint+3:] 
     # if a breakpoint is on a page, it must be the last element of that page 
     # (it would make no sense to put a breakpoint in the middle of a page)
     # if the breakpoint was in a group the first row would be of type 'end group' and must be deleted

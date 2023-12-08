@@ -413,7 +413,7 @@ df = ca.update_ca_relevance(df, d)
 #%% For CHT put help fields in a standard note field, just below the row the help is attached to
 # necessary for CHT but not for Commcare because it natively supports help pop up fields
 if p.platform == 'cht':
-    df = oh.helpfields(df)
+    df = oh.helpfields_tt(df)
 #%% Make a settings tab
 now = datetime.now()
 version=now.strftime('%Y%m%d%H%M')

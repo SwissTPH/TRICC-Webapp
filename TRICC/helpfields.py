@@ -75,3 +75,45 @@ def helpfields(df):
     df.set_index('index',inplace=True)
     
     return df
+
+def helpfields_tt(df):
+            
+    df.reset_index(inplace=True)
+    df.fillna('',inplace=True)
+    I = df.loc[df['help::en']!=''].index
+    print(I)
+    
+    for i in I:
+        help_id = df.loc[i,'name']
+        str_ackn = concat_str(help_id)
+        
+        begingroup = pd.DataFrame({'index':df.loc[i]['index']+'_begingroup',\
+                                   'type': 'begin group', \
+                                   'name':'g' + df.loc[i]['name'][5:], \
+                                   'label::en':'NO_LABEL', \
+                                   'appearance':'field-list', \
+                                   'relevance':df.loc[i]['relevance']}, index=[i-0.1])
+        acknowledge = pd.DataFrame({'index':df.loc[i]['index']+'_bool',\
+                                    'type': 'acknowledge', \
+                                    'name':'bool' + df.loc[i]['name'][5:], \
+                                    'label::en':str_ackn}, index=[i])
+        endgroup = pd.DataFrame({'index':df.loc[i]['index']+'_endgroup', 'type':'end group'}, index=[i+0.2])
+        helpmessage = pd.DataFrame({'index':df.loc[i]['index']+'_help','type': 'note', \
+                                    'name':'help_' + df.loc[i]['name'][5:], \
+                                    'label::en': df.loc[i]['help::en'],\
+                                    'relevance':'${bool' + df.loc[i]['name'][5:] + '}=\'OK\''}, index=[i+0.1])
+        df.loc[i,'help::en']=='' # delete the help message inside the labels itself
+        #df.loc[i,'relevance']=='' # delete the relevance (it is now in the group)
+        
+        df = pd.concat([df, begingroup, acknowledge, helpmessage, endgroup])
+
+    # colorize the help message and the acknowledge
+    #m = df['name'].str.contains('help_',na=False)
+    #color_p = '<p style="background-color:LightGray;color:MediumSeaGreen;font-size:80%;">'
+    #df.loc[m,'label::en'] = color_p + df.loc[m,'label::en'] + '</p>'
+    
+    # sort rows
+    df = df.sort_index()
+    df.set_index('index',inplace=True)
+    
+    return df

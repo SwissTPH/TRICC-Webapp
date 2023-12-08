@@ -300,6 +300,45 @@ def helpfields(df):
     
     return df
 
+def helpfields_tt(df):
+            
+    df.reset_index(inplace=True)
+    df.fillna('',inplace=True)
+    if 'help::en' in df.columns:        
+        I = df.loc[df['help::en']!=''].index
+    
+        for i in I:
+            help_id = df.loc[i,'name']
+            str_ackn = concat_str(help_id)
+            
+            acknowledge = pd.DataFrame({'index':df.loc[i]['index']+'_bool',\
+                                        'type': 'acknowledge', \
+                                        'name':'bool_' + df.loc[i]['name'], \
+                                        'label::en':str_ackn}, index=[i+0.1])
+            helpmessage = pd.DataFrame({'index':df.loc[i]['index']+'_help','type': 'note', \
+                                        'name':'help_' + df.loc[i]['name'], \
+                                        'label::en': df.loc[i]['help::en'],\
+                                        'relevance':'${bool_' + df.loc[i]['name'] + '}=\'OK\''}, index=[i+0.2])
+            df.loc[i,'help::en']='' # delete the help message inside the labels itself
+            #df.loc[i,'relevance']='' # delete the relevance (it is now in the group)
+            
+            df = pd.concat([df, acknowledge, helpmessage])
+    
+        # colorize the help message and the acknowledge
+        #m = df['name'].str.contains('help_',na=False)
+        #color_p = '<p style="background-color:LightGray;color:MediumSeaGreen;font-size:80%;">'
+        #df.loc[m,'label::en'] = color_p + df.loc[m,'label::en'] + '</p>'
+        
+        # sort rows
+        df = df.sort_index()
+    else:
+        print('No help fields found in the diagram. ')
+    
+    df.set_index('index',inplace=True, drop=True)
+    
+    return df
+
+
 def add_header(df, headerfile):
     '''This function adds a header to the survey dataframe. The header contains platform specific rows, 
     for instance, for CHT you have there the dataloader from facility, loading user, etc. 
