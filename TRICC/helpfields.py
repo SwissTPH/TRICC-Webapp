@@ -39,7 +39,6 @@ def helpfields(df):
     df.reset_index(inplace=True)
     df.fillna('',inplace=True)
     I = df.loc[df['help::en']!=''].index
-    print(I)
     
     for i in I:
         help_id = df.loc[i,'name']
@@ -81,7 +80,6 @@ def helpfields_tt(df):
     df.reset_index(inplace=True)
     df.fillna('',inplace=True)
     I = df.loc[df['help::en']!=''].index
-    print(I)
     
     for i in I:
         help_id = df.loc[i,'name']

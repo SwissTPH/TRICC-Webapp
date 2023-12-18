@@ -1096,14 +1096,14 @@ df.drop(df.loc[df['label::en']=='Load Data'].index,inplace=True)
 df.reset_index(inplace=True)
 df.fillna('',inplace=True)
 I = df.loc[df['name'].isin(diagnoses_dict.values()) & ~df['name'].isin(p.hide_diagnoses) & ~df['name'].str.startswith('as_')].index
-
+counter = 0
 for i in I:
-    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'],'label::en':                                
+    d_message = pd.DataFrame({'index':df.loc[i]['index']+'_dm','type': 'note',                                 'name':'dm_' + df.loc[i]['name'] + str(counter),'label::en':                                
                               '''<i><div style="display: flex; align-items: center; background-color: {} ; padding: 10px; color: #FFFFFF; font-size:20px; font-weight: bold;">
                               <img data-media-src="images/icon-healthcare-diagnosis.svg" style="display:inline;" width="10%"> 
                               <span> Diagnosis found: {} </span></i>'''.format(df.loc[i]['color'], df.loc[i]['label::en']),
                                                                                               'relevance':'number(${'+df.loc[i]['name']+'})=1'}, index=[i+0.1])
-    
+    counter+=1
     #df = df.append(d_message, ignore_index=False)
     df = pd.concat([df, d_message], ignore_index = False)
 
@@ -1158,7 +1158,7 @@ def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, df_diagnose
     # need to reload diagnose_id_hierarchy, because the sorting here is wrong, because it is dervied from the 
     # drawing. There should be no diagnose_hierarchy in the dx flow, it makes no sense to me at all. 
     
-    df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy) & ~df['name'].isin(diagnoses_to_hide) & ~df['name'].str.startswith('as')].copy()
+    df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy) & ~df['name'].isin(diagnoses_to_hide) & ~df['name'].str.startswith('as',na=False)].copy()
     df_diagnose['calculation']=''
     df_diagnose['relevance']='number(${' + df['name'] + '})=1'
     df_diagnose['appearance']='center'
@@ -1179,7 +1179,6 @@ def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, df_diagnose
     df_medical_tests_index = df_medical_tests.index
     df_medical_tests = df_medical_tests.merge(df_tests_list, how='right')
     df_medical_tests.index = df_medical_tests_index 
-    print(df_medical_tests)
 
     df_medical_tests['appearance']='center'
     df_medical_tests['type']='note'

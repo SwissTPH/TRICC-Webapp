@@ -17,7 +17,6 @@ def groupwrap(df):
     df.reset_index(inplace=True)
     df.fillna('',inplace=True)
     i = df.loc[df['label::English (en)']=='Is referral possible?'].index[0]
-    print(i)   
     begingroup = pd.DataFrame({'index':'g_' + str(df.loc[i]['index']),\
                                'type': 'begin group', \
                                'name':'g_tt', \

@@ -314,6 +314,7 @@ def helpfields_tt(df):
             acknowledge = pd.DataFrame({'index':df.loc[i]['index']+'_bool',\
                                         'type': 'acknowledge', \
                                         'name':'bool_' + df.loc[i]['name'], \
+                                        'relevance': df.loc[i,'relevance'], \
                                         'label::en':str_ackn}, index=[i+0.1])
             helpmessage = pd.DataFrame({'index':df.loc[i]['index']+'_help','type': 'note', \
                                         'name':'help_' + df.loc[i]['name'], \
