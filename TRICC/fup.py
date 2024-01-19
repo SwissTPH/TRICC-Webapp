@@ -21,9 +21,9 @@ def fup(introfile,extrofile,fupfile,diagnosefile,df_survey):
     dfd = pd.read_csv(diagnosefile)
 
     dfup['Diseases'] = dfup['Diseases'].apply(clean_name)
-    dfd['Name'] = dfd['Name'].apply(clean_name)
+    dfd['name'] = dfd['name'].apply(clean_name)
 
-    dfup = dfup.merge(dfd[['Name','id']],how='left',left_on='Diseases',right_on='Name')
+    dfup = dfup.merge(dfd[['name','id']],how='left',left_on='Diseases',right_on='name')
 
     # check if all diseases were matched
     if dfup['id'].isna().sum() != 0:

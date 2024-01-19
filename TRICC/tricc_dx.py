@@ -18,7 +18,7 @@ import graphtools as gt
 import qualitychecks_pd as qcpd
 import inputs
 import uuid
-
+import numpy as np 
 
 #%% Parameters
 #import params_ped_rk as p # for msfecare Ped
@@ -980,7 +980,7 @@ df_settings=pd.DataFrame(settings,index=indx)
 
 # read the diagnoses and the corresponding ids
 df_diagnoses = pd.read_csv(p.diagnosis_order)
-diagnoses_dict=dict(zip(df_diagnoses.Name,df_diagnoses.id))
+diagnoses_dict=dict(zip(df_diagnoses.name,df_diagnoses.id))
 
 
 # ## make standalone
@@ -1157,25 +1157,60 @@ df = pd.concat([df_calc, df])
 def make_summary(df, df_choices, diagnose_id_hierarchy, summaryfile, df_diagnose_list, diagnoses_to_hide):
     # need to reload diagnose_id_hierarchy, because the sorting here is wrong, because it is dervied from the 
     # drawing. There should be no diagnose_hierarchy in the dx flow, it makes no sense to me at all. 
-    
-    df_diagnose=df.loc[df['name'].isin(diagnose_id_hierarchy) & ~df['name'].isin(diagnoses_to_hide) & ~df['name'].str.startswith('as',na=False)].copy()
-    df_diagnose['calculation']=''
+    postcord_dict = {'test' : 'Positive '}
+    postcord_counter= {}
+    df_diagnose = pd.DataFrame()
+    for i, row in df_diagnose_list.iterrows():
+        if row['id'].startswith('as') and row['id'] not in(diagnoses_to_hide):
+            continue
+        
+        temp = pd.DataFrame({
+            'calculation': '', 
+            'relevance': 'number(${' + row['id'] + '})=1',
+            'appearance': 'center',
+            'type': 'note',
+            'label::en': '<p>' + row['name'] + '</p>',
+            'name': row['id'].replace('d_','label_')}, index=[0])
+        df_diagnose = pd.concat([df_diagnose, temp])
+
+        if not pd.isnull(row['postcoordination']):
+            postcoordinations = row['postcoordination'].strip('][').split(',')
+            for postcord in postcoordinations:
+                post_cord_row = df_diagnose_list.loc[df_diagnose_list['id']==postcord]
+                postcord_split = post_cord_row['id'].str.split('_').tolist()[0]
+                postcord_ending = postcord_split[-1]
+                counter = 1 if postcord not in postcord_counter else postcord_counter.get(postcord)+1
+                temp = pd.DataFrame({
+                        'calculation': '', 
+                        'relevance': post_cord_row['relevant'] +' and ' + 'number(${' + row['id'] + '})=1',
+                        'appearance': 'center',
+                        'type': 'note',
+                        'label::en': '<p><pre>' + postcord_dict.get(postcord_ending)+ post_cord_row['name'] + '</p>',
+                        'name': post_cord_row['id'].replace({postcord_split[0]+'_':postcord_ending+'_'},regex=True)+str(counter)})
+                try: 
+                    postcord_counter[postcord]+=1
+                except: 
+                    postcord_counter[postcord]=1
+                df_diagnose = pd.concat([df_diagnose, temp])
+
+
+    """ df_diagnose['calculation']=''
     df_diagnose['relevance']='number(${' + df['name'] + '})=1'
     df_diagnose['appearance']='center'
     df_diagnose['type']='note'
     df_diagnose['label::en']='<p>' + df_diagnose['label::en'] + '</p>'
-    df_diagnose['name']=df_diagnose['name'].replace({'d_':'label_'},regex=True)
+    df_diagnose['name']=df_diagnose['name'].replace({'d_':'label_'},regex=True) """
 
-    df_diagnose.index=df_diagnose.index+'label'
+    df_diagnose.index=df_diagnose['name']+'_summary_label'
     intro = pd.read_excel(summaryfile).iloc[:6]
     endgroup = pd.read_excel(summaryfile).iloc[-2:]
     ## This was doing danger signs section under summary, now doing positive tests
     
     df_medical_tests=df.loc[df['name'].isin(diagnose_id_hierarchy) & (df['name'].str.startswith('as'))].copy()
-    df_tests_list = df_diagnose_list.loc[df_diagnose_list['id'].str.startswith('as_',na=False)]
+    df_tests_list = df_diagnose_list.loc[df_diagnose_list['id'].str.startswith('as_',na=False) & df_diagnose_list['id'].str.endswith('test',na=False)]
 
     df_medical_tests['calculation']=''
-    df_tests_list = df_tests_list.rename(columns={"Name":"label::en","id":"name", "relevant":"relevance"})
+    df_tests_list = df_tests_list.rename(columns={"name":"label::en","id":"name", "relevant":"relevance"})
     df_medical_tests_index = df_medical_tests.index
     df_medical_tests = df_medical_tests.merge(df_tests_list, how='right')
     df_medical_tests.index = df_medical_tests_index 
@@ -1216,7 +1251,6 @@ diagnosis_id_hierarchy = list(df_diagnose['id'])
 
 
 df_summary = make_summary(df, df_choices, diagnosis_id_hierarchy, p.summaryfile, df_diagnose, p.hide_diagnoses)
-
 # store df_summary
 import pickle
 

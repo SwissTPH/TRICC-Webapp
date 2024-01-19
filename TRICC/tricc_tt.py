@@ -39,7 +39,7 @@ objects = inputs.parse_drawio(p.inputfile) # parse drawing
 
 # Put diagram elements in df_raw
 df_raw = inputs.treetodataframe(objects) # import drawing elements into a df
-df_raw.fillna('', inplace = True) 
+df_raw.fillna('', inplace = True)
 df_raw.loc[df_raw['label']!='','value'] = df_raw['label'] # all content into the same column
 
 # this keeps specific tabs in the diagram
@@ -55,7 +55,6 @@ qcpd.check_rhombus_refer(df_raw) # check if all rhombus refer to an existing nod
 qcpd.check_edge_connection(df_raw) # check if all edges are well connected
 types = ['rhombus', 'select_one yesno']
 qcpd.check_edge_yesno(df_raw, types) # check if all edges leaving rhombus and select_one yesno have Yes/No
-
 
 #%% assign diagnosis names to rows in df_raw
 df_raw = oh.assign_diagnosisname(p.diagnosis_order, df_raw)
@@ -81,7 +80,63 @@ df_choices = pd.concat([df_choices, drug_choices])
 yes=pd.DataFrame({'list_name':'yesno','name':'Yes','label::en':'Yes'}, index=['zzz_yes'])
 no=pd.DataFrame({'list_name':'yesno','name':'No','label::en':'No'}, index=['zzz_no'])
 df_choices = pd.concat([df_choices, yes, no])
+""" print(df_raw.columns)
+df_arrows=df_raw.loc[(df_raw['source']!='') & (df_raw['target']!=''),['source','target','value']]
+print(df_arrows.columns)
+df_arrows=df_arrows.merge(df_raw[['name','odk_type']],how='left',left_on='source',right_index=True)
+page_ids = df_raw.loc[df_raw['odk_type']=='container_page'].index
+df_pageObjects = df_raw.loc[df_raw['parent'].isin(page_ids)]
+df_raw.drop(df_pageObjects.index,inplace=True)
+df_arrows_in_pages = df_arrows.loc[df_arrows['source'].isin(df_pageObjects.index) & \
+                                df_arrows['target'].isin(df_pageObjects.index)]
 
+df_arrows_out_pages = df_arrows.loc[df_arrows['source'].isin(df_pageObjects.index) & \
+                                ~df_arrows['target'].isin(df_pageObjects.index)]
+df_arrows.loc[df_arrows_out_pages.index,'source'] = df_arrows.loc[df_arrows_out_pages.index,'container_id']
+df_arrows.drop(df_arrows_in_pages.index,inplace=True)
+# make a new topological sort in the df without objects INSIDE pages, but page heads (begin_group) only: 
+# in df_arrows, also drop the connectors which point from the page-root to the first object INSIDE the page
+# reset index, because you have manually added page_connectors on top that have messed it up!
+df_arrows.reset_index(inplace=True)
+df_arrows.drop(columns=['index'],inplace=True)
+df_arrows.drop(df_arrows.loc[df_arrows['source_type']=='container_page'].index,inplace=True)
+# make a directed graph 
+dg = nx.from_pandas_edgelist(df_arrows, source='source', target='target', create_using=nx.DiGraph)
+order = list(nx.lexicographical_topological_sort(dg))
+# change order of rows
+df_raw=df_raw.reindex(order)
+# group df_page_Objects by page
+gk = df_pageObjects.groupby('parent')
+# sort each page and put it into main dataframe df
+for page, df_page in gk:
+    df_arrows_in_page = df_arrows_in_pages.loc[df_arrows_in_pages['source'].isin(df_page.index)]
+    
+    if len(df_arrows_in_page)>0:
+        # make a dag for the page
+        dag = nx.from_pandas_edgelist(df_arrows_in_page, source='source', target='target', create_using=nx.DiGraph)
+        order = list(nx.lexicographical_topological_sort(dag))
+        
+        # sort the page
+        df_page=df_page.reindex(order)
+
+# get split row
+page_id = df_page['parent'][0]
+
+# and 'end_group' row to its end
+df_end = pd.DataFrame({'tag':'UserObject', 'xml-parent': page_id,'odk_type':'end group'}, index = [page_id+'_end'])
+df_page = pd.concat([df_page, df_end])
+df_page.fillna('', inplace = True)
+
+# put it back in main dataframe df
+# get split row
+page_id = df_page['xml-parent'][0]
+
+# split df
+df_top = df_raw.loc[:page_id]
+df_bottom = df_raw.loc[page_id:].drop(index=page_id)
+
+# concat 
+df_raw = pd.concat([df_top,df_page,df_bottom]) """
 
 #%% DAG 
 # build a CDSS graph without images, WITH dataloader
@@ -393,11 +448,14 @@ df = df.reindex(topo_order) # sort the dataframe according to the CDSS topo sort
 # types to be kept in df
 types = ['decimal', 'integer', 'diagnosis', 'select_multiple', 'select_one', 'calculate', \
         'note', 'select_one yesno', 'container_page']
+
 df.drop(df.loc[~df['type'].isin(types)].index, inplace=True)
 
 #%% Group page-elements
 '''The sorting is ignoring pages, therefore we group them independently here.'''
-df = oh.group_pages(df)
+# TODO Commented out MPEA
+#df = oh.group_pages(df)
+
 df.drop(columns=['group'], inplace=True)
 
 #%% Make df conform to odk

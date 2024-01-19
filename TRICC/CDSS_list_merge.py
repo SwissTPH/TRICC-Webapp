@@ -17,7 +17,7 @@ The lists themselves are sorted among each other, degressive diagnosis hierarchy
 """
 from itertools import product
 
-def     merge_list(diagnosis_sort, global_sort):
+def merge_list(diagnosis_sort, global_sort):
     '''Function to merge the list `diagnosis_sort` into the list `global_sort`. Returns the new global_sort list. The function iterates
     over the matrix product of `diagnosis_sort` and `global _sort` and checks if the nodes in diagnosis_sort appear in the global_sort, 
     while respecting the sorting of both. If it finds a fit, all the nodes from diagnosis_sort, that came prior to this node and that

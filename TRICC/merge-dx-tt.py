@@ -85,7 +85,7 @@ df_tt.drop(df_tt.loc[(df_tt['type']=='select_multiple data_load')].index, inplac
 #%% wrap treatment in a group
 dfa = pd.DataFrame(columns=df_tt.columns)
 tt_relevance = df_dx.loc[df_dx['label::en']=='TREATMENT','relevance'].values[0] # get relevance field for TT group
-## field-list taken out in hope this will stop have TT in one page MPEA
+## field-list taken out to stop have TT in one page MPEA 
 dfa.loc[0,['type','name','label::en', 'appearance', 'relevance']]=['begin group','g_tt', 'Treatment and Management', 'field-list', tt_relevance]
 dfa.fillna('',inplace=True)
 df_tt = pd.concat([dfa,df_tt],ignore_index=True)

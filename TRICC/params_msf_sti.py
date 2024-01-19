@@ -16,7 +16,7 @@ context_params_from_facility=False
 mhsplit = False  # whether several nodes are combined into 1 (multiheadline split)
 interrupt_flow = True
 activity = 'treatment'
-hide_diagnoses = ['d_ct_urine','d_ng_urine', 'd_ct_rectal','d_ng_rectal','d_ct_vaginal'
+hide_diagnoses = ['d_ct_urine','d_ng_urine', 'd_ct_rectal','d_ng_rectal','d_ct_vaginal','d_ct_discharge','d_ng_discharge'
 ,'d_ng_vaginal','d_ct_pharynx','d_ng_pharynx','d_trichomonas_vaginalis','d_mycoplasma_genitalium']
 ### Input Streamlit webapp folder
 folder = 'U:/Projects/msf_sti/'

@@ -301,7 +301,7 @@ def make_node_distance(dag, n):
 def get_diagnosis_sorting_id(df_raw, diagnosis_order):
     diagnosis_hierarchy = pd.read_csv(diagnosis_order)
     
-    diagnosis_hierarchy['map']= diagnosis_hierarchy['Name'].apply(ch.clean_name) 
+    diagnosis_hierarchy['map']= diagnosis_hierarchy['name'].apply(ch.clean_name) 
     df_raw['map'] = df_raw['value'].astype(str)
     df_raw['map'] = df_raw['map'].apply(ch.clean_name)
     
@@ -318,7 +318,7 @@ def get_diagnosis_sorting_id(df_raw, diagnosis_order):
 def get_diagnosis_sorting_id_from_graph(dag, diagnosis_order):
     diagnosis_hierarchy = pd.read_csv(diagnosis_order)
     
-    diagnosis_hierarchy['map']= diagnosis_hierarchy['Name'].apply(ch.clean_name) 
+    diagnosis_hierarchy['map']= diagnosis_hierarchy['name'].apply(ch.clean_name) 
     
     # make dict of style {diagnosis_name:node_id} with information from graph
     # name is already 'cleaned'
@@ -334,7 +334,7 @@ def get_diagnosis_sorting_id_from_graph(dag, diagnosis_order):
 def get_diagnosis_sorting_id_jupyter(df_raw, diagnosis_order):
     diagnosis_hierarchy = pd.read_csv(diagnosis_order)
     
-    diagnosis_hierarchy['map']= diagnosis_hierarchy['Name'].apply(ch.clean_name) 
+    diagnosis_hierarchy['map']= diagnosis_hierarchy['name'].apply(ch.clean_name) 
     df_raw['map'] = df_raw['value'].astype(str)
     df_raw['map'] = df_raw['map'].apply(ch.clean_name)
     

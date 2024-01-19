@@ -112,7 +112,7 @@ def assign_diagnosisname(diagnose_order_file, df):
     # properly name the diagnose calculates in the TT drawing
     diagnose_hierarchy = pd.read_csv(diagnose_order_file)
     
-    diagnose_hierarchy['map']= diagnose_hierarchy['Name'].apply(ch.clean_name) 
+    diagnose_hierarchy['map']= diagnose_hierarchy['name'].apply(ch.clean_name) 
     df['map'] = df['value'].astype(str)
     df['map'] = df['map'].apply(ch.clean_name)
     
@@ -180,6 +180,7 @@ def group_pages(df):
 def frame_to_odk(df, drugsfile, form_id):
     '''Adapt the survey dataframe so that it fits to ODK requirements. This is necessary for
     ODK/Enketo based solutions, such as CHT, Commcare, ODK Collect'''
+
     newcols = ['repeat_count', 'appearance', 'required', 'required message::en', 'calculation', \
                'constraint', 'constraint message::en']
     df[newcols]=''
@@ -187,9 +188,12 @@ def frame_to_odk(df, drugsfile, form_id):
     # short term workaround for select_xxx + NAME to add the same name as list_name
     m = df['type'].isin(['select_one','select_multiple'])
     df.loc[m,'type'] = df.loc[m,'type'] + ' ' + df.loc[m,'name']
-
     # rename begin group
     df.replace({'container_page':'begin group'}, inplace=True)
+    
+    # add 'end group' rows
+    # get the last objects of each page
+    
     # add 'field-list'
     df.loc[df['type']=='begin group','appearance']='field-list'
     
@@ -284,7 +288,7 @@ def helpfields(df):
             df.loc[i,'help::en']='' # delete the help message inside the labels itself
             df.loc[i,'relevance']='' # delete the relevance (it is now in the group)
             
-            df = pd.concat([df, begingroup, acknowledge, helpmessage, endgroup])
+            df = pd.concat([df, begingroup, helpmessage,acknowledge, endgroup])
     
         # colorize the help message and the acknowledge
         #m = df['name'].str.contains('help_',na=False)
@@ -295,7 +299,6 @@ def helpfields(df):
         df = df.sort_index()
     else:
         print('No help fields found in the diagram. ')
-    
     df.set_index('index',inplace=True, drop=True)
     
     return df
