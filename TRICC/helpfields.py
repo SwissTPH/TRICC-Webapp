@@ -80,11 +80,11 @@ def helpfields_tt(df):
     df.reset_index(inplace=True)
     df.fillna('',inplace=True)
     I = df.loc[df['help::en']!=''].index
-    
+    print("help msgs", I)
     for i in I:
         help_id = df.loc[i,'name']
         str_ackn = concat_str(help_id)
-        
+        print(help_id)
         begingroup = pd.DataFrame({'index':df.loc[i]['index']+'_begingroup',\
                                    'type': 'begin group', \
                                    'name':'g' + df.loc[i]['name'][5:], \
@@ -95,11 +95,11 @@ def helpfields_tt(df):
                                     'type': 'acknowledge', \
                                     'name':'bool' + df.loc[i]['name'][5:], \
                                     'label::en':str_ackn}, index=[i])
-        endgroup = pd.DataFrame({'index':df.loc[i]['index']+'_endgroup', 'type':'end group'}, index=[i+0.2])
+        endgroup = pd.DataFrame({'index':df.loc[i]['index']+'_endgroup', 'type':'end group'}, index=[i+0.3])
         helpmessage = pd.DataFrame({'index':df.loc[i]['index']+'_help','type': 'note', \
                                     'name':'help_' + df.loc[i]['name'][5:], \
                                     'label::en': df.loc[i]['help::en'],\
-                                    'relevance':'${bool' + df.loc[i]['name'][5:] + '}=\'OK\''}, index=[i+0.1])
+                                    'relevance':'${bool' + df.loc[i]['name'][5:] + '}=\'OK\''}, index=[i+0.2])
         df.loc[i,'help::en']=='' # delete the help message inside the labels itself
         #df.loc[i,'relevance']=='' # delete the relevance (it is now in the group)
         

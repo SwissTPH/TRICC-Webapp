@@ -28,11 +28,10 @@ def make_breakpoints(df, pausepoint):
     m = df_input['type'].str.contains('|'.join(typesconvert))
     df_input.loc[m, 'type'] = 'hidden' # convert all types into 'hidden'
     
-    # COMMENTED OUT BY MPEA - seems to be redundant? TODO
     # add a data_load row, to load contextual parameters from the previous form
-    #d = {'type':['hidden'], 'name':['data_load']}
-    #d = pd.DataFrame.from_dict(d, orient='columns')
-    #df_input = pd.concat([df_input, d])
+    d = {'type':['hidden'], 'name':['data_load']}
+    d = pd.DataFrame.from_dict(d, orient='columns')
+    df_input = pd.concat([df_input, d])
     
     cols = [col for col in df.columns if 'label' in col] # all columns that contain text for user (have 'label' in column name)
     df_input[cols] = 'NO_LABEL' # set the text of columns to NO_LABEL so that nothing shows up in CHT
@@ -72,7 +71,7 @@ def make_breakpoints(df, pausepoint):
     
     # make the df that resumes after the break, it starts right after the breakpoint
     #CHANGED BY MPEA BECAUSE SOME ROWS WERE THERE WHEN THEY SHOULDN'T
-    df = df.loc[pausepoint+3:] 
+    df = df.loc[pausepoint+2:] 
     # if a breakpoint is on a page, it must be the last element of that page 
     # (it would make no sense to put a breakpoint in the middle of a page)
     # if the breakpoint was in a group the first row would be of type 'end group' and must be deleted

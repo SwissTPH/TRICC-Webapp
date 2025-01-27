@@ -218,7 +218,7 @@ def frame_to_odk(df, drugsfile, form_id):
     df.loc[df['label::en'].str.contains('START',na=False),'appearance']='countdown-timer'
     
     # populate required condition
-    df.loc[~df['type'].isin(['note','calculate', 'diagnosis', 'begin group', 'end group', 'text', 'acknowledge', 'decimal', 'integer']) & (df['required']==''),'required']='true()'
+    df.loc[~df['type'].isin(['note','calculate', 'diagnosis', 'begin group', 'end group', 'text', 'acknowledge', 'decimal', 'integer']) & (df['required']==''),'required']='1'
     # but not to contextual parameters
     df.loc[df['name']=='data_load','required']=''
     
@@ -311,7 +311,10 @@ def helpfields_tt(df):
         I = df.loc[df['help::en']!=''].index
     
         for i in I:
+            print(i)
             help_id = df.loc[i,'name']
+            print(help_id)
+
             str_ackn = concat_str(help_id)
             
             acknowledge = pd.DataFrame({'index':df.loc[i]['index']+'_bool',\
