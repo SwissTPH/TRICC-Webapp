@@ -25,9 +25,9 @@ import numpy as np
 
 # %% Parameters
 # import params_ped_rk as p # for msfecare Ped
-import params_msf_sti as p
+# import params_msf_sti as p
 # import params_ped as p # for msfecare Ped
-# import params_libya_rk as p
+import params_libya_rk as p
 
 import warnings
 warnings.filterwarnings("ignore")
