@@ -27,8 +27,8 @@ warnings.filterwarnings("ignore")
 # In[2]:
 
 # form_id = 'ped' # for MSFeCARE PED
-form_id = 'msf_sti'
-# form_id = 'almanach_libya' # for Almanach Lybia
+# form_id = 'msf_sti'
+form_id = 'almanach_libya' # for Almanach Lybia
 
 # %% Parameters
 # import params as p # for almanach Somalia
