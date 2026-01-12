@@ -18,13 +18,13 @@ interrupt_flow = True
 activity = 'treatment'
 hide_diagnoses = ['d_critical_condition','d_non_critical_condition','d_no_malnut']
 ### Input Streamlit webapp folder
-folder = 'U:/Projects/Almanach-Libya/L3/release20221025/Libya/'
+folder = 'U:/Projects/Almanach-Libya/L3/releases/Libya/'
 resource_folder = './resources/'
 inputfile_dx = folder+'ALM LBY_Diagnostic.drawio'  # inputfile for jupyter notebook diagnostic
 inputfile = folder+'ALM LBY_Treatment_grouped.drawio' # inputfile for tricc-graph tt
 diagnosis_order = folder+'diagnose_order.csv'
-input_trans = folder + '../../../form/translation.xlsx'
-htmlfolder = folder + '../../../form/htm_files/' # folder where the html files are stored (that will replace the text in notes)
+input_trans = folder + '../../form/translation.xlsx'
+htmlfolder = folder + '../../form/htm_files/' # folder where the html files are stored (that will replace the text in notes)
 images_to_import =['icon-healthcare-diagnosis.svg']
 
 ### Resources
