@@ -50,7 +50,7 @@ df_raw.loc[df_raw['label'] != '', 'value'] = df_raw['label']
 # Then you have to glue all the outputs of the different groups together into
 # one treatment file
 
-# df_raw = df_raw.loc[df_raw['activity']=='oral antibiotics']
+df_raw = df_raw.loc[df_raw['activity']=='prevent mortality']
 
 # %% Focus on treatment only and strip off the follow up (FOR NOW, in Almsom TT)
 # df_raw = df_raw.loc[df_raw['activity']!='Follow up advise']

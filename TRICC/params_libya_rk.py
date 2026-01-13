@@ -18,7 +18,7 @@ interrupt_flow = True
 activity = 'treatment'
 hide_diagnoses = ['d_critical_condition','d_non_critical_condition','d_no_malnut']
 ### Input Streamlit webapp folder
-folder = 'U:/Projects/Almanach-Libya/L3/releases/Libya/'
+folder = '../../moodle/Almanach-Libya/releases/Libya/'
 resource_folder = './resources/'
 inputfile_dx = folder+'ALM LBY_Diagnostic.drawio'  # inputfile for jupyter notebook diagnostic
 inputfile = folder+'ALM LBY_Treatment_grouped.drawio' # inputfile for tricc-graph tt
